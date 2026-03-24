@@ -1,0 +1,155 @@
+{
+  "canvas": {
+    "w": 1855,
+    "h": 1780
+  },
+  "heads": [
+    {
+      "id": "C1",
+      "label": "C1",
+      "src": "/assets/heads/C1.svg"
+    },
+    {
+      "id": "C2",
+      "label": "C2",
+      "src": "/assets/heads/C2.svg"
+    },
+    {
+      "id": "C3",
+      "label": "C3",
+      "src": "/assets/heads/C3.svg"
+    },
+    {
+      "id": "C4",
+      "label": "C4",
+      "src": "/assets/heads/C4.svg"
+    }
+  ],
+  "eyes": [
+    {
+      "id": "O1",
+      "label": "O1",
+      "src": "/assets/eyes/O1.svg"
+    },
+    {
+      "id": "O10",
+      "label": "O10",
+      "src": "/assets/eyes/O10.svg"
+    },
+    {
+      "id": "O11",
+      "label": "O11",
+      "src": "/assets/eyes/O11.svg"
+    },
+    {
+      "id": "O2",
+      "label": "O2",
+      "src": "/assets/eyes/O2.svg"
+    },
+    {
+      "id": "O3",
+      "label": "O3",
+      "src": "/assets/eyes/O3.svg"
+    },
+    {
+      "id": "O4",
+      "label": "O4",
+      "src": "/assets/eyes/O4.svg"
+    },
+    {
+      "id": "O5",
+      "label": "O5",
+      "src": "/assets/eyes/O5.svg"
+    },
+    {
+      "id": "O6",
+      "label": "O6",
+      "src": "/assets/eyes/O6.svg"
+    },
+    {
+      "id": "O7",
+      "label": "O7",
+      "src": "/assets/eyes/O7.svg"
+    },
+    {
+      "id": "O8",
+      "label": "O8",
+      "src": "/assets/eyes/O8.svg"
+    },
+    {
+      "id": "O9",
+      "label": "O9",
+      "src": "/assets/eyes/O9.svg"
+    }
+  ],
+  "brows": [
+    {
+      "id": "Ceja1",
+      "label": "Ceja1",
+      "src": "/assets/brows/Ceja1.svg",
+      "default": {
+        "x": 490,
+        "y": 520,
+        "w": 940,
+        "h": 200
+      }
+    },
+    {
+      "id": "Ceja2",
+      "label": "Ceja2",
+      "src": "/assets/brows/Ceja2.svg",
+      "default": {
+        "x": 490,
+        "y": 520,
+        "w": 940,
+        "h": 200
+      }
+    },
+    {
+      "id": "Ceja3",
+      "label": "Ceja3",
+      "src": "/assets/brows/Ceja3.svg",
+      "default": {
+        "x": 490,
+        "y": 520,
+        "w": 940,
+        "h": 200
+      }
+    }
+  ],
+  "noses": [
+    {
+      "id": "N1",
+      "label": "N1",
+      "src": "/assets/noses/N1.svg",
+      "default": {
+        "x": 850,
+        "y": 880,
+        "w": 180,
+        "h": 180
+      }
+    },
+    {
+      "id": "N3",
+      "label": "N3",
+      "src": "/assets/noses/N3.svg",
+      "default": {
+        "x": 850,
+        "y": 880,
+        "w": 180,
+        "h": 180
+      }
+    },
+    {
+      "id": "N4",
+      "label": "N4",
+      "src": "/assets/noses/N4.svg",
+      "default": {
+        "x": 850,
+        "y": 880,
+        "w": 180,
+        "h": 180
+      }
+    }
+  ]
+}
