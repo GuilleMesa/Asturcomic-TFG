@@ -3,10 +3,16 @@ const path = require("path");
 const fs = require("fs");
 
 const app = express();
+const PORT = process.env.PORT || 8080;
 
-// Servir estáticos: /assets/...
+// Assets SVG 
 app.use("/assets", express.static(path.join(__dirname, "public", "assets")));
 
+// Frontend compilado 
+const appDist = path.join(__dirname, "public", "app");
+app.use(express.static(appDist));
+
+// API
 app.get("/api/health", (req, res) => res.send("OK"));
 
 app.get("/api/catalog", (req, res) => {
@@ -15,4 +21,8 @@ app.get("/api/catalog", (req, res) => {
   res.type("json").send(raw);
 });
 
-app.listen(8080, () => console.log("Backend en http://localhost:8080"));
+app.get("*", (req, res) => {
+  res.sendFile(path.join(appDist, "index.html"));
+});
+
+app.listen(PORT, () => console.log(`Backend en http://localhost:${PORT}`));
