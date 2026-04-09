@@ -21,7 +21,8 @@ app.get("/api/catalog", (req, res) => {
   res.type("json").send(raw);
 });
 
-app.get("*", (req, res) => {
+// Fallback SPA: cualquier ruta EXCEPTO /api y /assets
+app.get(/^(?!\/api\/|\/assets\/).*/, (req, res) => {
   res.sendFile(path.join(appDist, "index.html"));
 });
 
