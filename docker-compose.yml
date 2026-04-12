@@ -1,6 +1,18 @@
 services:
-  asturcomic:
-    build: .
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    restart: unless-stopped
+    expose:
+      - "8080"
+
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    depends_on:
+      - backend
     ports:
-      - "80:8080"
+      - "80:80"
     restart: unless-stopped
