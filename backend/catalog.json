@@ -29,57 +29,68 @@
     {
       "id": "O1",
       "label": "O1",
-      "src": "/assets/eyes/O1.svg"
+      "src": "/assets/eyes/O1.svg",
+      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
     },
     {
       "id": "O10",
       "label": "O10",
-      "src": "/assets/eyes/O10.svg"
+      "src": "/assets/eyes/O10.svg",
+      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
     },
     {
       "id": "O11",
       "label": "O11",
-      "src": "/assets/eyes/O11.svg"
+      "src": "/assets/eyes/O11.svg",
+      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
     },
     {
       "id": "O2",
       "label": "O2",
-      "src": "/assets/eyes/O2.svg"
+      "src": "/assets/eyes/O2.svg",
+      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
     },
     {
       "id": "O3",
       "label": "O3",
-      "src": "/assets/eyes/O3.svg"
+      "src": "/assets/eyes/O3.svg",
+      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
     },
     {
       "id": "O4",
       "label": "O4",
-      "src": "/assets/eyes/O4.svg"
+      "src": "/assets/eyes/O4.svg",
+      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
     },
     {
       "id": "O5",
       "label": "O5",
-      "src": "/assets/eyes/O5.svg"
+      "src": "/assets/eyes/O5.svg",
+      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
     },
     {
       "id": "O6",
       "label": "O6",
-      "src": "/assets/eyes/O6.svg"
+      "src": "/assets/eyes/O6.svg",
+      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
     },
     {
       "id": "O7",
       "label": "O7",
-      "src": "/assets/eyes/O7.svg"
+      "src": "/assets/eyes/O7.svg",
+      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
     },
     {
       "id": "O8",
       "label": "O8",
-      "src": "/assets/eyes/O8.svg"
+      "src": "/assets/eyes/O8.svg",
+      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
     },
     {
       "id": "O9",
       "label": "O9",
-      "src": "/assets/eyes/O9.svg"
+      "src": "/assets/eyes/O9.svg",
+      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
     }
   ],
   "brows": [
@@ -87,7 +98,7 @@
       "id": "Ceja1",
       "label": "Ceja1",
       "src": "/assets/brows/Ceja1.svg",
-      "default": {
+      "box": {
         "x": 490,
         "y": 520,
         "w": 940,
@@ -98,7 +109,7 @@
       "id": "Ceja2",
       "label": "Ceja2",
       "src": "/assets/brows/Ceja2.svg",
-      "default": {
+      "box": {
         "x": 490,
         "y": 520,
         "w": 940,
@@ -109,7 +120,7 @@
       "id": "Ceja3",
       "label": "Ceja3",
       "src": "/assets/brows/Ceja3.svg",
-      "default": {
+      "box": {
         "x": 490,
         "y": 520,
         "w": 940,
@@ -122,7 +133,7 @@
       "id": "N1",
       "label": "N1",
       "src": "/assets/noses/N1.svg",
-      "default": {
+      "box": {
         "x": 850,
         "y": 880,
         "w": 180,
@@ -133,7 +144,7 @@
       "id": "N3",
       "label": "N3",
       "src": "/assets/noses/N3.svg",
-      "default": {
+      "box": {
         "x": 850,
         "y": 880,
         "w": 180,
@@ -144,12 +155,44 @@
       "id": "N4",
       "label": "N4",
       "src": "/assets/noses/N4.svg",
-      "default": {
+      "box": {
         "x": 850,
         "y": 880,
         "w": 180,
         "h": 180
       }
+    }
+  ],
+  "mouths": [
+    {
+      "id": "Boca1",
+      "label": "Boca1",
+      "src": "/assets/mouths/Boca1.svg",
+      "box": { "x": 760, "y": 1120, "w": 320, "h": 140 }
+    },
+    {
+      "id": "Boca2",
+      "label": "Boca2",
+      "src": "/assets/mouths/Boca2.svg",
+      "box": { "x": 760, "y": 1120, "w": 320, "h": 140 }
+    },
+    {
+      "id": "Boca3",
+      "label": "Boca3",
+      "src": "/assets/mouths/Boca3.svg",
+      "box": { "x": 760, "y": 1120, "w": 320, "h": 140 }
+    },
+    {
+      "id": "Boca4",
+      "label": "Boca4",
+      "src": "/assets/mouths/Boca4.svg",
+      "box": { "x": 760, "y": 1120, "w": 320, "h": 140 }
+    },
+    {
+      "id": "Boca5",
+      "label": "Boca5",
+      "src": "/assets/mouths/Boca5.svg",
+      "box": { "x": 760, "y": 1120, "w": 320, "h": 140 }
     }
   ]
 }
