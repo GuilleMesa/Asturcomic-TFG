@@ -1,198 +1,593 @@
 {
   "canvas": {
-    "w": 1855,
-    "h": 1780
+    "w": 2048,
+    "h": 2048
   },
   "heads": [
     {
-      "id": "C1",
-      "label": "C1",
-      "src": "/assets/heads/C1.svg"
-    },
-    {
-      "id": "C2",
-      "label": "C2",
-      "src": "/assets/heads/C2.svg"
-    },
-    {
-      "id": "C3",
-      "label": "C3",
-      "src": "/assets/heads/C3.svg"
-    },
-    {
-      "id": "C4",
-      "label": "C4",
-      "src": "/assets/heads/C4.svg"
+      "id": "cabeza-1",
+      "label": "Cabeza 1",
+      "layers": [
+        {
+          "id": "cabeza-1-base",
+          "src": "/assets/Cabezas/Cabeza1.svg"
+        }
+      ]
     }
   ],
-  "eyes": [
+  "leftEars": [
     {
-      "id": "O1",
-      "label": "O1",
-      "src": "/assets/eyes/O1.svg",
-      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
-    },
-    {
-      "id": "O10",
-      "label": "O10",
-      "src": "/assets/eyes/O10.svg",
-      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
-    },
-    {
-      "id": "O11",
-      "label": "O11",
-      "src": "/assets/eyes/O11.svg",
-      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
-    },
-    {
-      "id": "O2",
-      "label": "O2",
-      "src": "/assets/eyes/O2.svg",
-      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
-    },
-    {
-      "id": "O3",
-      "label": "O3",
-      "src": "/assets/eyes/O3.svg",
-      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
-    },
-    {
-      "id": "O4",
-      "label": "O4",
-      "src": "/assets/eyes/O4.svg",
-      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
-    },
-    {
-      "id": "O5",
-      "label": "O5",
-      "src": "/assets/eyes/O5.svg",
-      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
-    },
-    {
-      "id": "O6",
-      "label": "O6",
-      "src": "/assets/eyes/O6.svg",
-      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
-    },
-    {
-      "id": "O7",
-      "label": "O7",
-      "src": "/assets/eyes/O7.svg",
-      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
-    },
-    {
-      "id": "O8",
-      "label": "O8",
-      "src": "/assets/eyes/O8.svg",
-      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
-    },
-    {
-      "id": "O9",
-      "label": "O9",
-      "src": "/assets/eyes/O9.svg",
-      "box": { "x": 0, "y": 0, "w": 1855, "h": 1780 }
+      "id": "oreja-izda-1",
+      "label": "Oreja izquierda 1",
+      "layers": [
+        {
+          "id": "oreja-izda-1-base",
+          "src": "/assets/Orejas/Oreja1_izda.svg"
+        }
+      ]
     }
   ],
-  "brows": [
+  "rightEars": [
     {
-      "id": "Ceja1",
-      "label": "Ceja1",
-      "src": "/assets/brows/Ceja1.svg",
-      "box": {
-        "x": 490,
-        "y": 520,
-        "w": 940,
-        "h": 200
-      }
+      "id": "oreja-dcha-1",
+      "label": "Oreja derecha 1",
+      "layers": [
+        {
+          "id": "oreja-dcha-1-base",
+          "src": "/assets/Orejas/Oreja_dcha.svg"
+        }
+      ]
+    }
+  ],
+  "hairs": [
+    {
+      "id": "sin-pelo",
+      "label": "Sin pelo",
+      "layers": []
     },
     {
-      "id": "Ceja2",
-      "label": "Ceja2",
-      "src": "/assets/brows/Ceja2.svg",
-      "box": {
-        "x": 490,
-        "y": 520,
-        "w": 940,
-        "h": 200
-      }
+      "id": "pelo-f-1",
+      "label": "Pelo 1",
+      "canvas": {
+        "w": 2150,
+        "h": 2577
+      },
+      "offset": {
+        "x": -100,
+        "y": -258
+      },
+      "layers": [
+        {
+          "id": "pelo-f-1-base",
+          "src": "/assets/PelosFemeninos/Pelo 1_F_Base color.svg",
+          "colorable": true
+        },
+        {
+          "id": "pelo-f-1-oscuro",
+          "src": "/assets/PelosFemeninos/Pelo 1_F_Oscuro.svg"
+        },
+        {
+          "id": "pelo-f-1-brillo",
+          "src": "/assets/PelosFemeninos/Pelo 1_F_Brillo.svg"
+        }
+      ]
     },
     {
-      "id": "Ceja3",
-      "label": "Ceja3",
-      "src": "/assets/brows/Ceja3.svg",
-      "box": {
-        "x": 490,
-        "y": 520,
-        "w": 940,
-        "h": 200
-      }
+      "id": "pelo-f-2",
+      "label": "Pelo 2",
+      "canvas": {
+        "w": 2150,
+        "h": 2577
+      },
+      "offset": {
+        "x": -100,
+        "y": -258
+      },
+      "layers": [
+        {
+          "id": "pelo-f-2-base",
+          "src": "/assets/PelosFemeninos/Pelo 2_F_Base color.svg",
+          "colorable": true
+        },
+        {
+          "id": "pelo-f-2-oscuro",
+          "src": "/assets/PelosFemeninos/Pelo 2_F_Oscuro.svg",
+          "blendMode": "multiply"
+        },
+        {
+          "id": "pelo-f-2-brillo",
+          "src": "/assets/PelosFemeninos/Pelo 2_F_Brillo.svg",
+          "blendMode": "multiply"
+        }
+      ]
+    },
+    {
+      "id": "pelo-f-3",
+      "label": "Pelo 3",
+      "canvas": {
+        "w": 2150,
+        "h": 2577
+      },
+      "offset": {
+        "x": -100,
+        "y": -258
+      },
+      "layers": [
+        {
+          "id": "pelo-f-3-base",
+          "src": "/assets/PelosFemeninos/Pelo 3_F_Base color.svg",
+          "colorable": true
+        },
+        {
+          "id": "pelo-f-3-oscuro",
+          "src": "/assets/PelosFemeninos/Pelo 3_F_Oscuro.svg"
+        },
+        {
+          "id": "pelo-f-3-brillo",
+          "src": "/assets/PelosFemeninos/Pelo 3_F_Brillo.svg"
+        }
+      ]
+    },
+    {
+      "id": "pelo-f-4",
+      "label": "Pelo 4",
+      "canvas": {
+        "w": 2150,
+        "h": 2577
+      },
+      "offset": {
+        "x": -100,
+        "y": -258
+      },
+      "layers": [
+        {
+          "id": "pelo-f-4-base",
+          "src": "/assets/PelosFemeninos/Pelo 4_F_Base Color.svg",
+          "colorable": true
+        },
+        {
+          "id": "pelo-f-4-oscuro",
+          "src": "/assets/PelosFemeninos/Pelo 4_F_Oscuro.svg"
+        },
+        {
+          "id": "pelo-f-4-brillo",
+          "src": "/assets/PelosFemeninos/Pelo 4_F_Brillo.svg"
+        }
+      ]
+    },
+    {
+      "id": "pelo-f-5",
+      "label": "Pelo 5",
+      "canvas": {
+        "w": 2150,
+        "h": 2577
+      },
+      "offset": {
+        "x": -100,
+        "y": -258
+      },
+      "layers": [
+        {
+          "id": "pelo-f-5-base",
+          "src": "/assets/PelosFemeninos/Pelo 5_F_Base color.svg",
+          "colorable": true
+        },
+        {
+          "id": "pelo-f-5-oscuro",
+          "src": "/assets/PelosFemeninos/Pelo 5_F_Oscuro.svg"
+        },
+        {
+          "id": "pelo-f-5-brillo",
+          "src": "/assets/PelosFemeninos/Pelo 5_F_Brillo.svg"
+        }
+      ]
+    },
+    {
+      "id": "pelo-f-6",
+      "label": "Pelo 6",
+      "canvas": {
+        "w": 2150,
+        "h": 2577
+      },
+      "offset": {
+        "x": -100,
+        "y": -258
+      },
+      "layers": [
+        {
+          "id": "pelo-f-6-base",
+          "src": "/assets/PelosFemeninos/Pelo 6_F_Base color.svg",
+          "colorable": true
+        },
+        {
+          "id": "pelo-f-6-oscuro",
+          "src": "/assets/PelosFemeninos/Pelo 6_F_Oscuro.svg"
+        },
+        {
+          "id": "pelo-f-6-brillo",
+          "src": "/assets/PelosFemeninos/Pelo 6_F_Brillo.svg"
+        }
+      ]
+    },
+    {
+      "id": "pelo-f-7",
+      "label": "Pelo 7",
+      "canvas": {
+        "w": 2150,
+        "h": 2577
+      },
+      "offset": {
+        "x": -100,
+        "y": -258
+      },
+      "layers": [
+        {
+          "id": "pelo-f-7-base",
+          "src": "/assets/PelosFemeninos/Pelo 7_F_Base color.svg",
+          "colorable": true
+        },
+        {
+          "id": "pelo-f-7-oscuro",
+          "src": "/assets/PelosFemeninos/Pelo 7_F_Oscuro.svg"
+        },
+        {
+          "id": "pelo-f-7-brillo",
+          "src": "/assets/PelosFemeninos/Pelo 7_F_Brillo.svg"
+        }
+      ]
+    },
+    {
+      "id": "pelo-f-8",
+      "label": "Pelo 8",
+      "canvas": {
+        "w": 2150,
+        "h": 2577
+      },
+      "offset": {
+        "x": -100,
+        "y": -258
+      },
+      "layers": [
+        {
+          "id": "pelo-f-8-base",
+          "src": "/assets/PelosFemeninos/Pelo 8_F_Base color.svg",
+          "colorable": true
+        },
+        {
+          "id": "pelo-f-8-oscuro",
+          "src": "/assets/PelosFemeninos/Pelo 8_F_Oscuro.svg"
+        },
+        {
+          "id": "pelo-f-8-brillo",
+          "src": "/assets/PelosFemeninos/Pelo 8_F_Brillo.svg"
+        }
+      ]
+    },
+    {
+      "id": "pelo-f-9",
+      "label": "Pelo 9",
+      "canvas": {
+        "w": 2150,
+        "h": 2577
+      },
+      "offset": {
+        "x": -100,
+        "y": -258
+      },
+      "layers": [
+        {
+          "id": "pelo-f-9-base",
+          "src": "/assets/PelosFemeninos/Pelo 9_F_Base color.svg",
+          "colorable": true
+        },
+        {
+          "id": "pelo-f-9-oscuro",
+          "src": "/assets/PelosFemeninos/Pelo 9_F_Oscuro.svg"
+        },
+        {
+          "id": "pelo-f-9-brillo",
+          "src": "/assets/PelosFemeninos/Pelo 9_F_Brillo.svg"
+        }
+      ]
+    },
+    {
+      "id": "pelo-f-10",
+      "label": "Pelo 10",
+      "canvas": {
+        "w": 2150,
+        "h": 2577
+      },
+      "offset": {
+        "x": -100,
+        "y": -258
+      },
+      "layers": [
+        {
+          "id": "pelo-f-10-base",
+          "src": "/assets/PelosFemeninos/Pelo 10_F_Base color.svg",
+          "colorable": true
+        },
+        {
+          "id": "pelo-f-10-oscuro",
+          "src": "/assets/PelosFemeninos/Pelo 10_F_Oscuro.svg"
+        },
+        {
+          "id": "pelo-f-10-brillo",
+          "src": "/assets/PelosFemeninos/Pelo 10_F_Brillo.svg"
+        }
+      ]
+    }
+  ],
+  "leftEyes": [
+    {
+      "id": "ojo-izdo-1",
+      "label": "Ojo izquierdo 1",
+      "layers": [
+        {
+          "id": "ojo-izdo-1-base",
+          "src": "/assets/Ojos/Ojo1_ido.svg"
+        }
+      ]
+    },
+    {
+      "id": "ojo-izdo-2",
+      "label": "Ojo izquierdo 2",
+      "layers": [
+        {
+          "id": "ojo-izdo-2-base",
+          "src": "/assets/Ojos/Ojo2_izdo.svg"
+        }
+      ]
+    }
+  ],
+  "rightEyes": [
+    {
+      "id": "ojo-dcho-1",
+      "label": "Ojo derecho 1",
+      "layers": [
+        {
+          "id": "ojo-dcho-1-base",
+          "src": "/assets/Ojos/Ojo1_dcho.svg"
+        }
+      ]
+    },
+    {
+      "id": "ojo-dcho-2",
+      "label": "Ojo derecho 2",
+      "layers": [
+        {
+          "id": "ojo-dcho-2-base",
+          "src": "/assets/Ojos/Ojo2_dcho.svg"
+        }
+      ]
+    }
+  ],
+  "leftLashes": [
+    {
+      "id": "sin-pestanas-izda",
+      "label": "Sin pestanas",
+      "layers": []
+    },
+    {
+      "id": "pestanas-izda-1",
+      "label": "Pestanas izquierda 1",
+      "layers": [
+        {
+          "id": "pestanas-izda-1-base",
+          "src": "/assets/Pestañas/Pestaña1_izda.svg"
+        }
+      ]
+    },
+    {
+      "id": "pestanas-izda-2",
+      "label": "Pestanas izquierda 2",
+      "layers": [
+        {
+          "id": "pestanas-izda-2-base",
+          "src": "/assets/Pestañas/Pestaña2_izda.svg"
+        }
+      ]
+    }
+  ],
+  "rightLashes": [
+    {
+      "id": "sin-pestanas-dcha",
+      "label": "Sin pestanas",
+      "layers": []
+    },
+    {
+      "id": "pestanas-dcha-1",
+      "label": "Pestanas derecha 1",
+      "layers": [
+        {
+          "id": "pestanas-dcha-1-base",
+          "src": "/assets/Pestañas/Pestaña1_dcha.svg"
+        }
+      ]
+    },
+    {
+      "id": "pestanas-dcha-2",
+      "label": "Pestanas derecha 2",
+      "layers": [
+        {
+          "id": "pestanas-dcha-2-base",
+          "src": "/assets/Pestañas/Pestaña2_dcha.svg"
+        }
+      ]
+    }
+  ],
+  "leftBrows": [
+    {
+      "id": "ceja-izda-1",
+      "label": "Ceja izquierda 1",
+      "layers": [
+        {
+          "id": "ceja-izda-1-base",
+          "src": "/assets/Cejas/Ceja1_izda.svg",
+          "maskSrc": "/assets/ColorMasks/ceja-izda-1-mask.png",
+          "colorable": true,
+          "colorMode": "tint"
+        }
+      ]
+    }
+  ],
+  "rightBrows": [
+    {
+      "id": "ceja-dcha-1",
+      "label": "Ceja derecha 1",
+      "layers": [
+        {
+          "id": "ceja-dcha-1-base",
+          "src": "/assets/Cejas/Ceja1_dcha.svg",
+          "maskSrc": "/assets/ColorMasks/ceja-dcha-1-mask.png",
+          "colorable": true,
+          "colorMode": "tint"
+        }
+      ]
     }
   ],
   "noses": [
     {
-      "id": "N1",
-      "label": "N1",
-      "src": "/assets/noses/N1.svg",
-      "box": {
-        "x": 850,
-        "y": 880,
-        "w": 180,
-        "h": 180
-      }
+      "id": "nariz-1",
+      "label": "Nariz 1",
+      "layers": [
+        {
+          "id": "nariz-1-base",
+          "src": "/assets/Nariz/Nariz1.svg"
+        }
+      ]
     },
     {
-      "id": "N3",
-      "label": "N3",
-      "src": "/assets/noses/N3.svg",
-      "box": {
-        "x": 850,
-        "y": 880,
-        "w": 180,
-        "h": 180
-      }
-    },
-    {
-      "id": "N4",
-      "label": "N4",
-      "src": "/assets/noses/N4.svg",
-      "box": {
-        "x": 850,
-        "y": 880,
-        "w": 180,
-        "h": 180
-      }
+      "id": "nariz-2",
+      "label": "Nariz 2",
+      "layers": [
+        {
+          "id": "nariz-2-base",
+          "src": "/assets/Nariz/Nariz2.svg"
+        }
+      ]
     }
   ],
   "mouths": [
     {
-      "id": "Boca1",
-      "label": "Boca1",
-      "src": "/assets/mouths/Boca1.svg",
-      "box": { "x": 760, "y": 1120, "w": 320, "h": 140 }
+      "id": "boca-1",
+      "label": "Boca 1",
+      "layers": [
+        {
+          "id": "boca-1-base",
+          "src": "/assets/Bocas/Boca1.svg"
+        }
+      ]
     },
     {
-      "id": "Boca2",
-      "label": "Boca2",
-      "src": "/assets/mouths/Boca2.svg",
-      "box": { "x": 760, "y": 1120, "w": 320, "h": 140 }
+      "id": "boca-2",
+      "label": "Boca 2",
+      "layers": [
+        {
+          "id": "boca-2-base",
+          "src": "/assets/Bocas/Boca2.svg"
+        }
+      ]
     },
     {
-      "id": "Boca3",
-      "label": "Boca3",
-      "src": "/assets/mouths/Boca3.svg",
-      "box": { "x": 760, "y": 1120, "w": 320, "h": 140 }
+      "id": "boca-3",
+      "label": "Boca 3",
+      "layers": [
+        {
+          "id": "boca-3-base",
+          "src": "/assets/Bocas/Boca3.svg"
+        }
+      ]
     },
     {
-      "id": "Boca4",
-      "label": "Boca4",
-      "src": "/assets/mouths/Boca4.svg",
-      "box": { "x": 760, "y": 1120, "w": 320, "h": 140 }
+      "id": "boca-4",
+      "label": "Boca 4",
+      "layers": [
+        {
+          "id": "boca-4-base",
+          "src": "/assets/Bocas/Boca4.svg"
+        }
+      ]
     },
     {
-      "id": "Boca5",
-      "label": "Boca5",
-      "src": "/assets/mouths/Boca5.svg",
-      "box": { "x": 760, "y": 1120, "w": 320, "h": 140 }
+      "id": "boca-5",
+      "label": "Boca 5",
+      "layers": [
+        {
+          "id": "boca-5-base",
+          "src": "/assets/Bocas/Boca5.svg"
+        }
+      ]
+    },
+    {
+      "id": "boca-6",
+      "label": "Boca 6",
+      "layers": [
+        {
+          "id": "boca-6-base",
+          "src": "/assets/Bocas/Boca6.svg"
+        }
+      ]
+    },
+    {
+      "id": "boca-7",
+      "label": "Boca 7",
+      "layers": [
+        {
+          "id": "boca-7-base",
+          "src": "/assets/Bocas/Boca7.svg"
+        }
+      ]
+    },
+    {
+      "id": "boca-8",
+      "label": "Boca 8",
+      "layers": [
+        {
+          "id": "boca-8-base",
+          "src": "/assets/Bocas/Boca8.svg"
+        }
+      ]
+    },
+    {
+      "id": "boca-9",
+      "label": "Boca 9",
+      "layers": [
+        {
+          "id": "boca-9-base",
+          "src": "/assets/Bocas/Boca9.svg"
+        }
+      ]
+    },
+    {
+      "id": "boca-10",
+      "label": "Boca 10",
+      "layers": [
+        {
+          "id": "boca-10-base",
+          "src": "/assets/Bocas/Boca10.svg"
+        }
+      ]
+    },
+    {
+      "id": "boca-11",
+      "label": "Boca 11",
+      "layers": [
+        {
+          "id": "boca-11-base",
+          "src": "/assets/Bocas/Boca11.svg"
+        }
+      ]
+    },
+    {
+      "id": "boca-12",
+      "label": "Boca 12",
+      "layers": [
+        {
+          "id": "boca-12-base",
+          "src": "/assets/Bocas/Boca12.svg"
+        }
+      ]
     }
   ]
 }
