@@ -25,4 +25,38 @@ export const selectorStyles: Record<string, CSSProperties> = {
   label: {
     fontWeight: 600,
   },
+  subLabel: {
+    color: "#4b5563",
+    fontSize: "0.85rem",
+    fontWeight: 600,
+  },
+  colorGroup: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "0.5rem",
+    paddingTop: "0.25rem",
+  },
+  swatches: {
+    display: "flex",
+    alignItems: "center",
+    flexWrap: "wrap",
+    gap: "0.5rem",
+  },
+  swatch: {
+    width: "1.6rem",
+    height: "1.6rem",
+    border: "2px solid #d1d5db",
+    borderRadius: "999px",
+    cursor: "pointer",
+    padding: 0,
+  },
+  colorInput: {
+    width: "2rem",
+    height: "2rem",
+    border: "1px solid #d1d5db",
+    borderRadius: "8px",
+    cursor: "pointer",
+    padding: "0.1rem",
+    backgroundColor: "#ffffff",
+  },
 };

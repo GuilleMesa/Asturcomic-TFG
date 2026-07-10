@@ -3,80 +3,90 @@ import { Header } from "../../components/Header/Header";
 import { AvatarPreview } from "../../components/AvatarPreview/AvatarPreview";
 import { AssetSelectorPanel } from "../../components/AssetSelectorPanel/AssetSelectorPanel";
 import { BoxControlsPanel } from "../../components/BoxControlsPanel/BoxControlsPanel";
+import {
+  BROW_COLOR_OPTIONS,
+  DEFAULT_BROW_COLOR,
+  DEFAULT_HAIR_COLOR,
+  HAIR_COLOR_OPTIONS,
+} from "../../constants/hairColors";
 import { fetchCatalog } from "../../services/catalogService";
 import type {
-  AdjustableBoxes,
-  AdjustableKey,
   Box,
+  CanvasSize,
   Catalog,
+  CompositeAsset,
+  SelectableCategory,
   SelectedAvatar,
 } from "../../types/avatar";
 import { pageStyles } from "./AvatarEditorPage.styles";
 
-const DEFAULT_FULL_BOX: Box = { x: 0, y: 0, w: 1855, h: 1780 };
-const DEFAULT_BROW_BOX: Box = { x: 490, y: 520, w: 940, h: 200 };
-const DEFAULT_NOSE_BOX: Box = { x: 850, y: 880, w: 180, h: 180 };
-const DEFAULT_MOUTH_BOX: Box = { x: 760, y: 1120, w: 320, h: 140 };
+const DEFAULT_CANVAS: CanvasSize = { w: 2048, h: 2048 };
 
-const DEFAULT_BOXES: AdjustableBoxes = {
-  eyes: DEFAULT_FULL_BOX,
-  brows: DEFAULT_BROW_BOX,
-  noses: DEFAULT_NOSE_BOX,
-  mouths: DEFAULT_MOUTH_BOX,
+const SELECTABLE_CATEGORIES: SelectableCategory[] = [
+  "heads",
+  "leftEars",
+  "rightEars",
+  "hairs",
+  "leftEyes",
+  "rightEyes",
+  "leftLashes",
+  "rightLashes",
+  "leftBrows",
+  "rightBrows",
+  "noses",
+  "mouths",
+];
+
+const EMPTY_SELECTION: SelectedAvatar = {
+  heads: "",
+  leftEars: "",
+  rightEars: "",
+  hairs: "",
+  leftEyes: "",
+  rightEyes: "",
+  leftLashes: "",
+  rightLashes: "",
+  leftBrows: "",
+  rightBrows: "",
+  noses: "",
+  mouths: "",
 };
 
-function getItemBox(
-  catalog: Catalog | null,
-  category: AdjustableKey,
-  id: string
-): Box {
-  if (!catalog) return DEFAULT_BOXES[category];
+function createFullBox(canvas: CanvasSize): Box {
+  return { x: 0, y: 0, w: canvas.w, h: canvas.h };
+}
 
-  const item = catalog[category].find((asset) => asset.id === id);
-  return item?.box ?? DEFAULT_BOXES[category];
+function createInitialSelection(catalog: Catalog): SelectedAvatar {
+  const selection = { ...EMPTY_SELECTION };
+
+  SELECTABLE_CATEGORIES.forEach((category) => {
+    selection[category] = catalog[category][0]?.id ?? "";
+  });
+
+  return selection;
+}
+
+function findSelectedAsset(
+  catalog: Catalog | null,
+  category: SelectableCategory,
+  id: string
+): CompositeAsset | undefined {
+  return catalog?.[category].find((item) => item.id === id);
 }
 
 export function AvatarEditorPage() {
   const [catalog, setCatalog] = useState<Catalog | null>(null);
-
-  const [selected, setSelected] = useState<SelectedAvatar>({
-    heads: "",
-    eyes: "",
-    brows: "",
-    noses: "",
-    mouths: "",
-  });
-
-  const [faceBox, setFaceBox] = useState<Box>(DEFAULT_FULL_BOX);
-  const [boxes, setBoxes] = useState<AdjustableBoxes>(DEFAULT_BOXES);
+  const [selected, setSelected] = useState<SelectedAvatar>(EMPTY_SELECTION);
+  const [hairColor, setHairColor] = useState(DEFAULT_HAIR_COLOR);
+  const [browColor, setBrowColor] = useState(DEFAULT_BROW_COLOR);
+  const [faceBox, setFaceBox] = useState<Box>(createFullBox(DEFAULT_CANVAS));
 
   useEffect(() => {
     fetchCatalog()
       .then((data) => {
         setCatalog(data);
-
-        const head0 = data.heads[0];
-        const eye0 = data.eyes[0];
-        const brow0 = data.brows[0];
-        const nose0 = data.noses[0];
-        const mouth0 = data.mouths[0];
-
-        setSelected({
-          heads: head0?.id ?? "",
-          eyes: eye0?.id ?? "",
-          brows: brow0?.id ?? "",
-          noses: nose0?.id ?? "",
-          mouths: mouth0?.id ?? "",
-        });
-
-        setFaceBox(DEFAULT_FULL_BOX);
-
-        setBoxes({
-          eyes: eye0?.box ?? DEFAULT_FULL_BOX,
-          brows: brow0?.box ?? DEFAULT_BROW_BOX,
-          noses: nose0?.box ?? DEFAULT_NOSE_BOX,
-          mouths: mouth0?.box ?? DEFAULT_MOUTH_BOX,
-        });
+        setSelected(createInitialSelection(data));
+        setFaceBox(createFullBox(data.canvas));
       })
       .catch((err) => {
         console.error("Error cargando catálogo:", err);
@@ -84,51 +94,67 @@ export function AvatarEditorPage() {
   }, []);
 
   const headItem = useMemo(
-    () => catalog?.heads.find((item) => item.id === selected.heads),
+    () => findSelectedAsset(catalog, "heads", selected.heads),
     [catalog, selected.heads]
   );
 
-  const eyesItem = useMemo(
-    () => catalog?.eyes.find((item) => item.id === selected.eyes),
-    [catalog, selected.eyes]
+  const leftEarItem = useMemo(
+    () => findSelectedAsset(catalog, "leftEars", selected.leftEars),
+    [catalog, selected.leftEars]
   );
 
-  const browsItem = useMemo(
-    () => catalog?.brows.find((item) => item.id === selected.brows),
-    [catalog, selected.brows]
+  const rightEarItem = useMemo(
+    () => findSelectedAsset(catalog, "rightEars", selected.rightEars),
+    [catalog, selected.rightEars]
   );
 
-  const nosesItem = useMemo(
-    () => catalog?.noses.find((item) => item.id === selected.noses),
+  const hairItem = useMemo(
+    () => findSelectedAsset(catalog, "hairs", selected.hairs),
+    [catalog, selected.hairs]
+  );
+
+  const leftEyeItem = useMemo(
+    () => findSelectedAsset(catalog, "leftEyes", selected.leftEyes),
+    [catalog, selected.leftEyes]
+  );
+
+  const rightEyeItem = useMemo(
+    () => findSelectedAsset(catalog, "rightEyes", selected.rightEyes),
+    [catalog, selected.rightEyes]
+  );
+
+  const leftLashItem = useMemo(
+    () => findSelectedAsset(catalog, "leftLashes", selected.leftLashes),
+    [catalog, selected.leftLashes]
+  );
+
+  const rightLashItem = useMemo(
+    () => findSelectedAsset(catalog, "rightLashes", selected.rightLashes),
+    [catalog, selected.rightLashes]
+  );
+
+  const leftBrowItem = useMemo(
+    () => findSelectedAsset(catalog, "leftBrows", selected.leftBrows),
+    [catalog, selected.leftBrows]
+  );
+
+  const rightBrowItem = useMemo(
+    () => findSelectedAsset(catalog, "rightBrows", selected.rightBrows),
+    [catalog, selected.rightBrows]
+  );
+
+  const noseItem = useMemo(
+    () => findSelectedAsset(catalog, "noses", selected.noses),
     [catalog, selected.noses]
   );
 
-  const mouthsItem = useMemo(
-    () => catalog?.mouths.find((item) => item.id === selected.mouths),
+  const mouthItem = useMemo(
+    () => findSelectedAsset(catalog, "mouths", selected.mouths),
     [catalog, selected.mouths]
   );
 
-  function handleHeadChange(id: string) {
-    setSelected((prev) => ({ ...prev, heads: id }));
-  }
-
-  function handleAdjustableChange(category: AdjustableKey, id: string) {
-    setSelected((prev) => ({
-      ...prev,
-      [category]: id,
-    }));
-
-    setBoxes((prev) => ({
-      ...prev,
-      [category]: getItemBox(catalog, category, id),
-    }));
-  }
-
-  function handleSetBox(category: AdjustableKey, box: Box) {
-    setBoxes((prev) => ({
-      ...prev,
-      [category]: box,
-    }));
+  function handleSelectionChange(category: SelectableCategory, id: string) {
+    setSelected((prev) => ({ ...prev, [category]: id }));
   }
 
   return (
@@ -139,28 +165,38 @@ export function AvatarEditorPage() {
         <AssetSelectorPanel
           catalog={catalog}
           selected={selected}
-          onHeadChange={handleHeadChange}
-          onEyesChange={(id) => handleAdjustableChange("eyes", id)}
-          onBrowsChange={(id) => handleAdjustableChange("brows", id)}
-          onNosesChange={(id) => handleAdjustableChange("noses", id)}
-          onMouthsChange={(id) => handleAdjustableChange("mouths", id)}
+          hairColor={hairColor}
+          hairColorOptions={HAIR_COLOR_OPTIONS}
+          browColor={browColor}
+          browColorOptions={BROW_COLOR_OPTIONS}
+          onSelectionChange={handleSelectionChange}
+          onHairColorChange={setHairColor}
+          onBrowColorChange={setBrowColor}
         />
 
         <AvatarPreview
+          canvas={catalog?.canvas ?? DEFAULT_CANVAS}
+          leftEar={leftEarItem}
+          rightEar={rightEarItem}
           head={headItem}
-          eyes={eyesItem}
-          brows={browsItem}
-          noses={nosesItem}
-          mouths={mouthsItem}
+          hair={hairItem}
+          leftEye={leftEyeItem}
+          rightEye={rightEyeItem}
+          leftLash={leftLashItem}
+          rightLash={rightLashItem}
+          leftBrow={leftBrowItem}
+          rightBrow={rightBrowItem}
+          nose={noseItem}
+          mouth={mouthItem}
+          hairColor={hairColor}
+          browColor={browColor}
           faceBox={faceBox}
-          boxes={boxes}
         />
 
         <BoxControlsPanel
+          canvas={catalog?.canvas ?? DEFAULT_CANVAS}
           faceBox={faceBox}
           setFaceBox={setFaceBox}
-          boxes={boxes}
-          setBox={handleSetBox}
         />
       </main>
     </div>

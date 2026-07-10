@@ -1,16 +1,11 @@
 import { Slider } from "primereact/slider";
-import type {
-  AdjustableBoxes,
-  AdjustableKey,
-  Box,
-} from "../../types/avatar";
+import type { Box, CanvasSize } from "../../types/avatar";
 import { boxControlsStyles } from "./BoxControlsPanel.styles";
 
 type Props = {
+  canvas: CanvasSize;
   faceBox: Box;
   setFaceBox: (box: Box) => void;
-  boxes: AdjustableBoxes;
-  setBox: (category: AdjustableKey, box: Box) => void;
 };
 
 function BoxEditor({
@@ -85,12 +80,7 @@ function BoxEditor({
   );
 }
 
-export function BoxControlsPanel({
-  faceBox,
-  setFaceBox,
-  boxes,
-  setBox,
-}: Props) {
+export function BoxControlsPanel({ canvas, faceBox, setFaceBox }: Props) {
   return (
     <section style={boxControlsStyles.wrapper}>
       <h2 style={boxControlsStyles.title}>Ajuste de posición</h2>
@@ -99,42 +89,10 @@ export function BoxControlsPanel({
         title="Cara completa"
         value={faceBox}
         onChange={setFaceBox}
-        maxW={1855}
-        maxH={1780}
+        maxW={canvas.w}
+        maxH={canvas.h}
         minW={300}
         minH={300}
-      />
-
-      <BoxEditor
-        title="Ojos"
-        value={boxes.eyes}
-        onChange={(next) => setBox("eyes", next)}
-        maxW={1855}
-        maxH={1780}
-      />
-
-      <BoxEditor
-        title="Cejas"
-        value={boxes.brows}
-        onChange={(next) => setBox("brows", next)}
-        maxW={1855}
-        maxH={1780}
-      />
-
-      <BoxEditor
-        title="Nariz"
-        value={boxes.noses}
-        onChange={(next) => setBox("noses", next)}
-        maxW={1855}
-        maxH={1780}
-      />
-
-      <BoxEditor
-        title="Boca"
-        value={boxes.mouths}
-        onChange={(next) => setBox("mouths", next)}
-        maxW={1855}
-        maxH={1780}
       />
     </section>
   );

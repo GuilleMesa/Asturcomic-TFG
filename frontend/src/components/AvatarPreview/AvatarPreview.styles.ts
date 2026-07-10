@@ -20,13 +20,23 @@ export const previewStyles: Record<string, CSSProperties> = {
   canvas: {
     position: "relative",
     width: 360,
-    height: 345,
+    height: 360,
     border: "1px solid #d1d5db",
-    borderRadius: "12px",
+    borderRadius: "8px",
     overflow: "hidden",
     backgroundColor: "#ffffff",
   },
-  layer: {
+  faceGroup: {
     position: "absolute",
+  },
+  fullCanvasLayer: {
+    position: "absolute",
+    left: 0,
+    top: 0,
+    width: "100%",
+    height: "100%",
+    objectFit: "contain",
+    pointerEvents: "none",
+    userSelect: "none",
   },
 };
