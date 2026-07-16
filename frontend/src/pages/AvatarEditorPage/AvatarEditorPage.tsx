@@ -7,7 +7,9 @@ import {
   BROW_COLOR_OPTIONS,
   DEFAULT_BROW_COLOR,
   DEFAULT_HAIR_COLOR,
+  DEFAULT_SKIN_COLOR,
   HAIR_COLOR_OPTIONS,
+  SKIN_COLOR_OPTIONS,
 } from "../../constants/hairColors";
 import { fetchCatalog } from "../../services/catalogService";
 import type {
@@ -15,14 +17,17 @@ import type {
   CanvasSize,
   Catalog,
   CompositeAsset,
+  Gender,
   SelectableCategory,
   SelectedAvatar,
 } from "../../types/avatar";
 import { pageStyles } from "./AvatarEditorPage.styles";
 
-const DEFAULT_CANVAS: CanvasSize = { w: 2048, h: 2048 };
+const DEFAULT_CANVAS: CanvasSize = { w: 2836, h: 3055 };
+const DEFAULT_GENDER: Gender = "male";
 
 const SELECTABLE_CATEGORIES: SelectableCategory[] = [
+  "poses",
   "heads",
   "leftEars",
   "rightEars",
@@ -38,6 +43,7 @@ const SELECTABLE_CATEGORIES: SelectableCategory[] = [
 ];
 
 const EMPTY_SELECTION: SelectedAvatar = {
+  poses: "",
   heads: "",
   leftEars: "",
   rightEars: "",
@@ -56,12 +62,32 @@ function createFullBox(canvas: CanvasSize): Box {
   return { x: 0, y: 0, w: canvas.w, h: canvas.h };
 }
 
-function createInitialSelection(catalog: Catalog): SelectedAvatar {
+function getDefaultPoseId(catalog: Catalog, gender: Gender): string {
+  const defaultPoseId = catalog.defaultPoseByGender?.[gender];
+
+  if (defaultPoseId && catalog.poses.some((pose) => pose.id === defaultPoseId)) {
+    return defaultPoseId;
+  }
+
+  const fallbackGender = gender === "female" ? "female" : "male";
+  return (
+    catalog.poses.find((pose) => pose.gender === fallbackGender)?.id ??
+    catalog.poses[0]?.id ??
+    ""
+  );
+}
+
+function createInitialSelection(
+  catalog: Catalog,
+  gender = DEFAULT_GENDER
+): SelectedAvatar {
   const selection = { ...EMPTY_SELECTION };
 
   SELECTABLE_CATEGORIES.forEach((category) => {
     selection[category] = catalog[category][0]?.id ?? "";
   });
+
+  selection.poses = getDefaultPoseId(catalog, gender);
 
   return selection;
 }
@@ -74,9 +100,36 @@ function findSelectedAsset(
   return catalog?.[category].find((item) => item.id === id);
 }
 
+function getCategoryOptions(
+  catalog: Catalog,
+  category: SelectableCategory,
+  gender: Gender
+): CompositeAsset[] {
+  const options = catalog[category];
+
+  if (category !== "poses" || gender === "nonBinary") {
+    return options;
+  }
+
+  return options.filter((asset) => asset.gender === gender);
+}
+
+function pickRandomId(
+  catalog: Catalog,
+  category: SelectableCategory,
+  gender: Gender
+): string {
+  const options = getCategoryOptions(catalog, category, gender);
+  const randomIndex = Math.floor(Math.random() * options.length);
+
+  return options[randomIndex]?.id ?? "";
+}
+
 export function AvatarEditorPage() {
   const [catalog, setCatalog] = useState<Catalog | null>(null);
   const [selected, setSelected] = useState<SelectedAvatar>(EMPTY_SELECTION);
+  const [gender, setGender] = useState<Gender>(DEFAULT_GENDER);
+  const [skinColor, setSkinColor] = useState(DEFAULT_SKIN_COLOR);
   const [hairColor, setHairColor] = useState(DEFAULT_HAIR_COLOR);
   const [browColor, setBrowColor] = useState(DEFAULT_BROW_COLOR);
   const [faceBox, setFaceBox] = useState<Box>(createFullBox(DEFAULT_CANVAS));
@@ -85,7 +138,7 @@ export function AvatarEditorPage() {
     fetchCatalog()
       .then((data) => {
         setCatalog(data);
-        setSelected(createInitialSelection(data));
+        setSelected(createInitialSelection(data, DEFAULT_GENDER));
         setFaceBox(createFullBox(data.canvas));
       })
       .catch((err) => {
@@ -96,6 +149,11 @@ export function AvatarEditorPage() {
   const headItem = useMemo(
     () => findSelectedAsset(catalog, "heads", selected.heads),
     [catalog, selected.heads]
+  );
+
+  const poseItem = useMemo(
+    () => findSelectedAsset(catalog, "poses", selected.poses),
+    [catalog, selected.poses]
   );
 
   const leftEarItem = useMemo(
@@ -157,25 +215,86 @@ export function AvatarEditorPage() {
     setSelected((prev) => ({ ...prev, [category]: id }));
   }
 
+  function handleGenderChange(nextGender: Gender) {
+    setGender(nextGender);
+
+    if (!catalog) return;
+
+    setSelected((prev) => ({
+      ...prev,
+      poses: getDefaultPoseId(catalog, nextGender),
+    }));
+  }
+
+  function handleReset() {
+    if (!catalog) return;
+
+    setGender(DEFAULT_GENDER);
+    setSelected(createInitialSelection(catalog, DEFAULT_GENDER));
+    setSkinColor(DEFAULT_SKIN_COLOR);
+    setHairColor(DEFAULT_HAIR_COLOR);
+    setBrowColor(DEFAULT_BROW_COLOR);
+    setFaceBox(createFullBox(catalog.canvas));
+  }
+
+  function handleRandomize() {
+    if (!catalog) return;
+
+    const nextSelection = { ...EMPTY_SELECTION };
+
+    SELECTABLE_CATEGORIES.forEach((category) => {
+      nextSelection[category] = pickRandomId(catalog, category, gender);
+    });
+
+    const randomHairColor =
+      HAIR_COLOR_OPTIONS[
+        Math.floor(Math.random() * HAIR_COLOR_OPTIONS.length)
+      ]?.value ?? DEFAULT_HAIR_COLOR;
+    const randomSkinColor =
+      SKIN_COLOR_OPTIONS[
+        Math.floor(Math.random() * SKIN_COLOR_OPTIONS.length)
+      ]?.value ?? DEFAULT_SKIN_COLOR;
+    const randomBrowColor =
+      BROW_COLOR_OPTIONS[
+        Math.floor(Math.random() * BROW_COLOR_OPTIONS.length)
+      ]?.value ?? DEFAULT_BROW_COLOR;
+
+    setSelected(nextSelection);
+    setSkinColor(randomSkinColor);
+    setHairColor(randomHairColor);
+    setBrowColor(randomBrowColor);
+    setFaceBox(createFullBox(catalog.canvas));
+  }
+
   return (
     <div style={pageStyles.wrapper}>
-      <Header />
+      <Header
+        isReady={Boolean(catalog)}
+        onRandomize={handleRandomize}
+        onReset={handleReset}
+      />
 
       <main style={pageStyles.content}>
         <AssetSelectorPanel
           catalog={catalog}
           selected={selected}
+          gender={gender}
+          skinColor={skinColor}
+          skinColorOptions={SKIN_COLOR_OPTIONS}
           hairColor={hairColor}
           hairColorOptions={HAIR_COLOR_OPTIONS}
           browColor={browColor}
           browColorOptions={BROW_COLOR_OPTIONS}
           onSelectionChange={handleSelectionChange}
+          onGenderChange={handleGenderChange}
+          onSkinColorChange={setSkinColor}
           onHairColorChange={setHairColor}
           onBrowColorChange={setBrowColor}
         />
 
         <AvatarPreview
           canvas={catalog?.canvas ?? DEFAULT_CANVAS}
+          pose={poseItem}
           leftEar={leftEarItem}
           rightEar={rightEarItem}
           head={headItem}
@@ -188,6 +307,7 @@ export function AvatarEditorPage() {
           rightBrow={rightBrowItem}
           nose={noseItem}
           mouth={mouthItem}
+          skinColor={skinColor}
           hairColor={hairColor}
           browColor={browColor}
           faceBox={faceBox}

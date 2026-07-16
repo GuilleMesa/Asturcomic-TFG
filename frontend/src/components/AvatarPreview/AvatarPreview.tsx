@@ -4,6 +4,7 @@ import { previewStyles } from "./AvatarPreview.styles";
 
 type Props = {
   canvas: CanvasSize;
+  pose?: CompositeAsset;
   leftEar?: CompositeAsset;
   rightEar?: CompositeAsset;
   head?: CompositeAsset;
@@ -16,12 +17,13 @@ type Props = {
   rightBrow?: CompositeAsset;
   nose?: CompositeAsset;
   mouth?: CompositeAsset;
+  skinColor: string;
   hairColor: string;
   browColor: string;
   faceBox: Box;
 };
 
-const PREVIEW_W = 360;
+const PREVIEW_W = 480;
 
 function mapFaceBoxToPreview(faceBox: Box, canvas: CanvasSize): Box {
   const previewHeight = Math.round((PREVIEW_W / canvas.w) * canvas.h);
@@ -151,6 +153,7 @@ function renderComposite(
 
 export function AvatarPreview({
   canvas,
+  pose,
   leftEar,
   rightEar,
   head,
@@ -163,6 +166,7 @@ export function AvatarPreview({
   rightBrow,
   nose,
   mouth,
+  skinColor,
   hairColor,
   browColor,
   faceBox,
@@ -172,7 +176,15 @@ export function AvatarPreview({
 
   return (
     <section style={previewStyles.wrapper}>
-      <h2 style={previewStyles.title}>Vista previa</h2>
+      <div style={previewStyles.titleRow}>
+        <div>
+          <h2 style={previewStyles.title}>Vista previa</h2>
+          <p style={previewStyles.subtitle}>Composición actual</p>
+        </div>
+        <span style={previewStyles.canvasMeta}>
+          {canvas.w} x {canvas.h}
+        </span>
+      </div>
 
       <div
         style={{
@@ -181,6 +193,8 @@ export function AvatarPreview({
           height: previewHeight,
         }}
       >
+        {renderComposite(pose, "Pose", canvas)}
+
         <div
           style={{
             ...previewStyles.faceGroup,
@@ -190,16 +204,16 @@ export function AvatarPreview({
             height: mappedFaceBox.h,
           }}
         >
-          {renderComposite(leftEar, "Oreja izquierda", canvas)}
-          {renderComposite(rightEar, "Oreja derecha", canvas)}
-          {renderComposite(head, "Cabeza", canvas)}
+          {renderComposite(leftEar, "Oreja izquierda", canvas, skinColor)}
+          {renderComposite(rightEar, "Oreja derecha", canvas, skinColor)}
+          {renderComposite(head, "Cabeza", canvas, skinColor)}
+          {renderComposite(leftBrow, "Ceja izquierda", canvas, browColor)}
+          {renderComposite(rightBrow, "Ceja derecha", canvas, browColor)}
           {renderComposite(hair, "Pelo", canvas, hairColor)}
           {renderComposite(leftEye, "Ojo izquierdo", canvas)}
           {renderComposite(rightEye, "Ojo derecho", canvas)}
           {renderComposite(leftLash, "Pestana izquierda", canvas)}
           {renderComposite(rightLash, "Pestana derecha", canvas)}
-          {renderComposite(leftBrow, "Ceja izquierda", canvas, browColor)}
-          {renderComposite(rightBrow, "Ceja derecha", canvas, browColor)}
           {renderComposite(nose, "Nariz", canvas)}
           {renderComposite(mouth, "Boca", canvas)}
         </div>

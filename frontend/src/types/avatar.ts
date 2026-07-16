@@ -12,6 +12,8 @@ export type CanvasSize = {
 
 export type LayerBlendMode = "normal" | "multiply" | "screen" | "overlay";
 export type ColorMode = "fill" | "tint";
+export type Gender = "male" | "female" | "nonBinary";
+export type PoseGender = "male" | "female";
 
 export type AvatarLayer = {
   id: string;
@@ -26,6 +28,7 @@ export type AvatarLayer = {
 export type CompositeAsset = {
   id: string;
   label: string;
+  gender?: PoseGender;
   canvas?: CanvasSize;
   offset?: {
     x: number;
@@ -36,6 +39,8 @@ export type CompositeAsset = {
 
 export type Catalog = {
   canvas: CanvasSize;
+  defaultPoseByGender?: Partial<Record<Gender, string>>;
+  poses: CompositeAsset[];
   heads: CompositeAsset[];
   leftEars: CompositeAsset[];
   rightEars: CompositeAsset[];
@@ -48,10 +53,10 @@ export type Catalog = {
   rightBrows: CompositeAsset[];
   noses: CompositeAsset[];
   mouths: CompositeAsset[];
-  poses?: CompositeAsset[];
 };
 
 export type SelectedAvatar = {
+  poses: string;
   heads: string;
   leftEars: string;
   rightEars: string;

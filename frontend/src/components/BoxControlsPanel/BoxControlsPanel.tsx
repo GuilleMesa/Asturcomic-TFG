@@ -27,7 +27,7 @@ function BoxEditor({
 }) {
   return (
     <div style={boxControlsStyles.block}>
-      <h3>{title}</h3>
+      <h3 style={boxControlsStyles.blockTitle}>{title}</h3>
 
       <div style={boxControlsStyles.field}>
         <label style={boxControlsStyles.label}>
@@ -83,7 +83,10 @@ function BoxEditor({
 export function BoxControlsPanel({ canvas, faceBox, setFaceBox }: Props) {
   return (
     <section style={boxControlsStyles.wrapper}>
-      <h2 style={boxControlsStyles.title}>Ajuste de posición</h2>
+      <div>
+        <h2 style={boxControlsStyles.title}>Ajustes</h2>
+        <p style={boxControlsStyles.subtitle}>Lienzo de trabajo</p>
+      </div>
 
       <BoxEditor
         title="Cara completa"
