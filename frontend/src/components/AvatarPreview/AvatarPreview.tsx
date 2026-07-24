@@ -1,4 +1,4 @@
-import type { CSSProperties } from "react";
+import { useRef, useState, type CSSProperties, type PointerEvent } from "react";
 import type { Box, CanvasSize, CompositeAsset } from "../../types/avatar";
 import { previewStyles } from "./AvatarPreview.styles";
 
@@ -17,13 +17,29 @@ type Props = {
   rightBrow?: CompositeAsset;
   nose?: CompositeAsset;
   mouth?: CompositeAsset;
+  speechBubble?: CompositeAsset;
+  speechBubbleBox: Box;
   skinColor: string;
   hairColor: string;
   browColor: string;
   faceBox: Box;
+  onSpeechBubbleBoxChange: (box: Box) => void;
 };
 
 const PREVIEW_W = 480;
+const MIN_SPEECH_BUBBLE_W = 180;
+const MIN_SPEECH_BUBBLE_H = 90;
+
+type BubbleInteraction = {
+  type: "move" | "resize";
+  pointerId: number;
+  startPoint: {
+    x: number;
+    y: number;
+  };
+  startBox: Box;
+  aspect: number;
+};
 
 function mapFaceBoxToPreview(faceBox: Box, canvas: CanvasSize): Box {
   const previewHeight = Math.round((PREVIEW_W / canvas.w) * canvas.h);
@@ -34,6 +50,63 @@ function mapFaceBoxToPreview(faceBox: Box, canvas: CanvasSize): Box {
     w: (faceBox.w / canvas.w) * PREVIEW_W,
     h: (faceBox.h / canvas.h) * previewHeight,
   };
+}
+
+function getPointerCanvasPoint(
+  event: PointerEvent<HTMLElement>,
+  element: HTMLElement,
+  canvas: CanvasSize
+) {
+  const rect = element.getBoundingClientRect();
+
+  return {
+    x: ((event.clientX - rect.left) / rect.width) * canvas.w,
+    y: ((event.clientY - rect.top) / rect.height) * canvas.h,
+  };
+}
+
+function clampBox(box: Box, canvas: CanvasSize): Box {
+  const w = Math.min(Math.max(Math.round(box.w), MIN_SPEECH_BUBBLE_W), canvas.w);
+  const h = Math.min(Math.max(Math.round(box.h), MIN_SPEECH_BUBBLE_H), canvas.h);
+
+  return {
+    x: Math.min(Math.max(Math.round(box.x), 0), canvas.w - w),
+    y: Math.min(Math.max(Math.round(box.y), 0), canvas.h - h),
+    w,
+    h,
+  };
+}
+
+function resizeBoxFromPoint(
+  startBox: Box,
+  point: { x: number; y: number },
+  canvas: CanvasSize,
+  aspect: number
+): Box {
+  const maxW = canvas.w - startBox.x;
+  const maxH = canvas.h - startBox.y;
+  let nextW = Math.max(MIN_SPEECH_BUBBLE_W, point.x - startBox.x);
+  let nextH = Math.max(MIN_SPEECH_BUBBLE_H, point.y - startBox.y);
+
+  if (aspect > 0) {
+    if (nextW / aspect < nextH) {
+      nextW = nextH * aspect;
+    } else {
+      nextH = nextW / aspect;
+    }
+
+    if (nextW > maxW) {
+      nextW = maxW;
+      nextH = nextW / aspect;
+    }
+
+    if (nextH > maxH) {
+      nextH = maxH;
+      nextW = nextH * aspect;
+    }
+  }
+
+  return clampBox({ ...startBox, w: nextW, h: nextH }, canvas);
 }
 
 function getLayerPlacementStyle(
@@ -166,13 +239,104 @@ export function AvatarPreview({
   rightBrow,
   nose,
   mouth,
+  speechBubble,
+  speechBubbleBox,
   skinColor,
   hairColor,
   browColor,
   faceBox,
+  onSpeechBubbleBoxChange,
 }: Props) {
+  const canvasRef = useRef<HTMLDivElement>(null);
+  const speechBubbleRef = useRef<HTMLDivElement>(null);
+  const [bubbleInteraction, setBubbleInteraction] =
+    useState<BubbleInteraction | null>(null);
   const previewHeight = Math.round((PREVIEW_W / canvas.w) * canvas.h);
   const mappedFaceBox = mapFaceBoxToPreview(faceBox, canvas);
+  const mappedSpeechBubbleBox = mapFaceBoxToPreview(speechBubbleBox, canvas);
+  const speechBubbleLayer = speechBubble?.layers[0];
+  const speechBubbleAspect =
+    speechBubble?.canvas && speechBubble.canvas.h > 0
+      ? speechBubble.canvas.w / speechBubble.canvas.h
+      : speechBubbleBox.w / speechBubbleBox.h;
+
+  function handleBubblePointerDown(event: PointerEvent<HTMLDivElement>) {
+    if (!canvasRef.current || !speechBubbleLayer) return;
+
+    event.preventDefault();
+    speechBubbleRef.current?.setPointerCapture(event.pointerId);
+    setBubbleInteraction({
+      type: "move",
+      pointerId: event.pointerId,
+      startPoint: getPointerCanvasPoint(event, canvasRef.current, canvas),
+      startBox: speechBubbleBox,
+      aspect: speechBubbleAspect,
+    });
+  }
+
+  function handleResizePointerDown(event: PointerEvent<HTMLSpanElement>) {
+    if (!canvasRef.current || !speechBubbleLayer) return;
+
+    event.preventDefault();
+    event.stopPropagation();
+    speechBubbleRef.current?.setPointerCapture(event.pointerId);
+    setBubbleInteraction({
+      type: "resize",
+      pointerId: event.pointerId,
+      startPoint: getPointerCanvasPoint(event, canvasRef.current, canvas),
+      startBox: speechBubbleBox,
+      aspect: speechBubbleAspect,
+    });
+  }
+
+  function handleBubblePointerMove(event: PointerEvent<HTMLDivElement>) {
+    if (
+      !bubbleInteraction ||
+      bubbleInteraction.pointerId !== event.pointerId ||
+      !canvasRef.current
+    ) {
+      return;
+    }
+
+    const point = getPointerCanvasPoint(event, canvasRef.current, canvas);
+
+    if (bubbleInteraction.type === "resize") {
+      onSpeechBubbleBoxChange(
+        resizeBoxFromPoint(
+          bubbleInteraction.startBox,
+          point,
+          canvas,
+          bubbleInteraction.aspect
+        )
+      );
+      return;
+    }
+
+    const dx = point.x - bubbleInteraction.startPoint.x;
+    const dy = point.y - bubbleInteraction.startPoint.y;
+    onSpeechBubbleBoxChange(
+      clampBox(
+        {
+          ...bubbleInteraction.startBox,
+          x: bubbleInteraction.startBox.x + dx,
+          y: bubbleInteraction.startBox.y + dy,
+        },
+        canvas
+      )
+    );
+  }
+
+  function handleBubblePointerUp(event: PointerEvent<HTMLDivElement>) {
+    if (!bubbleInteraction || bubbleInteraction.pointerId !== event.pointerId) {
+      return;
+    }
+
+    if (speechBubbleRef.current?.hasPointerCapture(event.pointerId)) {
+      speechBubbleRef.current.releasePointerCapture(event.pointerId);
+    }
+
+    setBubbleInteraction(null);
+  }
 
   return (
     <section style={previewStyles.wrapper}>
@@ -187,6 +351,7 @@ export function AvatarPreview({
       </div>
 
       <div
+        ref={canvasRef}
         style={{
           ...previewStyles.canvas,
           width: PREVIEW_W,
@@ -217,6 +382,37 @@ export function AvatarPreview({
           {renderComposite(nose, "Nariz", canvas)}
           {renderComposite(mouth, "Boca", canvas)}
         </div>
+
+        {speechBubbleLayer && (
+          <div
+            ref={speechBubbleRef}
+            role="img"
+            aria-label={speechBubble.label}
+            onPointerDown={handleBubblePointerDown}
+            onPointerMove={handleBubblePointerMove}
+            onPointerUp={handleBubblePointerUp}
+            onPointerCancel={handleBubblePointerUp}
+            style={{
+              ...previewStyles.speechBubbleFrame,
+              left: mappedSpeechBubbleBox.x,
+              top: mappedSpeechBubbleBox.y,
+              width: mappedSpeechBubbleBox.w,
+              height: mappedSpeechBubbleBox.h,
+            }}
+          >
+            <img
+              src={speechBubbleLayer.src}
+              alt=""
+              draggable={false}
+              style={previewStyles.speechBubbleImage}
+            />
+            <span
+              aria-hidden="true"
+              onPointerDown={handleResizePointerDown}
+              style={previewStyles.speechBubbleResizeHandle}
+            />
+          </div>
+        )}
       </div>
     </section>
   );

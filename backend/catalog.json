@@ -997,5 +997,194 @@
         }
       ]
     }
+  ],
+  "speechBubbles": [
+    {
+      "id": "sin-bocadillo",
+      "label": "Sin bocadillo",
+      "layers": []
+    },
+    {
+      "id": "bocadillo-grito-1",
+      "label": "Grito 1",
+      "canvas": {
+        "w": 874,
+        "h": 715
+      },
+      "layers": [
+        {
+          "id": "bocadillo-grito-1-base",
+          "src": "/assets/Processed/Bocadillos/Grito_1.png"
+        }
+      ]
+    },
+    {
+      "id": "bocadillo-grito-2",
+      "label": "Grito 2",
+      "canvas": {
+        "w": 874,
+        "h": 715
+      },
+      "layers": [
+        {
+          "id": "bocadillo-grito-2-base",
+          "src": "/assets/Processed/Bocadillos/Grito_2.png"
+        }
+      ]
+    },
+    {
+      "id": "bocadillo-narrador",
+      "label": "Narrador",
+      "canvas": {
+        "w": 1161,
+        "h": 429
+      },
+      "layers": [
+        {
+          "id": "bocadillo-narrador-base",
+          "src": "/assets/Processed/Bocadillos/Narrador.png"
+        }
+      ]
+    },
+    {
+      "id": "bocadillo-normal-ovalado-1",
+      "label": "Normal Ovalado 1",
+      "canvas": {
+        "w": 760,
+        "h": 498
+      },
+      "layers": [
+        {
+          "id": "bocadillo-normal-ovalado-1-base",
+          "src": "/assets/Processed/Bocadillos/Normal_Ovalado_1.png"
+        }
+      ]
+    },
+    {
+      "id": "bocadillo-normal-ovalado-2",
+      "label": "Normal Ovalado 2",
+      "canvas": {
+        "w": 760,
+        "h": 498
+      },
+      "layers": [
+        {
+          "id": "bocadillo-normal-ovalado-2-base",
+          "src": "/assets/Processed/Bocadillos/Normal_Ovalado_2.png"
+        }
+      ]
+    },
+    {
+      "id": "bocadillo-normal-rectangular-1",
+      "label": "Normal Rectangular 1",
+      "canvas": {
+        "w": 1312,
+        "h": 578
+      },
+      "layers": [
+        {
+          "id": "bocadillo-normal-rectangular-1-base",
+          "src": "/assets/Processed/Bocadillos/Normal_Rectangular_1.png"
+        }
+      ]
+    },
+    {
+      "id": "bocadillo-normal-rectangular-2",
+      "label": "Normal Rectangular 2",
+      "canvas": {
+        "w": 1312,
+        "h": 578
+      },
+      "layers": [
+        {
+          "id": "bocadillo-normal-rectangular-2-base",
+          "src": "/assets/Processed/Bocadillos/Normal_Rectangular_2.png"
+        }
+      ]
+    },
+    {
+      "id": "bocadillo-pensamiento-1",
+      "label": "Pensamiento 1",
+      "canvas": {
+        "w": 1430,
+        "h": 1163
+      },
+      "layers": [
+        {
+          "id": "bocadillo-pensamiento-1-base",
+          "src": "/assets/Processed/Bocadillos/Pensamiento_1.png"
+        }
+      ]
+    },
+    {
+      "id": "bocadillo-pensamiento-2",
+      "label": "Pensamiento 2",
+      "canvas": {
+        "w": 1430,
+        "h": 1163
+      },
+      "layers": [
+        {
+          "id": "bocadillo-pensamiento-2-base",
+          "src": "/assets/Processed/Bocadillos/Pensamiento_2.png"
+        }
+      ]
+    },
+    {
+      "id": "bocadillo-sorpresa-1",
+      "label": "Sorpresa 1",
+      "canvas": {
+        "w": 870,
+        "h": 758
+      },
+      "layers": [
+        {
+          "id": "bocadillo-sorpresa-1-base",
+          "src": "/assets/Processed/Bocadillos/Sorpresa_1.png"
+        }
+      ]
+    },
+    {
+      "id": "bocadillo-sorpresa-2",
+      "label": "Sorpresa 2",
+      "canvas": {
+        "w": 870,
+        "h": 758
+      },
+      "layers": [
+        {
+          "id": "bocadillo-sorpresa-2-base",
+          "src": "/assets/Processed/Bocadillos/Sorpresa_2.png"
+        }
+      ]
+    },
+    {
+      "id": "bocadillo-susurro-1",
+      "label": "Susurro 1",
+      "canvas": {
+        "w": 986,
+        "h": 460
+      },
+      "layers": [
+        {
+          "id": "bocadillo-susurro-1-base",
+          "src": "/assets/Processed/Bocadillos/Susurro_1.png"
+        }
+      ]
+    },
+    {
+      "id": "bocadillo-susurro-2",
+      "label": "Susurro 2",
+      "canvas": {
+        "w": 986,
+        "h": 460
+      },
+      "layers": [
+        {
+          "id": "bocadillo-susurro-2-base",
+          "src": "/assets/Processed/Bocadillos/Susurro_2.png"
+        }
+      ]
+    }
   ]
 }

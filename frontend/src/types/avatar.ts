@@ -53,6 +53,7 @@ export type Catalog = {
   rightBrows: CompositeAsset[];
   noses: CompositeAsset[];
   mouths: CompositeAsset[];
+  speechBubbles: CompositeAsset[];
 };
 
 export type SelectedAvatar = {

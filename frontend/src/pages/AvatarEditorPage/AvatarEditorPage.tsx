@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from "react";
 import { Header } from "../../components/Header/Header";
 import { AvatarPreview } from "../../components/AvatarPreview/AvatarPreview";
 import { AssetSelectorPanel } from "../../components/AssetSelectorPanel/AssetSelectorPanel";
-import { BoxControlsPanel } from "../../components/BoxControlsPanel/BoxControlsPanel";
+import { SpeechBubblePanel } from "../../components/SpeechBubblePanel/SpeechBubblePanel";
 import {
   BROW_COLOR_OPTIONS,
   DEFAULT_BROW_COLOR,
@@ -25,6 +25,7 @@ import { pageStyles } from "./AvatarEditorPage.styles";
 
 const DEFAULT_CANVAS: CanvasSize = { w: 2836, h: 3055 };
 const DEFAULT_GENDER: Gender = "male";
+const EMPTY_SPEECH_BUBBLE_ID = "sin-bocadillo";
 
 const SELECTABLE_CATEGORIES: SelectableCategory[] = [
   "poses",
@@ -60,6 +61,22 @@ const EMPTY_SELECTION: SelectedAvatar = {
 
 function createFullBox(canvas: CanvasSize): Box {
   return { x: 0, y: 0, w: canvas.w, h: canvas.h };
+}
+
+function createDefaultSpeechBubbleBox(
+  canvas: CanvasSize,
+  asset?: CompositeAsset
+): Box {
+  const aspect = asset?.canvas ? asset.canvas.w / asset.canvas.h : 1.8;
+  const width = Math.round(canvas.w * 0.34);
+  const height = Math.round(width / aspect);
+
+  return {
+    x: Math.round(canvas.w * 0.06),
+    y: Math.round(canvas.h * 0.07),
+    w: width,
+    h: height,
+  };
 }
 
 function getDefaultPoseId(catalog: Catalog, gender: Gender): string {
@@ -133,6 +150,12 @@ export function AvatarEditorPage() {
   const [hairColor, setHairColor] = useState(DEFAULT_HAIR_COLOR);
   const [browColor, setBrowColor] = useState(DEFAULT_BROW_COLOR);
   const [faceBox, setFaceBox] = useState<Box>(createFullBox(DEFAULT_CANVAS));
+  const [selectedSpeechBubbleId, setSelectedSpeechBubbleId] = useState(
+    EMPTY_SPEECH_BUBBLE_ID
+  );
+  const [speechBubbleBox, setSpeechBubbleBox] = useState<Box>(
+    createDefaultSpeechBubbleBox(DEFAULT_CANVAS)
+  );
 
   useEffect(() => {
     fetchCatalog()
@@ -140,6 +163,7 @@ export function AvatarEditorPage() {
         setCatalog(data);
         setSelected(createInitialSelection(data, DEFAULT_GENDER));
         setFaceBox(createFullBox(data.canvas));
+        setSpeechBubbleBox(createDefaultSpeechBubbleBox(data.canvas));
       })
       .catch((err) => {
         console.error("Error cargando catálogo:", err);
@@ -211,8 +235,29 @@ export function AvatarEditorPage() {
     [catalog, selected.mouths]
   );
 
+  const speechBubbleItem = useMemo(
+    () =>
+      catalog?.speechBubbles.find(
+        (item) => item.id === selectedSpeechBubbleId
+      ),
+    [catalog, selectedSpeechBubbleId]
+  );
+
   function handleSelectionChange(category: SelectableCategory, id: string) {
     setSelected((prev) => ({ ...prev, [category]: id }));
+  }
+
+  function handleSpeechBubbleSelect(id: string) {
+    setSelectedSpeechBubbleId(id);
+
+    if (!catalog || id === EMPTY_SPEECH_BUBBLE_ID) return;
+
+    const nextSpeechBubble = catalog.speechBubbles.find(
+      (item) => item.id === id
+    );
+    setSpeechBubbleBox(
+      createDefaultSpeechBubbleBox(catalog.canvas, nextSpeechBubble)
+    );
   }
 
   function handleGenderChange(nextGender: Gender) {
@@ -235,6 +280,8 @@ export function AvatarEditorPage() {
     setHairColor(DEFAULT_HAIR_COLOR);
     setBrowColor(DEFAULT_BROW_COLOR);
     setFaceBox(createFullBox(catalog.canvas));
+    setSelectedSpeechBubbleId(EMPTY_SPEECH_BUBBLE_ID);
+    setSpeechBubbleBox(createDefaultSpeechBubbleBox(catalog.canvas));
   }
 
   function handleRandomize() {
@@ -307,16 +354,19 @@ export function AvatarEditorPage() {
           rightBrow={rightBrowItem}
           nose={noseItem}
           mouth={mouthItem}
+          speechBubble={speechBubbleItem}
+          speechBubbleBox={speechBubbleBox}
           skinColor={skinColor}
           hairColor={hairColor}
           browColor={browColor}
           faceBox={faceBox}
+          onSpeechBubbleBoxChange={setSpeechBubbleBox}
         />
 
-        <BoxControlsPanel
-          canvas={catalog?.canvas ?? DEFAULT_CANVAS}
-          faceBox={faceBox}
-          setFaceBox={setFaceBox}
+        <SpeechBubblePanel
+          catalog={catalog}
+          selectedId={selectedSpeechBubbleId}
+          onSelect={handleSpeechBubbleSelect}
         />
       </main>
     </div>
