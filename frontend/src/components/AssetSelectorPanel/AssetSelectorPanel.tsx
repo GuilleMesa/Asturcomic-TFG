@@ -101,13 +101,16 @@ const SECTION_CONFIG: EditorSection[] = [
     colorControl: "brows",
   },
   {
-    id: "face",
-    label: "Rostro",
+    id: "nose",
+    label: "Nariz",
     icon: "pi pi-circle",
-    parts: [
-      { category: "noses", label: "Nariz" },
-      { category: "mouths", label: "Boca" },
-    ],
+    parts: [{ category: "noses", label: "Nariz" }],
+  },
+  {
+    id: "mouth",
+    label: "Boca",
+    icon: "pi pi-ellipsis-h",
+    parts: [{ category: "mouths", label: "Boca" }],
   },
 ];
 

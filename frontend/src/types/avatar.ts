@@ -13,7 +13,7 @@ export type CanvasSize = {
 export type LayerBlendMode = "normal" | "multiply" | "screen" | "overlay";
 export type ColorMode = "fill" | "tint";
 export type Gender = "male" | "female" | "nonBinary";
-export type PoseGender = "male" | "female";
+export type PoseGender = Gender;
 
 export type AvatarLayer = {
   id: string;
@@ -73,3 +73,22 @@ export type SelectedAvatar = {
 };
 
 export type SelectableCategory = keyof SelectedAvatar;
+
+export type AvatarConfigFile = {
+  app: "asturcomic-avatar";
+  version: 1;
+  savedAt: string;
+  canvas: CanvasSize;
+  gender: Gender;
+  selected: SelectedAvatar;
+  colors: {
+    skin: string;
+    hair: string;
+    brow: string;
+  };
+  faceBox: Box;
+  speechBubble: {
+    id: string;
+    box: Box;
+  };
+};

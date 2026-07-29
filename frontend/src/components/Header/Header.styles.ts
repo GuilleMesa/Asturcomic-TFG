@@ -68,6 +68,8 @@ export const headerStyles: Record<string, CSSProperties> = {
     display: "flex",
     alignItems: "center",
     gap: "0.6rem",
+    flexWrap: "wrap",
+    justifyContent: "flex-end",
     flex: "0 0 auto",
   },
   secondaryButton: {
@@ -97,5 +99,8 @@ export const headerStyles: Record<string, CSSProperties> = {
     cursor: "pointer",
     fontWeight: 700,
     padding: "0 0.9rem",
+  },
+  fileInput: {
+    display: "none",
   },
 };

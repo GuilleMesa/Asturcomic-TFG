@@ -11,8 +11,13 @@ import {
   HAIR_COLOR_OPTIONS,
   SKIN_COLOR_OPTIONS,
 } from "../../constants/hairColors";
+import {
+  downloadBlob,
+  renderAvatarPngBlob,
+} from "../../services/avatarExportService";
 import { fetchCatalog } from "../../services/catalogService";
 import type {
+  AvatarConfigFile,
   Box,
   CanvasSize,
   Catalog,
@@ -26,6 +31,8 @@ import { pageStyles } from "./AvatarEditorPage.styles";
 const DEFAULT_CANVAS: CanvasSize = { w: 2836, h: 3055 };
 const DEFAULT_GENDER: Gender = "male";
 const EMPTY_SPEECH_BUBBLE_ID = "sin-bocadillo";
+const CONFIG_APP_ID = "asturcomic-avatar";
+const CONFIG_VERSION = 1;
 
 const SELECTABLE_CATEGORIES: SelectableCategory[] = [
   "poses",
@@ -63,11 +70,27 @@ function createFullBox(canvas: CanvasSize): Box {
   return { x: 0, y: 0, w: canvas.w, h: canvas.h };
 }
 
+function isFullWidthSpeechBubble(asset?: CompositeAsset): boolean {
+  if (!asset) return false;
+
+  return asset.id.includes("narrador") || asset.id.includes("rectangular");
+}
+
 function createDefaultSpeechBubbleBox(
   canvas: CanvasSize,
   asset?: CompositeAsset
 ): Box {
   const aspect = asset?.canvas ? asset.canvas.w / asset.canvas.h : 1.8;
+
+  if (isFullWidthSpeechBubble(asset)) {
+    return {
+      x: 0,
+      y: 0,
+      w: canvas.w,
+      h: Math.min(Math.round(canvas.w / aspect), canvas.h),
+    };
+  }
+
   const width = Math.round(canvas.w * 0.34);
   const height = Math.round(width / aspect);
 
@@ -142,6 +165,80 @@ function pickRandomId(
   return options[randomIndex]?.id ?? "";
 }
 
+function isRecord(value: unknown): value is Record<string, unknown> {
+  return Boolean(value) && typeof value === "object" && !Array.isArray(value);
+}
+
+function isGender(value: unknown): value is Gender {
+  return value === "male" || value === "female" || value === "nonBinary";
+}
+
+function isHexColor(value: unknown): value is string {
+  return typeof value === "string" && /^#[0-9a-fA-F]{6}$/.test(value);
+}
+
+function createDownloadFileName(extension: "png" | "json"): string {
+  const stamp = new Date().toISOString().slice(0, 19).replace(/[:T]/g, "-");
+  return `asturcomic-avatar-${stamp}.${extension}`;
+}
+
+function readBox(value: unknown, fallback: Box, canvas: CanvasSize): Box {
+  if (!isRecord(value)) return fallback;
+
+  const rawX = Number(value.x);
+  const rawY = Number(value.y);
+  const rawW = Number(value.w);
+  const rawH = Number(value.h);
+  const w = Math.min(
+    Math.max(Math.round(Number.isFinite(rawW) ? rawW : fallback.w), 1),
+    canvas.w
+  );
+  const h = Math.min(
+    Math.max(Math.round(Number.isFinite(rawH) ? rawH : fallback.h), 1),
+    canvas.h
+  );
+
+  return {
+    x: Math.min(
+      Math.max(Math.round(Number.isFinite(rawX) ? rawX : fallback.x), 0),
+      canvas.w - w
+    ),
+    y: Math.min(
+      Math.max(Math.round(Number.isFinite(rawY) ? rawY : fallback.y), 0),
+      canvas.h - h
+    ),
+    w,
+    h,
+  };
+}
+
+function createSelectionFromConfig(
+  rawConfig: Record<string, unknown>,
+  catalog: Catalog,
+  gender: Gender
+): SelectedAvatar {
+  const rawSelected = isRecord(rawConfig.selected) ? rawConfig.selected : {};
+  const selection = createInitialSelection(catalog, gender);
+
+  SELECTABLE_CATEGORIES.forEach((category) => {
+    const id = rawSelected[category];
+
+    if (
+      typeof id === "string" &&
+      catalog[category].some((asset) => asset.id === id)
+    ) {
+      selection[category] = id;
+    }
+  });
+
+  const selectedPose = catalog.poses.find((pose) => pose.id === selection.poses);
+  if (gender !== "nonBinary" && selectedPose?.gender !== gender) {
+    selection.poses = getDefaultPoseId(catalog, gender);
+  }
+
+  return selection;
+}
+
 export function AvatarEditorPage() {
   const [catalog, setCatalog] = useState<Catalog | null>(null);
   const [selected, setSelected] = useState<SelectedAvatar>(EMPTY_SELECTION);
@@ -149,6 +246,7 @@ export function AvatarEditorPage() {
   const [skinColor, setSkinColor] = useState(DEFAULT_SKIN_COLOR);
   const [hairColor, setHairColor] = useState(DEFAULT_HAIR_COLOR);
   const [browColor, setBrowColor] = useState(DEFAULT_BROW_COLOR);
+  const [isExporting, setIsExporting] = useState(false);
   const [faceBox, setFaceBox] = useState<Box>(createFullBox(DEFAULT_CANVAS));
   const [selectedSpeechBubbleId, setSelectedSpeechBubbleId] = useState(
     EMPTY_SPEECH_BUBBLE_ID
@@ -313,10 +411,143 @@ export function AvatarEditorPage() {
     setFaceBox(createFullBox(catalog.canvas));
   }
 
+  async function handleDownloadPng() {
+    if (!catalog || isExporting) return;
+
+    setIsExporting(true);
+
+    try {
+      const blob = await renderAvatarPngBlob({
+        canvas: catalog.canvas,
+        pose: poseItem,
+        leftEar: leftEarItem,
+        rightEar: rightEarItem,
+        head: headItem,
+        hair: hairItem,
+        leftEye: leftEyeItem,
+        rightEye: rightEyeItem,
+        leftLash: leftLashItem,
+        rightLash: rightLashItem,
+        leftBrow: leftBrowItem,
+        rightBrow: rightBrowItem,
+        nose: noseItem,
+        mouth: mouthItem,
+        speechBubble: speechBubbleItem,
+        speechBubbleBox,
+        skinColor,
+        hairColor,
+        browColor,
+        faceBox,
+      });
+
+      downloadBlob(blob, createDownloadFileName("png"));
+    } catch (err) {
+      console.error("Error exportando PNG:", err);
+      window.alert("No se pudo descargar el PNG.");
+    } finally {
+      setIsExporting(false);
+    }
+  }
+
+  function handleSaveConfig() {
+    if (!catalog) return;
+
+    const config: AvatarConfigFile = {
+      app: CONFIG_APP_ID,
+      version: CONFIG_VERSION,
+      savedAt: new Date().toISOString(),
+      canvas: catalog.canvas,
+      gender,
+      selected,
+      colors: {
+        skin: skinColor,
+        hair: hairColor,
+        brow: browColor,
+      },
+      faceBox,
+      speechBubble: {
+        id: selectedSpeechBubbleId,
+        box: speechBubbleBox,
+      },
+    };
+
+    const blob = new Blob([JSON.stringify(config, null, 2)], {
+      type: "application/json",
+    });
+    downloadBlob(blob, createDownloadFileName("json"));
+  }
+
+  function applyAvatarConfig(rawConfig: unknown) {
+    if (!catalog) return;
+    if (!isRecord(rawConfig)) {
+      throw new Error("El JSON no contiene una configuracion valida");
+    }
+
+    const nextGender = isGender(rawConfig.gender)
+      ? rawConfig.gender
+      : DEFAULT_GENDER;
+    const nextSelected = createSelectionFromConfig(
+      rawConfig,
+      catalog,
+      nextGender
+    );
+    const rawColors = isRecord(rawConfig.colors) ? rawConfig.colors : {};
+    const nextSkinColor = isHexColor(rawColors.skin)
+      ? rawColors.skin
+      : DEFAULT_SKIN_COLOR;
+    const nextHairColor = isHexColor(rawColors.hair)
+      ? rawColors.hair
+      : DEFAULT_HAIR_COLOR;
+    const nextBrowColor = isHexColor(rawColors.brow)
+      ? rawColors.brow
+      : DEFAULT_BROW_COLOR;
+    const rawSpeechBubble = isRecord(rawConfig.speechBubble)
+      ? rawConfig.speechBubble
+      : {};
+    const rawSpeechBubbleId = rawSpeechBubble.id;
+    const nextSpeechBubbleId =
+      typeof rawSpeechBubbleId === "string" &&
+      catalog.speechBubbles.some((asset) => asset.id === rawSpeechBubbleId)
+        ? rawSpeechBubbleId
+        : EMPTY_SPEECH_BUBBLE_ID;
+    const nextSpeechBubble = catalog.speechBubbles.find(
+      (asset) => asset.id === nextSpeechBubbleId
+    );
+    const defaultSpeechBubbleBox = createDefaultSpeechBubbleBox(
+      catalog.canvas,
+      nextSpeechBubble
+    );
+
+    setGender(nextGender);
+    setSelected(nextSelected);
+    setSkinColor(nextSkinColor);
+    setHairColor(nextHairColor);
+    setBrowColor(nextBrowColor);
+    setFaceBox(readBox(rawConfig.faceBox, createFullBox(catalog.canvas), catalog.canvas));
+    setSelectedSpeechBubbleId(nextSpeechBubbleId);
+    setSpeechBubbleBox(
+      readBox(rawSpeechBubble.box, defaultSpeechBubbleBox, catalog.canvas)
+    );
+  }
+
+  async function handleLoadConfigFile(file: File) {
+    try {
+      const text = await file.text();
+      applyAvatarConfig(JSON.parse(text));
+    } catch (err) {
+      console.error("Error cargando JSON:", err);
+      window.alert("No se pudo cargar el JSON.");
+    }
+  }
+
   return (
     <div style={pageStyles.wrapper}>
       <Header
         isReady={Boolean(catalog)}
+        isExporting={isExporting}
+        onDownloadPng={handleDownloadPng}
+        onSaveConfig={handleSaveConfig}
+        onLoadConfigFile={handleLoadConfigFile}
         onRandomize={handleRandomize}
         onReset={handleReset}
       />

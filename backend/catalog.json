@@ -4,11 +4,44 @@
     "h": 3055
   },
   "defaultPoseByGender": {
-    "male": "pose-1m",
-    "female": "pose-1f",
-    "nonBinary": "pose-1m"
+    "male": "pose-2-entrada",
+    "female": "pose-1-entrada",
+    "nonBinary": "pose-3-entrada"
   },
   "poses": [
+    {
+      "id": "pose-1-entrada",
+      "label": "Entrada mujer",
+      "layers": [
+        {
+          "id": "pose-1-entrada-base",
+          "src": "/assets/Poses/1-Entrada.svg"
+        }
+      ],
+      "gender": "female"
+    },
+    {
+      "id": "pose-2-entrada",
+      "label": "Entrada hombre",
+      "layers": [
+        {
+          "id": "pose-2-entrada-base",
+          "src": "/assets/Poses/2-Entrada.svg"
+        }
+      ],
+      "gender": "male"
+    },
+    {
+      "id": "pose-3-entrada",
+      "label": "Entrada no binario",
+      "layers": [
+        {
+          "id": "pose-3-entrada-base",
+          "src": "/assets/Poses/3-Entrada.svg"
+        }
+      ],
+      "gender": "nonBinary"
+    },
     {
       "id": "pose-1f",
       "label": "Pose 1F",
@@ -129,61 +162,6 @@
         }
       ],
       "gender": "female"
-    },
-    {
-      "id": "pose-6m",
-      "label": "Pose 6M",
-      "layers": [
-        {
-          "id": "pose-6m-base",
-          "src": "/assets/Poses/Pose_6M.svg"
-        }
-      ],
-      "gender": "male"
-    },
-    {
-      "id": "pose-7f",
-      "label": "Pose 7F",
-      "layers": [
-        {
-          "id": "pose-7f-base",
-          "src": "/assets/Poses/Pose_7F.svg"
-        }
-      ],
-      "gender": "female"
-    },
-    {
-      "id": "pose-7m",
-      "label": "Pose 7M",
-      "layers": [
-        {
-          "id": "pose-7m-base",
-          "src": "/assets/Poses/Pose_7M.svg"
-        }
-      ],
-      "gender": "male"
-    },
-    {
-      "id": "pose-8f",
-      "label": "Pose 8F",
-      "layers": [
-        {
-          "id": "pose-8f-base",
-          "src": "/assets/Poses/Pose_8F.svg"
-        }
-      ],
-      "gender": "female"
-    },
-    {
-      "id": "pose-8m",
-      "label": "Pose 8M",
-      "layers": [
-        {
-          "id": "pose-8m-base",
-          "src": "/assets/Poses/Pose_8M.svg"
-        }
-      ],
-      "gender": "male"
     },
     {
       "id": "pose-9f",
