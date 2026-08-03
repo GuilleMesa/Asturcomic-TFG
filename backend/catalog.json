@@ -653,7 +653,7 @@
       "layers": [
         {
           "id": "ojo-izdo-enfado-base",
-          "src": "/assets/Processed/Ojos/Ojo_Enfado_Izdo.png"
+          "src": "/assets/Processed/Ojos/Ojo_Enfado_IZDO.png"
         }
       ]
     },
@@ -675,7 +675,7 @@
       "layers": [
         {
           "id": "ojo-dcho-normal-base",
-          "src": "/assets/Processed/Ojos/Ojo_Normal_Dcho.png"
+          "src": "/assets/Processed/Ojos/Ojo_Normal_dcho.png"
         }
       ]
     },
