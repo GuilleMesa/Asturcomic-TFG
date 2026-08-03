@@ -633,7 +633,7 @@
       "layers": [
         {
           "id": "ojo-izdo-normal-base",
-          "src": "/assets/Processed/Ojos/Ojo_Normal__izdo_.png"
+          "src": "/assets/Processed/Ojos/Ojo_Normal_Izdo.png"
         }
       ]
     },
@@ -643,7 +643,7 @@
       "layers": [
         {
           "id": "ojo-izdo-sorpresa-base",
-          "src": "/assets/Processed/Ojos/Ojo_Sorpresa_ido.png"
+          "src": "/assets/Processed/Ojos/Ojo_Sorpresa_Izdo.png"
         }
       ]
     },
@@ -653,7 +653,7 @@
       "layers": [
         {
           "id": "ojo-izdo-enfado-base",
-          "src": "/assets/Processed/Ojos/Ojo_Enfado_IZDO.png"
+          "src": "/assets/Processed/Ojos/Ojo_Enfado_Izdo.png"
         }
       ]
     },
@@ -663,7 +663,7 @@
       "layers": [
         {
           "id": "ojo-izdo-cerrado-base",
-          "src": "/assets/Processed/Ojos/Ojo_Cerrado_izda.png"
+          "src": "/assets/Processed/Ojos/Ojo_Cerrado_Izdo.png"
         }
       ]
     }
@@ -675,7 +675,7 @@
       "layers": [
         {
           "id": "ojo-dcho-normal-base",
-          "src": "/assets/Processed/Ojos/Ojo_Normal_dcho.png"
+          "src": "/assets/Processed/Ojos/Ojo_Normal_Dcho.png"
         }
       ]
     },
@@ -685,7 +685,7 @@
       "layers": [
         {
           "id": "ojo-dcho-sorpresa-base",
-          "src": "/assets/Processed/Ojos/Ojo_Sorpresa_dcha.png"
+          "src": "/assets/Processed/Ojos/Ojo_Sorpresa_Dcho.png"
         }
       ]
     },
@@ -695,7 +695,7 @@
       "layers": [
         {
           "id": "ojo-dcho-enfado-base",
-          "src": "/assets/Processed/Ojos/Ojo_Enfado_dcha.png"
+          "src": "/assets/Processed/Ojos/Ojo_Enfado_Dcho.png"
         }
       ]
     },
@@ -705,7 +705,7 @@
       "layers": [
         {
           "id": "ojo-dcho-cerrado-base",
-          "src": "/assets/Processed/Ojos/Ojo_Cerrado_drcha.png"
+          "src": "/assets/Processed/Ojos/Ojo_Cerrado_Dcho.png"
         }
       ]
     }
@@ -717,22 +717,12 @@
       "layers": []
     },
     {
-      "id": "pestana-izda-1",
-      "label": "1",
+      "id": "pestana-izda-normal",
+      "label": "Normal",
       "layers": [
         {
-          "id": "pestana-izda-1-base",
-          "src": "/assets/Processed/Pestañas/Pestaña_1_izda.png"
-        }
-      ]
-    },
-    {
-      "id": "pestana-izda-2",
-      "label": "2",
-      "layers": [
-        {
-          "id": "pestana-izda-2-base",
-          "src": "/assets/Processed/Pestañas/Pestaña_2_izda.png"
+          "id": "pestana-izda-normal-base",
+          "src": "/assets/Processed/Pestañas/Pestaña_Superior_Normal_Izda_1.png"
         }
       ]
     },
@@ -742,7 +732,17 @@
       "layers": [
         {
           "id": "pestana-izda-cerrada-base",
-          "src": "/assets/Processed/Pestañas/Pestaña_Cerrada_izda.png"
+          "src": "/assets/Processed/Pestañas/Pestaña_izda_Cerrada.png"
+        }
+      ]
+    },
+    {
+      "id": "pestana-izda-sorpresa",
+      "label": "Sorpresa",
+      "layers": [
+        {
+          "id": "pestana-izda-sorpresa-base",
+          "src": "/assets/Processed/Pestañas/Pestaña_Superior_Ojo_Izdo_Sorpresa.png"
         }
       ]
     }
@@ -754,22 +754,12 @@
       "layers": []
     },
     {
-      "id": "pestana-dcha-1",
-      "label": "1",
+      "id": "pestana-dcha-normal",
+      "label": "Normal",
       "layers": [
         {
-          "id": "pestana-dcha-1-base",
-          "src": "/assets/Processed/Pestañas/Pestaña_1_dcha.png"
-        }
-      ]
-    },
-    {
-      "id": "pestana-dcha-2",
-      "label": "2",
-      "layers": [
-        {
-          "id": "pestana-dcha-2-base",
-          "src": "/assets/Processed/Pestañas/Pestaña_2_dcha.png"
+          "id": "pestana-dcha-normal-base",
+          "src": "/assets/Processed/Pestañas/Pestaña_Superior_Normal_Drcha_1.png"
         }
       ]
     },
@@ -779,19 +769,77 @@
       "layers": [
         {
           "id": "pestana-dcha-cerrada-base",
-          "src": "/assets/Processed/Pestañas/Pestaña_Cerrada_dcha.png"
+          "src": "/assets/Processed/Pestañas/Pestaña_dcha_Cerrada.png"
+        }
+      ]
+    },
+    {
+      "id": "pestana-dcha-sorpresa",
+      "label": "Sorpresa",
+      "layers": [
+        {
+          "id": "pestana-dcha-sorpresa-base",
+          "src": "/assets/Processed/Pestañas/Pestaña_Superior_Ojo_Dcho_Sorpresa.png"
         }
       ]
     }
   ],
   "leftBrows": [
     {
-      "id": "ceja-izda-1",
-      "label": "1",
+      "id": "ceja-izda-normal",
+      "label": "Normal",
       "layers": [
         {
-          "id": "ceja-izda-1-base",
-          "src": "/assets/Processed/Cejas/Ceja_1_izdo.png",
+          "id": "ceja-izda-normal-base",
+          "src": "/assets/Processed/Cejas/Normal_Izda.png",
+          "colorable": true,
+          "colorMode": "tint"
+        }
+      ]
+    },
+    {
+      "id": "ceja-izda-sorpresa",
+      "label": "Sorpresa",
+      "layers": [
+        {
+          "id": "ceja-izda-sorpresa-base",
+          "src": "/assets/Processed/Cejas/Sorpresa_Izda.png",
+          "colorable": true,
+          "colorMode": "tint"
+        }
+      ]
+    },
+    {
+      "id": "ceja-izda-enfado",
+      "label": "Enfado",
+      "layers": [
+        {
+          "id": "ceja-izda-enfado-base",
+          "src": "/assets/Processed/Cejas/Enfado_Izda.png",
+          "colorable": true,
+          "colorMode": "tint"
+        }
+      ]
+    },
+    {
+      "id": "ceja-izda-duda",
+      "label": "Duda",
+      "layers": [
+        {
+          "id": "ceja-izda-duda-base",
+          "src": "/assets/Processed/Cejas/Duda_Izdo.png",
+          "colorable": true,
+          "colorMode": "tint"
+        }
+      ]
+    },
+    {
+      "id": "ceja-izda-triste",
+      "label": "Triste",
+      "layers": [
+        {
+          "id": "ceja-izda-triste-base",
+          "src": "/assets/Processed/Cejas/Triste_Izda.png",
           "colorable": true,
           "colorMode": "tint"
         }
@@ -800,12 +848,60 @@
   ],
   "rightBrows": [
     {
-      "id": "ceja-dcha-1",
-      "label": "1",
+      "id": "ceja-dcha-normal",
+      "label": "Normal",
       "layers": [
         {
-          "id": "ceja-dcha-1-base",
-          "src": "/assets/Processed/Cejas/Ceja_1_Dcho.png",
+          "id": "ceja-dcha-normal-base",
+          "src": "/assets/Processed/Cejas/Normal_Dcha.png",
+          "colorable": true,
+          "colorMode": "tint"
+        }
+      ]
+    },
+    {
+      "id": "ceja-dcha-sorpresa",
+      "label": "Sorpresa",
+      "layers": [
+        {
+          "id": "ceja-dcha-sorpresa-base",
+          "src": "/assets/Processed/Cejas/Sorpresa_Dcha.png",
+          "colorable": true,
+          "colorMode": "tint"
+        }
+      ]
+    },
+    {
+      "id": "ceja-dcha-enfado",
+      "label": "Enfado",
+      "layers": [
+        {
+          "id": "ceja-dcha-enfado-base",
+          "src": "/assets/Processed/Cejas/Enfado_Dcha.png",
+          "colorable": true,
+          "colorMode": "tint"
+        }
+      ]
+    },
+    {
+      "id": "ceja-dcha-duda",
+      "label": "Duda",
+      "layers": [
+        {
+          "id": "ceja-dcha-duda-base",
+          "src": "/assets/Processed/Cejas/Duda_Dcha.png",
+          "colorable": true,
+          "colorMode": "tint"
+        }
+      ]
+    },
+    {
+      "id": "ceja-dcha-triste",
+      "label": "Triste",
+      "layers": [
+        {
+          "id": "ceja-dcha-triste-base",
+          "src": "/assets/Processed/Cejas/Triste_Dcha.png",
           "colorable": true,
           "colorMode": "tint"
         }
@@ -822,19 +918,39 @@
           "src": "/assets/Processed/Nariz/Nariz_1.png"
         }
       ]
-    }
-  ],
-  "mouths": [
+    },
     {
-      "id": "boca-0",
-      "label": "Boca 0",
+      "id": "nariz-2",
+      "label": "Nariz 2",
       "layers": [
         {
-          "id": "boca-0-base",
-          "src": "/assets/Processed/Bocas/Boca_0.png"
+          "id": "nariz-2-base",
+          "src": "/assets/Processed/Nariz/Nariz_2.png"
         }
       ]
     },
+    {
+      "id": "nariz-3",
+      "label": "Nariz 3",
+      "layers": [
+        {
+          "id": "nariz-3-base",
+          "src": "/assets/Processed/Nariz/Nariz_3.png"
+        }
+      ]
+    },
+    {
+      "id": "nariz-4",
+      "label": "Nariz 4",
+      "layers": [
+        {
+          "id": "nariz-4-base",
+          "src": "/assets/Processed/Nariz/Nariz_4.png"
+        }
+      ]
+    }
+  ],
+  "mouths": [
     {
       "id": "boca-1",
       "label": "Boca 1",
@@ -972,6 +1088,26 @@
         {
           "id": "boca-14-base",
           "src": "/assets/Processed/Bocas/Boca_14.png"
+        }
+      ]
+    },
+    {
+      "id": "boca-15",
+      "label": "Boca 15",
+      "layers": [
+        {
+          "id": "boca-15-base",
+          "src": "/assets/Processed/Bocas/Boca_15.png"
+        }
+      ]
+    },
+    {
+      "id": "boca-16",
+      "label": "Boca 16",
+      "layers": [
+        {
+          "id": "boca-16-base",
+          "src": "/assets/Processed/Bocas/Boca_16.png"
         }
       ]
     }
