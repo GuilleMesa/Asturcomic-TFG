@@ -23,6 +23,7 @@ export type AvatarLayer = {
   colorable?: boolean;
   colorMode?: ColorMode;
   blendMode?: LayerBlendMode;
+  opacity?: number;
 };
 
 export type CompositeAsset = {
@@ -53,6 +54,7 @@ export type Catalog = {
   rightBrows: CompositeAsset[];
   noses: CompositeAsset[];
   mouths: CompositeAsset[];
+  glasses: CompositeAsset[];
   speechBubbles: CompositeAsset[];
 };
 
@@ -70,6 +72,7 @@ export type SelectedAvatar = {
   rightBrows: string;
   noses: string;
   mouths: string;
+  glasses: string;
 };
 
 export type SelectableCategory = keyof SelectedAvatar;

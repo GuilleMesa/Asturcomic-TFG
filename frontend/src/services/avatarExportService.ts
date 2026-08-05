@@ -15,6 +15,7 @@ type AvatarRenderInput = {
   rightBrow?: CompositeAsset;
   nose?: CompositeAsset;
   mouth?: CompositeAsset;
+  glasses?: CompositeAsset;
   speechBubble?: CompositeAsset;
   speechBubbleBox: Box;
   skinColor: string;
@@ -23,6 +24,7 @@ type AvatarRenderInput = {
   faceBox: Box;
 };
 
+const HAIR_FRONT_MASK_SRC = "/assets/ColorMasks/HairFrontMask.png?v=3";
 const imageCache = new Map<string, Promise<HTMLImageElement>>();
 
 function getAssetUrl(src: string): string {
@@ -109,7 +111,8 @@ async function drawImageLayer(
   ctx: CanvasRenderingContext2D,
   src: string,
   target: Box,
-  operation: GlobalCompositeOperation = "source-over"
+  operation: GlobalCompositeOperation = "source-over",
+  opacity = 1
 ) {
   if (target.w <= 0 || target.h <= 0) return;
 
@@ -118,6 +121,7 @@ async function drawImageLayer(
 
   ctx.save();
   ctx.globalCompositeOperation = operation;
+  ctx.globalAlpha = opacity;
   ctx.drawImage(
     image,
     containBox.x,
@@ -175,7 +179,7 @@ async function drawComposite(
       await drawColorMask(ctx, maskSrc, colorableLayerColor, target);
 
       if (colorMode === "fill") {
-        await drawImageLayer(ctx, layer.src, target, "multiply");
+        await drawImageLayer(ctx, layer.src, target, "multiply", layer.opacity);
       }
 
       continue;
@@ -185,9 +189,40 @@ async function drawComposite(
       ctx,
       layer.src,
       target,
-      getCompositeOperation(layer.blendMode)
+      getCompositeOperation(layer.blendMode),
+      layer.opacity
     );
   }
+}
+
+async function drawMaskedComposite(
+  ctx: CanvasRenderingContext2D,
+  asset: CompositeAsset | undefined,
+  canvas: CanvasSize,
+  groupBox: Box,
+  colorableLayerColor: string | undefined,
+  maskSrc: string
+) {
+  if (!asset) return;
+
+  const layerCanvas = document.createElement("canvas");
+  layerCanvas.width = canvas.w;
+  layerCanvas.height = canvas.h;
+
+  const layerCtx = layerCanvas.getContext("2d");
+  if (!layerCtx) {
+    throw new Error("No se pudo preparar la capa enmascarada");
+  }
+
+  await drawComposite(layerCtx, asset, canvas, groupBox, colorableLayerColor);
+
+  const mask = await loadImage(maskSrc);
+  layerCtx.save();
+  layerCtx.globalCompositeOperation = "destination-in";
+  layerCtx.drawImage(mask, groupBox.x, groupBox.y, groupBox.w, groupBox.h);
+  layerCtx.restore();
+
+  ctx.drawImage(layerCanvas, 0, 0);
 }
 
 export async function renderAvatarPngBlob(
@@ -204,19 +239,28 @@ export async function renderAvatarPngBlob(
 
   const fullBox = createFullBox(input.canvas);
 
+  await drawComposite(ctx, input.hair, input.canvas, input.faceBox, input.hairColor);
   await drawComposite(ctx, input.pose, input.canvas, fullBox);
   await drawComposite(ctx, input.leftEar, input.canvas, input.faceBox, input.skinColor);
   await drawComposite(ctx, input.rightEar, input.canvas, input.faceBox, input.skinColor);
   await drawComposite(ctx, input.head, input.canvas, input.faceBox, input.skinColor);
   await drawComposite(ctx, input.leftBrow, input.canvas, input.faceBox, input.browColor);
   await drawComposite(ctx, input.rightBrow, input.canvas, input.faceBox, input.browColor);
-  await drawComposite(ctx, input.hair, input.canvas, input.faceBox, input.hairColor);
   await drawComposite(ctx, input.leftEye, input.canvas, input.faceBox);
   await drawComposite(ctx, input.rightEye, input.canvas, input.faceBox);
   await drawComposite(ctx, input.leftLash, input.canvas, input.faceBox);
   await drawComposite(ctx, input.rightLash, input.canvas, input.faceBox);
   await drawComposite(ctx, input.nose, input.canvas, input.faceBox);
+  await drawComposite(ctx, input.glasses, input.canvas, input.faceBox);
   await drawComposite(ctx, input.mouth, input.canvas, input.faceBox);
+  await drawMaskedComposite(
+    ctx,
+    input.hair,
+    input.canvas,
+    input.faceBox,
+    input.hairColor,
+    HAIR_FRONT_MASK_SRC
+  );
 
   const speechBubbleLayer = input.speechBubble?.layers[0];
   if (speechBubbleLayer) {

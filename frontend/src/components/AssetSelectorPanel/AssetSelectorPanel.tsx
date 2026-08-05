@@ -112,6 +112,12 @@ const SECTION_CONFIG: EditorSection[] = [
     icon: "pi pi-ellipsis-h",
     parts: [{ category: "mouths", label: "Boca" }],
   },
+  {
+    id: "accessories",
+    label: "Complementos",
+    icon: "pi pi-plus-circle",
+    parts: [{ category: "glasses", label: "Gafas" }],
+  },
 ];
 
 type ColorControlProps = {
@@ -276,6 +282,7 @@ function renderThumbnailLayer(
             ...selectorStyles.thumbnailLayer,
             ...getLayerPlacementStyle(asset, canvas),
             mixBlendMode: "multiply",
+            opacity: layer.opacity,
           }}
         />
       </div>
@@ -291,6 +298,7 @@ function renderThumbnailLayer(
         ...selectorStyles.thumbnailLayer,
         ...getLayerPlacementStyle(asset, canvas),
         mixBlendMode: layer.blendMode,
+        opacity: layer.opacity,
       }}
     />
   );

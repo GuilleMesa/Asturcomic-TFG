@@ -4,44 +4,11 @@
     "h": 3055
   },
   "defaultPoseByGender": {
-    "male": "pose-2-entrada",
-    "female": "pose-1-entrada",
-    "nonBinary": "pose-3-entrada"
+    "male": "pose-1m",
+    "female": "pose-1f",
+    "nonBinary": "pose-1m"
   },
   "poses": [
-    {
-      "id": "pose-1-entrada",
-      "label": "Entrada mujer",
-      "layers": [
-        {
-          "id": "pose-1-entrada-base",
-          "src": "/assets/Poses/1-Entrada.svg"
-        }
-      ],
-      "gender": "female"
-    },
-    {
-      "id": "pose-2-entrada",
-      "label": "Entrada hombre",
-      "layers": [
-        {
-          "id": "pose-2-entrada-base",
-          "src": "/assets/Poses/2-Entrada.svg"
-        }
-      ],
-      "gender": "male"
-    },
-    {
-      "id": "pose-3-entrada",
-      "label": "Entrada no binario",
-      "layers": [
-        {
-          "id": "pose-3-entrada-base",
-          "src": "/assets/Poses/3-Entrada.svg"
-        }
-      ],
-      "gender": "nonBinary"
-    },
     {
       "id": "pose-1f",
       "label": "Pose 1F",
@@ -162,6 +129,61 @@
         }
       ],
       "gender": "female"
+    },
+    {
+      "id": "pose-6m",
+      "label": "Pose 6M",
+      "layers": [
+        {
+          "id": "pose-6m-base",
+          "src": "/assets/Poses/Pose_6M.svg"
+        }
+      ],
+      "gender": "male"
+    },
+    {
+      "id": "pose-7f",
+      "label": "Pose 7F",
+      "layers": [
+        {
+          "id": "pose-7f-base",
+          "src": "/assets/Poses/Pose_7F.svg"
+        }
+      ],
+      "gender": "female"
+    },
+    {
+      "id": "pose-7m",
+      "label": "Pose 7M",
+      "layers": [
+        {
+          "id": "pose-7m-base",
+          "src": "/assets/Poses/Pose_7M.svg"
+        }
+      ],
+      "gender": "male"
+    },
+    {
+      "id": "pose-8f",
+      "label": "Pose 8F",
+      "layers": [
+        {
+          "id": "pose-8f-base",
+          "src": "/assets/Poses/Pose_8F.svg"
+        }
+      ],
+      "gender": "female"
+    },
+    {
+      "id": "pose-8m",
+      "label": "Pose 8M",
+      "layers": [
+        {
+          "id": "pose-8m-base",
+          "src": "/assets/Poses/Pose_8M.svg"
+        }
+      ],
+      "gender": "male"
     },
     {
       "id": "pose-9f",
@@ -346,9 +368,15 @@
       "label": "Cabeza 1",
       "layers": [
         {
-          "id": "cabeza-1-base",
-          "src": "/assets/Processed/Cabezas/Cabeza.png",
-          "colorable": true
+          "id": "cabeza-1-piel",
+          "src": "/assets/ColorMasks/Cabeza_skin_mask.png",
+          "maskSrc": "/assets/ColorMasks/Cabeza_skin_mask.png",
+          "colorable": true,
+          "colorMode": "tint"
+        },
+        {
+          "id": "cabeza-1-lineas",
+          "src": "/assets/Processed/Cabezas/Cabeza_lines.png"
         }
       ]
     }
@@ -359,9 +387,15 @@
       "label": "Oreja izquierda 1",
       "layers": [
         {
-          "id": "oreja-izda-1-base",
-          "src": "/assets/Processed/Orejas/Oreja_Izda.png",
-          "colorable": true
+          "id": "oreja-izda-1-piel",
+          "src": "/assets/ColorMasks/Oreja_Izda_skin_mask.png",
+          "maskSrc": "/assets/ColorMasks/Oreja_Izda_skin_mask.png",
+          "colorable": true,
+          "colorMode": "tint"
+        },
+        {
+          "id": "oreja-izda-1-lineas",
+          "src": "/assets/Processed/Orejas/Oreja_Izda_lines.png"
         }
       ]
     }
@@ -372,9 +406,15 @@
       "label": "Oreja derecha 1",
       "layers": [
         {
-          "id": "oreja-dcha-1-base",
-          "src": "/assets/Processed/Orejas/Oreja_Drcha.png",
-          "colorable": true
+          "id": "oreja-dcha-1-piel",
+          "src": "/assets/ColorMasks/Oreja_Drcha_skin_mask.png",
+          "maskSrc": "/assets/ColorMasks/Oreja_Drcha_skin_mask.png",
+          "colorable": true,
+          "colorMode": "tint"
+        },
+        {
+          "id": "oreja-dcha-1-lineas",
+          "src": "/assets/Processed/Orejas/Oreja_Drcha_lines.png"
         }
       ]
     }
@@ -401,7 +441,9 @@
         },
         {
           "id": "pelo-1-brillo",
-          "src": "/assets/Processed/Pelos/Details/Brillo_1.png"
+          "src": "/assets/Processed/Pelos/Details/Brillo_1.png",
+          "blendMode": "multiply",
+          "opacity": 0.75
         },
         {
           "id": "pelo-1-contorno",
@@ -425,7 +467,9 @@
         },
         {
           "id": "pelo-2-brillo",
-          "src": "/assets/Processed/Pelos/Details/Brillo_2.png"
+          "src": "/assets/Processed/Pelos/Details/Brillo_2.png",
+          "blendMode": "multiply",
+          "opacity": 0.75
         },
         {
           "id": "pelo-2-contorno",
@@ -449,7 +493,9 @@
         },
         {
           "id": "pelo-3-brillo",
-          "src": "/assets/Processed/Pelos/Details/Brillo_3.png"
+          "src": "/assets/Processed/Pelos/Details/Brillo_3.png",
+          "blendMode": "multiply",
+          "opacity": 0.75
         },
         {
           "id": "pelo-3-contorno",
@@ -473,7 +519,9 @@
         },
         {
           "id": "pelo-4-brillo",
-          "src": "/assets/Processed/Pelos/Details/Brillo_4.png"
+          "src": "/assets/Processed/Pelos/Details/Brillo_4.png",
+          "blendMode": "multiply",
+          "opacity": 0.75
         },
         {
           "id": "pelo-4-contorno",
@@ -497,7 +545,9 @@
         },
         {
           "id": "pelo-5-brillo",
-          "src": "/assets/Processed/Pelos/Details/Brillo_5.png"
+          "src": "/assets/Processed/Pelos/Details/Brillo_5.png",
+          "blendMode": "multiply",
+          "opacity": 0.75
         },
         {
           "id": "pelo-5-contorno",
@@ -521,7 +571,9 @@
         },
         {
           "id": "pelo-6-brillo",
-          "src": "/assets/Processed/Pelos/Details/Brillo_6.png"
+          "src": "/assets/Processed/Pelos/Details/Brillo_6.png",
+          "blendMode": "multiply",
+          "opacity": 0.75
         },
         {
           "id": "pelo-6-contorno",
@@ -545,7 +597,9 @@
         },
         {
           "id": "pelo-7-brillo",
-          "src": "/assets/Processed/Pelos/Details/Brillo_7.png"
+          "src": "/assets/Processed/Pelos/Details/Brillo_7.png",
+          "blendMode": "multiply",
+          "opacity": 0.75
         },
         {
           "id": "pelo-7-contorno",
@@ -569,7 +623,9 @@
         },
         {
           "id": "pelo-8-brillo",
-          "src": "/assets/Processed/Pelos/Details/Brillo_8.png"
+          "src": "/assets/Processed/Pelos/Details/Brillo_8.png",
+          "blendMode": "multiply",
+          "opacity": 0.75
         },
         {
           "id": "pelo-8-contorno",
@@ -593,7 +649,9 @@
         },
         {
           "id": "pelo-9-brillo",
-          "src": "/assets/Processed/Pelos/Details/Brillo_9.png"
+          "src": "/assets/Processed/Pelos/Details/Brillo_9.png",
+          "blendMode": "multiply",
+          "opacity": 0.75
         },
         {
           "id": "pelo-9-contorno",
@@ -617,7 +675,9 @@
         },
         {
           "id": "pelo-10-brillo",
-          "src": "/assets/Processed/Pelos/Details/Brillo_10.png"
+          "src": "/assets/Processed/Pelos/Details/Brillo_10.png",
+          "blendMode": "multiply",
+          "opacity": 0.75
         },
         {
           "id": "pelo-10-contorno",
@@ -653,7 +713,7 @@
       "layers": [
         {
           "id": "ojo-izdo-enfado-base",
-          "src": "/assets/Processed/Ojos/Ojo_Enfado_IZDO.png"
+          "src": "/assets/Processed/Ojos/Ojo_Enfado_Izdo.png"
         }
       ]
     },
@@ -675,7 +735,7 @@
       "layers": [
         {
           "id": "ojo-dcho-normal-base",
-          "src": "/assets/Processed/Ojos/Ojo_Normal_dcho.png"
+          "src": "/assets/Processed/Ojos/Ojo_Normal_Dcho.png"
         }
       ]
     },
@@ -745,6 +805,16 @@
           "src": "/assets/Processed/Pestañas/Pestaña_Superior_Ojo_Izdo_Sorpresa.png"
         }
       ]
+    },
+    {
+      "id": "pestana-izda-enfado",
+      "label": "Enfado",
+      "layers": [
+        {
+          "id": "pestana-izda-enfado-base",
+          "src": "/assets/Processed/Pestañas/Pestaña_Enfado_Izdo.png"
+        }
+      ]
     }
   ],
   "rightLashes": [
@@ -782,6 +852,16 @@
           "src": "/assets/Processed/Pestañas/Pestaña_Superior_Ojo_Dcho_Sorpresa.png"
         }
       ]
+    },
+    {
+      "id": "pestana-dcha-enfado",
+      "label": "Enfado",
+      "layers": [
+        {
+          "id": "pestana-dcha-enfado-base",
+          "src": "/assets/Processed/Pestañas/Pestaña_Enfado_Dcho.png"
+        }
+      ]
     }
   ],
   "leftBrows": [
@@ -815,7 +895,7 @@
       "layers": [
         {
           "id": "ceja-izda-enfado-base",
-          "src": "/assets/Processed/Cejas/Enfado_Izda.png",
+          "src": "/assets/Processed/Cejas/Ceja_Enfado_Izdo.png",
           "colorable": true,
           "colorMode": "tint"
         }
@@ -877,7 +957,7 @@
       "layers": [
         {
           "id": "ceja-dcha-enfado-base",
-          "src": "/assets/Processed/Cejas/Enfado_Dcha.png",
+          "src": "/assets/Processed/Cejas/Ceja_Enfado_Dcho.png",
           "colorable": true,
           "colorMode": "tint"
         }
@@ -946,6 +1026,16 @@
         {
           "id": "nariz-4-base",
           "src": "/assets/Processed/Nariz/Nariz_4.png"
+        }
+      ]
+    },
+    {
+      "id": "nariz-enfado",
+      "label": "Enfado",
+      "layers": [
+        {
+          "id": "nariz-enfado-base",
+          "src": "/assets/Processed/Nariz/Nariz_Enfado.png"
         }
       ]
     }
@@ -1108,6 +1198,16 @@
         {
           "id": "boca-16-base",
           "src": "/assets/Processed/Bocas/Boca_16.png"
+        }
+      ]
+    },
+    {
+      "id": "boca-enfado",
+      "label": "Enfado",
+      "layers": [
+        {
+          "id": "boca-enfado-base",
+          "src": "/assets/Processed/Bocas/Boca_Enfado.png"
         }
       ]
     }
@@ -1297,6 +1397,61 @@
         {
           "id": "bocadillo-susurro-2-base",
           "src": "/assets/Processed/Bocadillos/Susurro_2.png"
+        }
+      ]
+    }
+  ],
+  "glasses": [
+    {
+      "id": "sin-gafas",
+      "label": "Sin gafas",
+      "layers": []
+    },
+    {
+      "id": "gafas-1",
+      "label": "Gafas 1",
+      "layers": [
+        {
+          "id": "gafas-1-base",
+          "src": "/assets/Processed/Complementos/Gafas_1.png"
+        }
+      ]
+    },
+    {
+      "id": "gafas-1-cristales",
+      "label": "Gafas 1 con cristales",
+      "layers": [
+        {
+          "id": "gafas-1-cristales-lente",
+          "src": "/assets/Processed/Complementos/Cristales_1.png"
+        },
+        {
+          "id": "gafas-1-cristales-montura",
+          "src": "/assets/Processed/Complementos/Gafas_1.png"
+        }
+      ]
+    },
+    {
+      "id": "gafas-2",
+      "label": "Gafas 2",
+      "layers": [
+        {
+          "id": "gafas-2-base",
+          "src": "/assets/Processed/Complementos/Gafas_2.png"
+        }
+      ]
+    },
+    {
+      "id": "gafas-2-cristales",
+      "label": "Gafas 2 con cristales",
+      "layers": [
+        {
+          "id": "gafas-2-cristales-lente",
+          "src": "/assets/Processed/Complementos/Cristales_2.png"
+        },
+        {
+          "id": "gafas-2-cristales-montura",
+          "src": "/assets/Processed/Complementos/Gafas_2.png"
         }
       ]
     }

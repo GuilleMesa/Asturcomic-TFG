@@ -17,6 +17,7 @@ type Props = {
   rightBrow?: CompositeAsset;
   nose?: CompositeAsset;
   mouth?: CompositeAsset;
+  glasses?: CompositeAsset;
   speechBubble?: CompositeAsset;
   speechBubbleBox: Box;
   skinColor: string;
@@ -29,6 +30,7 @@ type Props = {
 const PREVIEW_W = 480;
 const MIN_SPEECH_BUBBLE_W = 180;
 const MIN_SPEECH_BUBBLE_H = 90;
+const HAIR_FRONT_MASK_SRC = "/assets/ColorMasks/HairFrontMask.png?v=3";
 
 type BubbleInteraction = {
   type: "move" | "resize";
@@ -127,12 +129,14 @@ function getLayerPlacementStyle(
 function getLayerStyle(
   asset: CompositeAsset,
   layerBlendMode: CompositeAsset["layers"][number]["blendMode"],
+  opacity: number | undefined,
   canvas: CanvasSize
 ): CSSProperties {
   return {
     ...previewStyles.fullCanvasLayer,
     ...getLayerPlacementStyle(asset, canvas),
     mixBlendMode: layerBlendMode,
+    opacity,
   };
 }
 
@@ -163,11 +167,12 @@ function renderComposite(
   asset: CompositeAsset | undefined,
   groupLabel: string,
   canvas: CanvasSize,
-  colorableLayerColor?: string
+  colorableLayerColor?: string,
+  maskSrc?: string
 ) {
   if (!asset) return null;
 
-  return (
+  const content = (
     <>
       {asset.layers.map((layer) => {
         const alt = layer.alt ?? `${groupLabel} ${asset.label}`;
@@ -205,7 +210,7 @@ function renderComposite(
               <img
                 src={layer.src}
                 alt={alt}
-                style={getLayerStyle(asset, "multiply", canvas)}
+                style={getLayerStyle(asset, "multiply", layer.opacity, canvas)}
               />
             </div>
           );
@@ -216,11 +221,35 @@ function renderComposite(
             key={layer.id}
             src={layer.src}
             alt={alt}
-            style={getLayerStyle(asset, layer.blendMode, canvas)}
+            style={getLayerStyle(asset, layer.blendMode, layer.opacity, canvas)}
           />
         );
       })}
     </>
+  );
+
+  if (!maskSrc) {
+    return content;
+  }
+
+  const maskUrl = `url("${maskSrc}")`;
+
+  return (
+    <div
+      style={{
+        ...previewStyles.fullCanvasLayer,
+        maskImage: maskUrl,
+        maskPosition: "center",
+        maskRepeat: "no-repeat",
+        maskSize: "100% 100%",
+        WebkitMaskImage: maskUrl,
+        WebkitMaskPosition: "center",
+        WebkitMaskRepeat: "no-repeat",
+        WebkitMaskSize: "100% 100%",
+      }}
+    >
+      {content}
+    </div>
   );
 }
 
@@ -239,6 +268,7 @@ export function AvatarPreview({
   rightBrow,
   nose,
   mouth,
+  glasses,
   speechBubble,
   speechBubbleBox,
   skinColor,
@@ -358,6 +388,7 @@ export function AvatarPreview({
           height: previewHeight,
         }}
       >
+        {renderComposite(hair, "Pelo", canvas, hairColor)}
         {renderComposite(pose, "Pose", canvas)}
 
         <div
@@ -374,13 +405,20 @@ export function AvatarPreview({
           {renderComposite(head, "Cabeza", canvas, skinColor)}
           {renderComposite(leftBrow, "Ceja izquierda", canvas, browColor)}
           {renderComposite(rightBrow, "Ceja derecha", canvas, browColor)}
-          {renderComposite(hair, "Pelo", canvas, hairColor)}
           {renderComposite(leftEye, "Ojo izquierdo", canvas)}
           {renderComposite(rightEye, "Ojo derecho", canvas)}
           {renderComposite(leftLash, "Pestana izquierda", canvas)}
           {renderComposite(rightLash, "Pestana derecha", canvas)}
           {renderComposite(nose, "Nariz", canvas)}
+          {renderComposite(glasses, "Gafas", canvas)}
           {renderComposite(mouth, "Boca", canvas)}
+          {renderComposite(
+            hair,
+            "Pelo",
+            canvas,
+            hairColor,
+            HAIR_FRONT_MASK_SRC
+          )}
         </div>
 
         {speechBubbleLayer && (

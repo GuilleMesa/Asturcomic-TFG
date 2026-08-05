@@ -48,6 +48,7 @@ const SELECTABLE_CATEGORIES: SelectableCategory[] = [
   "rightBrows",
   "noses",
   "mouths",
+  "glasses",
 ];
 
 const EMPTY_SELECTION: SelectedAvatar = {
@@ -64,6 +65,7 @@ const EMPTY_SELECTION: SelectedAvatar = {
   rightBrows: "",
   noses: "",
   mouths: "",
+  glasses: "",
 };
 
 function createFullBox(canvas: CanvasSize): Box {
@@ -333,6 +335,11 @@ export function AvatarEditorPage() {
     [catalog, selected.mouths]
   );
 
+  const glassesItem = useMemo(
+    () => findSelectedAsset(catalog, "glasses", selected.glasses),
+    [catalog, selected.glasses]
+  );
+
   const speechBubbleItem = useMemo(
     () =>
       catalog?.speechBubbles.find(
@@ -432,6 +439,7 @@ export function AvatarEditorPage() {
         rightBrow: rightBrowItem,
         nose: noseItem,
         mouth: mouthItem,
+        glasses: glassesItem,
         speechBubble: speechBubbleItem,
         speechBubbleBox,
         skinColor,
@@ -585,6 +593,7 @@ export function AvatarEditorPage() {
           rightBrow={rightBrowItem}
           nose={noseItem}
           mouth={mouthItem}
+          glasses={glassesItem}
           speechBubble={speechBubbleItem}
           speechBubbleBox={speechBubbleBox}
           skinColor={skinColor}

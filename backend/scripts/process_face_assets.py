@@ -21,6 +21,7 @@ SOURCE_DIRS = (
     "Pestañas",
     "Nariz",
     "Bocas",
+    "Complementos",
     "Pelos",
 )
 TARGET_SIZE = (2836, 3055)
