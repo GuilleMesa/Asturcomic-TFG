@@ -119,6 +119,7 @@ export const selectorStyles: Record<string, CSSProperties> = {
     padding: "0.5rem",
   },
   thumbnailFrame: {
+    position: "relative",
     display: "grid",
     placeItems: "center",
     width: "100%",
@@ -129,11 +130,9 @@ export const selectorStyles: Record<string, CSSProperties> = {
     overflow: "hidden",
   },
   thumbnailStage: {
-    position: "relative",
-    display: "block",
-    width: "100%",
-    height: "100%",
-    overflow: "hidden",
+    position: "absolute",
+    isolation: "isolate",
+    pointerEvents: "none",
   },
   thumbnailLayer: {
     position: "absolute",

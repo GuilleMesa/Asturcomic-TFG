@@ -16,6 +16,7 @@ type AvatarRenderInput = {
   nose?: CompositeAsset;
   mouth?: CompositeAsset;
   glasses?: CompositeAsset;
+  glassesLenses?: CompositeAsset;
   speechBubble?: CompositeAsset;
   speechBubbleBox: Box;
   skinColor: string;
@@ -172,11 +173,13 @@ async function drawComposite(
   const target = getLayerBox(asset, canvas, groupBox);
 
   for (const layer of asset.layers) {
-    if (layer.colorable && colorableLayerColor) {
+    const color = layer.color ?? colorableLayerColor;
+
+    if (layer.colorable && color) {
       const colorMode = layer.colorMode ?? "fill";
       const maskSrc = layer.maskSrc ?? layer.src;
 
-      await drawColorMask(ctx, maskSrc, colorableLayerColor, target);
+      await drawColorMask(ctx, maskSrc, color, target);
 
       if (colorMode === "fill") {
         await drawImageLayer(ctx, layer.src, target, "multiply", layer.opacity);
@@ -251,6 +254,7 @@ export async function renderAvatarPngBlob(
   await drawComposite(ctx, input.leftLash, input.canvas, input.faceBox);
   await drawComposite(ctx, input.rightLash, input.canvas, input.faceBox);
   await drawComposite(ctx, input.nose, input.canvas, input.faceBox);
+  await drawComposite(ctx, input.glassesLenses, input.canvas, input.faceBox);
   await drawComposite(ctx, input.glasses, input.canvas, input.faceBox);
   await drawComposite(ctx, input.mouth, input.canvas, input.faceBox);
   await drawMaskedComposite(

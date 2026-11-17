@@ -5,11 +5,14 @@ import { AssetSelectorPanel } from "../../components/AssetSelectorPanel/AssetSel
 import { SpeechBubblePanel } from "../../components/SpeechBubblePanel/SpeechBubblePanel";
 import {
   BROW_COLOR_OPTIONS,
+  CLOTHING_COLOR_OPTIONS,
   DEFAULT_BROW_COLOR,
+  DEFAULT_CLOTHING_COLORS,
   DEFAULT_HAIR_COLOR,
   DEFAULT_SKIN_COLOR,
   HAIR_COLOR_OPTIONS,
   SKIN_COLOR_OPTIONS,
+  type HairColorOption,
 } from "../../constants/hairColors";
 import {
   downloadBlob,
@@ -21,8 +24,11 @@ import type {
   Box,
   CanvasSize,
   Catalog,
+  ClothingColors,
+  ClothingPart,
   CompositeAsset,
   Gender,
+  PoseAsset,
   SelectableCategory,
   SelectedAvatar,
 } from "../../types/avatar";
@@ -49,6 +55,7 @@ const SELECTABLE_CATEGORIES: SelectableCategory[] = [
   "noses",
   "mouths",
   "glasses",
+  "glassesLenses",
 ];
 
 const EMPTY_SELECTION: SelectedAvatar = {
@@ -66,6 +73,7 @@ const EMPTY_SELECTION: SelectedAvatar = {
   noses: "",
   mouths: "",
   glasses: "",
+  glassesLenses: "",
 };
 
 function createFullBox(canvas: CanvasSize): Box {
@@ -142,6 +150,36 @@ function findSelectedAsset(
   return catalog?.[category].find((item) => item.id === id);
 }
 
+function colorPose(
+  pose: PoseAsset | undefined,
+  skinColor: string,
+  clothingColors: ClothingColors
+): CompositeAsset | undefined {
+  if (!pose?.bodyColorMasks) return pose;
+
+  const colors = { skin: skinColor, ...clothingColors };
+  const labels = { skin: "Piel del cuerpo", shirt: "Camiseta básica", pants: "Pantalón" };
+  const layers = [...pose.layers];
+
+  for (const part of ["skin", "shirt", "pants"] as const) {
+    const color = colors[part];
+    if (part !== "skin" && color.toLowerCase() === DEFAULT_CLOTHING_COLORS[part]) {
+      continue;
+    }
+
+    layers.push({
+      id: `${pose.id}-${part}-color`,
+      src: pose.bodyColorMasks[part],
+      alt: labels[part],
+      colorable: true,
+      colorMode: "tint",
+      color,
+    });
+  }
+
+  return { ...pose, layers };
+}
+
 function getCategoryOptions(
   catalog: Catalog,
   category: SelectableCategory,
@@ -165,6 +203,10 @@ function pickRandomId(
   const randomIndex = Math.floor(Math.random() * options.length);
 
   return options[randomIndex]?.id ?? "";
+}
+
+function pickRandomColor(options: HairColorOption[], fallback: string): string {
+  return options[Math.floor(Math.random() * options.length)]?.value ?? fallback;
 }
 
 function isRecord(value: unknown): value is Record<string, unknown> {
@@ -233,6 +275,27 @@ function createSelectionFromConfig(
     }
   });
 
+  const rawGlasses = rawSelected.glasses;
+  const hasValidLensSelection =
+    typeof rawSelected.glassesLenses === "string" &&
+    catalog.glassesLenses.some(
+      (asset) => asset.id === rawSelected.glassesLenses
+    );
+
+  if (rawGlasses === "gafas-1-cristales") {
+    selection.glasses = "gafas-1";
+    if (!hasValidLensSelection) {
+      selection.glassesLenses = "cristales-rosa";
+    }
+  }
+
+  if (rawGlasses === "gafas-2-cristales") {
+    selection.glasses = "gafas-2";
+    if (!hasValidLensSelection) {
+      selection.glassesLenses = "cristales-negro";
+    }
+  }
+
   const selectedPose = catalog.poses.find((pose) => pose.id === selection.poses);
   if (gender !== "nonBinary" && selectedPose?.gender !== gender) {
     selection.poses = getDefaultPoseId(catalog, gender);
@@ -248,6 +311,7 @@ export function AvatarEditorPage() {
   const [skinColor, setSkinColor] = useState(DEFAULT_SKIN_COLOR);
   const [hairColor, setHairColor] = useState(DEFAULT_HAIR_COLOR);
   const [browColor, setBrowColor] = useState(DEFAULT_BROW_COLOR);
+  const [clothingColors, setClothingColors] = useState(DEFAULT_CLOTHING_COLORS);
   const [isExporting, setIsExporting] = useState(false);
   const [faceBox, setFaceBox] = useState<Box>(createFullBox(DEFAULT_CANVAS));
   const [selectedSpeechBubbleId, setSelectedSpeechBubbleId] = useState(
@@ -276,8 +340,13 @@ export function AvatarEditorPage() {
   );
 
   const poseItem = useMemo(
-    () => findSelectedAsset(catalog, "poses", selected.poses),
-    [catalog, selected.poses]
+    () =>
+      colorPose(
+        catalog?.poses.find((pose) => pose.id === selected.poses),
+        skinColor,
+        clothingColors
+      ),
+    [catalog, selected.poses, skinColor, clothingColors]
   );
 
   const leftEarItem = useMemo(
@@ -340,6 +409,14 @@ export function AvatarEditorPage() {
     [catalog, selected.glasses]
   );
 
+  const glassesLensItem = useMemo(
+    () =>
+      selected.glasses === "sin-gafas"
+        ? undefined
+        : findSelectedAsset(catalog, "glassesLenses", selected.glassesLenses),
+    [catalog, selected.glasses, selected.glassesLenses]
+  );
+
   const speechBubbleItem = useMemo(
     () =>
       catalog?.speechBubbles.find(
@@ -349,7 +426,19 @@ export function AvatarEditorPage() {
   );
 
   function handleSelectionChange(category: SelectableCategory, id: string) {
-    setSelected((prev) => ({ ...prev, [category]: id }));
+    setSelected((prev) => {
+      const next = { ...prev, [category]: id };
+
+      if (category === "glasses" && id === "sin-gafas") {
+        next.glassesLenses = "sin-cristales";
+      }
+
+      return next;
+    });
+  }
+
+  function handleClothingColorChange(part: ClothingPart, color: string) {
+    setClothingColors((previous) => ({ ...previous, [part]: color }));
   }
 
   function handleSpeechBubbleSelect(id: string) {
@@ -384,6 +473,7 @@ export function AvatarEditorPage() {
     setSkinColor(DEFAULT_SKIN_COLOR);
     setHairColor(DEFAULT_HAIR_COLOR);
     setBrowColor(DEFAULT_BROW_COLOR);
+    setClothingColors(DEFAULT_CLOTHING_COLORS);
     setFaceBox(createFullBox(catalog.canvas));
     setSelectedSpeechBubbleId(EMPTY_SPEECH_BUBBLE_ID);
     setSpeechBubbleBox(createDefaultSpeechBubbleBox(catalog.canvas));
@@ -398,23 +488,18 @@ export function AvatarEditorPage() {
       nextSelection[category] = pickRandomId(catalog, category, gender);
     });
 
-    const randomHairColor =
-      HAIR_COLOR_OPTIONS[
-        Math.floor(Math.random() * HAIR_COLOR_OPTIONS.length)
-      ]?.value ?? DEFAULT_HAIR_COLOR;
-    const randomSkinColor =
-      SKIN_COLOR_OPTIONS[
-        Math.floor(Math.random() * SKIN_COLOR_OPTIONS.length)
-      ]?.value ?? DEFAULT_SKIN_COLOR;
-    const randomBrowColor =
-      BROW_COLOR_OPTIONS[
-        Math.floor(Math.random() * BROW_COLOR_OPTIONS.length)
-      ]?.value ?? DEFAULT_BROW_COLOR;
+    if (nextSelection.glasses === "sin-gafas") {
+      nextSelection.glassesLenses = "sin-cristales";
+    }
 
     setSelected(nextSelection);
-    setSkinColor(randomSkinColor);
-    setHairColor(randomHairColor);
-    setBrowColor(randomBrowColor);
+    setSkinColor(pickRandomColor(SKIN_COLOR_OPTIONS, DEFAULT_SKIN_COLOR));
+    setHairColor(pickRandomColor(HAIR_COLOR_OPTIONS, DEFAULT_HAIR_COLOR));
+    setBrowColor(pickRandomColor(BROW_COLOR_OPTIONS, DEFAULT_BROW_COLOR));
+    setClothingColors({
+      shirt: pickRandomColor(CLOTHING_COLOR_OPTIONS, DEFAULT_CLOTHING_COLORS.shirt),
+      pants: pickRandomColor(CLOTHING_COLOR_OPTIONS, DEFAULT_CLOTHING_COLORS.pants),
+    });
     setFaceBox(createFullBox(catalog.canvas));
   }
 
@@ -440,6 +525,7 @@ export function AvatarEditorPage() {
         nose: noseItem,
         mouth: mouthItem,
         glasses: glassesItem,
+        glassesLenses: glassesLensItem,
         speechBubble: speechBubbleItem,
         speechBubbleBox,
         skinColor,
@@ -471,6 +557,7 @@ export function AvatarEditorPage() {
         skin: skinColor,
         hair: hairColor,
         brow: browColor,
+        ...clothingColors,
       },
       faceBox,
       speechBubble: {
@@ -531,6 +618,10 @@ export function AvatarEditorPage() {
     setSkinColor(nextSkinColor);
     setHairColor(nextHairColor);
     setBrowColor(nextBrowColor);
+    setClothingColors({
+      shirt: isHexColor(rawColors.shirt) ? rawColors.shirt : DEFAULT_CLOTHING_COLORS.shirt,
+      pants: isHexColor(rawColors.pants) ? rawColors.pants : DEFAULT_CLOTHING_COLORS.pants,
+    });
     setFaceBox(readBox(rawConfig.faceBox, createFullBox(catalog.canvas), catalog.canvas));
     setSelectedSpeechBubbleId(nextSpeechBubbleId);
     setSpeechBubbleBox(
@@ -571,11 +662,13 @@ export function AvatarEditorPage() {
           hairColorOptions={HAIR_COLOR_OPTIONS}
           browColor={browColor}
           browColorOptions={BROW_COLOR_OPTIONS}
+          clothingColors={clothingColors}
           onSelectionChange={handleSelectionChange}
           onGenderChange={handleGenderChange}
           onSkinColorChange={setSkinColor}
           onHairColorChange={setHairColor}
           onBrowColorChange={setBrowColor}
+          onClothingColorChange={handleClothingColorChange}
         />
 
         <AvatarPreview
@@ -594,6 +687,7 @@ export function AvatarEditorPage() {
           nose={noseItem}
           mouth={mouthItem}
           glasses={glassesItem}
+          glassesLenses={glassesLensItem}
           speechBubble={speechBubbleItem}
           speechBubbleBox={speechBubbleBox}
           skinColor={skinColor}

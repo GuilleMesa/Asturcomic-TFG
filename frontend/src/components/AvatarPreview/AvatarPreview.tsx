@@ -18,6 +18,7 @@ type Props = {
   nose?: CompositeAsset;
   mouth?: CompositeAsset;
   glasses?: CompositeAsset;
+  glassesLenses?: CompositeAsset;
   speechBubble?: CompositeAsset;
   speechBubbleBox: Box;
   skinColor: string;
@@ -176,8 +177,9 @@ function renderComposite(
     <>
       {asset.layers.map((layer) => {
         const alt = layer.alt ?? `${groupLabel} ${asset.label}`;
+        const color = layer.color ?? colorableLayerColor;
 
-        if (layer.colorable && colorableLayerColor) {
+        if (layer.colorable && color) {
           const colorMode = layer.colorMode ?? "fill";
 
           if (colorMode === "tint") {
@@ -189,7 +191,7 @@ function renderComposite(
                 style={getColorMaskStyle(
                   asset,
                   layer.maskSrc ?? layer.src,
-                  colorableLayerColor,
+                  color,
                   canvas
                 )}
               />
@@ -203,7 +205,7 @@ function renderComposite(
                 style={getColorMaskStyle(
                   asset,
                   layer.maskSrc ?? layer.src,
-                  colorableLayerColor,
+                  color,
                   canvas
                 )}
               />
@@ -269,6 +271,7 @@ export function AvatarPreview({
   nose,
   mouth,
   glasses,
+  glassesLenses,
   speechBubble,
   speechBubbleBox,
   skinColor,
@@ -410,6 +413,7 @@ export function AvatarPreview({
           {renderComposite(leftLash, "Pestana izquierda", canvas)}
           {renderComposite(rightLash, "Pestana derecha", canvas)}
           {renderComposite(nose, "Nariz", canvas)}
+          {renderComposite(glassesLenses, "Cristales", canvas)}
           {renderComposite(glasses, "Gafas", canvas)}
           {renderComposite(mouth, "Boca", canvas)}
           {renderComposite(

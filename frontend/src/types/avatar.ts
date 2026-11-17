@@ -14,6 +14,9 @@ export type LayerBlendMode = "normal" | "multiply" | "screen" | "overlay";
 export type ColorMode = "fill" | "tint";
 export type Gender = "male" | "female" | "nonBinary";
 export type PoseGender = Gender;
+export type ClothingPart = "shirt" | "pants";
+export type ClothingColors = Record<ClothingPart, string>;
+export type BodyColorPart = "skin" | ClothingPart;
 
 export type AvatarLayer = {
   id: string;
@@ -21,6 +24,7 @@ export type AvatarLayer = {
   alt?: string;
   maskSrc?: string;
   colorable?: boolean;
+  color?: string;
   colorMode?: ColorMode;
   blendMode?: LayerBlendMode;
   opacity?: number;
@@ -29,6 +33,7 @@ export type AvatarLayer = {
 export type CompositeAsset = {
   id: string;
   label: string;
+  thumbnailBox?: Box;
   gender?: PoseGender;
   canvas?: CanvasSize;
   offset?: {
@@ -38,10 +43,14 @@ export type CompositeAsset = {
   layers: AvatarLayer[];
 };
 
+export type PoseAsset = CompositeAsset & {
+  bodyColorMasks?: Record<BodyColorPart, string>;
+};
+
 export type Catalog = {
   canvas: CanvasSize;
   defaultPoseByGender?: Partial<Record<Gender, string>>;
-  poses: CompositeAsset[];
+  poses: PoseAsset[];
   heads: CompositeAsset[];
   leftEars: CompositeAsset[];
   rightEars: CompositeAsset[];
@@ -55,6 +64,7 @@ export type Catalog = {
   noses: CompositeAsset[];
   mouths: CompositeAsset[];
   glasses: CompositeAsset[];
+  glassesLenses: CompositeAsset[];
   speechBubbles: CompositeAsset[];
 };
 
@@ -73,6 +83,7 @@ export type SelectedAvatar = {
   noses: string;
   mouths: string;
   glasses: string;
+  glassesLenses: string;
 };
 
 export type SelectableCategory = keyof SelectedAvatar;
@@ -88,6 +99,8 @@ export type AvatarConfigFile = {
     skin: string;
     hair: string;
     brow: string;
+    shirt?: string;
+    pants?: string;
   };
   faceBox: Box;
   speechBubble: {

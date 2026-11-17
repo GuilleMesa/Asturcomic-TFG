@@ -1,8 +1,10 @@
 import { useMemo, useState, type CSSProperties } from "react";
-import type { HairColorOption } from "../../constants/hairColors";
+import { CLOTHING_COLOR_OPTIONS, type HairColorOption } from "../../constants/hairColors";
 import type {
   CanvasSize,
   Catalog,
+  ClothingColors,
+  ClothingPart,
   CompositeAsset,
   Gender,
   SelectableCategory,
@@ -20,11 +22,13 @@ type Props = {
   hairColorOptions: HairColorOption[];
   browColor: string;
   browColorOptions: HairColorOption[];
+  clothingColors: ClothingColors;
   onSelectionChange: (category: SelectableCategory, id: string) => void;
   onGenderChange: (gender: Gender) => void;
   onSkinColorChange: (color: string) => void;
   onHairColorChange: (color: string) => void;
   onBrowColorChange: (color: string) => void;
+  onClothingColorChange: (part: ClothingPart, color: string) => void;
 };
 
 type SelectorPart = {
@@ -38,7 +42,7 @@ type EditorSection = {
   icon: string;
   parts: SelectorPart[];
   genderControl?: boolean;
-  colorControl?: "skin" | "hair" | "brows";
+  colorControl?: "skin" | "hair" | "brows" | "clothing";
 };
 
 type GenderOption = {
@@ -116,7 +120,17 @@ const SECTION_CONFIG: EditorSection[] = [
     id: "accessories",
     label: "Complementos",
     icon: "pi pi-plus-circle",
-    parts: [{ category: "glasses", label: "Gafas" }],
+    parts: [
+      { category: "glasses", label: "Gafas" },
+      { category: "glassesLenses", label: "Cristales" },
+    ],
+  },
+  {
+    id: "clothing",
+    label: "Ropa",
+    icon: "pi pi-tag",
+    parts: [],
+    colorControl: "clothing",
   },
 ];
 
@@ -127,6 +141,28 @@ type ColorControlProps = {
   options: HairColorOption[];
   onColorChange: (color: string) => void;
 };
+
+const THUMBNAIL_FILL = 0.82;
+
+function getThumbnailStageStyle(
+  asset: CompositeAsset,
+  canvas: CanvasSize,
+  aspectRatio: number
+): CSSProperties {
+  const box = asset.thumbnailBox ?? { x: 0, y: 0, ...canvas };
+  const width = Math.max(box.w, box.h * aspectRatio) / THUMBNAIL_FILL;
+  const height = width / aspectRatio;
+  const centerX = box.x + box.w / 2;
+  const centerY = box.y + box.h / 2;
+
+  return {
+    ...selectorStyles.thumbnailStage,
+    left: `${(0.5 - centerX / width) * 100}%`,
+    top: `${(0.5 - centerY / height) * 100}%`,
+    width: `${(canvas.w / width) * 100}%`,
+    height: `${(canvas.h / height) * 100}%`,
+  };
+}
 
 function getLayerPlacementStyle(
   asset: CompositeAsset,
@@ -331,6 +367,8 @@ function AssetTile({
   isSelected: boolean;
   onSelectionChange: (category: SelectableCategory, id: string) => void;
 }) {
+  const aspectRatio = category === "poses" ? 3 / 4 : 1;
+
   return (
     <button
       type="button"
@@ -347,18 +385,18 @@ function AssetTile({
       <span
         style={{
           ...selectorStyles.thumbnailFrame,
-          aspectRatio: category === "poses" ? "3 / 4" : "1 / 1",
+          aspectRatio,
         }}
       >
-        <span style={selectorStyles.thumbnailStage}>
-          {asset.layers.length === 0 ? (
-            <span className="pi pi-ban" style={selectorStyles.emptyIcon} />
-          ) : (
-            asset.layers.map((layer) =>
+        {asset.layers.length === 0 ? (
+          <span aria-hidden="true" className="pi pi-ban" style={selectorStyles.emptyIcon} />
+        ) : (
+          <span style={getThumbnailStageStyle(asset, canvas, aspectRatio)}>
+            {asset.layers.map((layer) =>
               renderThumbnailLayer(asset, layer, canvas, color)
-            )
-          )}
-        </span>
+            )}
+          </span>
+        )}
       </span>
 
       <span style={selectorStyles.tileLabel}>{asset.label}</span>
@@ -376,11 +414,13 @@ export function AssetSelectorPanel({
   hairColorOptions,
   browColor,
   browColorOptions,
+  clothingColors,
   onSelectionChange,
   onGenderChange,
   onSkinColorChange,
   onHairColorChange,
   onBrowColorChange,
+  onClothingColorChange,
 }: Props) {
   const [activeSectionId, setActiveSectionId] = useState(SECTION_CONFIG[0].id);
   const activeSection = useMemo(
@@ -453,10 +493,12 @@ export function AssetSelectorPanel({
       <div style={selectorStyles.panel}>
         <div style={selectorStyles.panelHeader}>
           <h3 style={selectorStyles.panelTitle}>{activeSection.label}</h3>
-          <span style={selectorStyles.panelMeta}>
-            {activeSection.parts.length} bloque
-            {activeSection.parts.length === 1 ? "" : "s"}
-          </span>
+          {activeSection.parts.length > 0 && (
+            <span style={selectorStyles.panelMeta}>
+              {activeSection.parts.length} bloque
+              {activeSection.parts.length === 1 ? "" : "s"}
+            </span>
+          )}
         </div>
 
         {activeSection.genderControl && (
@@ -522,6 +564,25 @@ export function AssetSelectorPanel({
             options={browColorOptions}
             onColorChange={onBrowColorChange}
           />
+        )}
+
+        {activeSection.colorControl === "clothing" && (
+          <>
+            <ColorControl
+              label="Camiseta básica"
+              ariaLabel="Color de camiseta"
+              color={clothingColors.shirt}
+              options={CLOTHING_COLOR_OPTIONS}
+              onColorChange={(color) => onClothingColorChange("shirt", color)}
+            />
+            <ColorControl
+              label="Pantalón"
+              ariaLabel="Color de pantalón"
+              color={clothingColors.pants}
+              options={CLOTHING_COLOR_OPTIONS}
+              onColorChange={(color) => onClothingColorChange("pants", color)}
+            />
+          </>
         )}
       </div>
     </section>

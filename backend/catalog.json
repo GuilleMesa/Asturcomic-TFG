@@ -12,354 +12,706 @@
     {
       "id": "pose-1f",
       "label": "Pose 1F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_1F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_1F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_1F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-1f-base",
           "src": "/assets/Poses/Pose_1F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 766,
+        "y": 1117,
+        "w": 1114,
+        "h": 1566
+      }
     },
     {
       "id": "pose-1m",
       "label": "Pose 1M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_1M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_1M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_1M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-1m-base",
           "src": "/assets/Poses/Pose_1M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 814,
+        "y": 1139,
+        "w": 1011,
+        "h": 1534
+      }
     },
     {
       "id": "pose-2f",
       "label": "Pose 2F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_2F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_2F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_2F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-2f-base",
           "src": "/assets/Poses/Pose_2F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 1028,
+        "y": 1159,
+        "w": 1122,
+        "h": 1483
+      }
     },
     {
       "id": "pose-2m",
       "label": "Pose 2M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_2M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_2M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_2M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-2m-base",
           "src": "/assets/Poses/Pose_2M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 1006,
+        "y": 1173,
+        "w": 1155,
+        "h": 1483
+      }
     },
     {
       "id": "pose-3f",
       "label": "Pose 3F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_3F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_3F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_3F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-3f-base",
           "src": "/assets/Poses/Pose_3F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 996,
+        "y": 969,
+        "w": 858,
+        "h": 1687
+      }
     },
     {
       "id": "pose-3m",
       "label": "Pose 3M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_3M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_3M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_3M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-3m-base",
           "src": "/assets/Poses/Pose_3M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 951,
+        "y": 989,
+        "w": 895,
+        "h": 1664
+      }
     },
     {
       "id": "pose-4f",
       "label": "Pose 4F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_4F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_4F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_4F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-4f-base",
           "src": "/assets/Poses/Pose_4F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 512,
+        "y": 853,
+        "w": 1698,
+        "h": 1332
+      }
     },
     {
       "id": "pose-4m",
       "label": "Pose 4M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_4M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_4M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_4M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-4m-base",
           "src": "/assets/Poses/Pose_4M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 530,
+        "y": 853,
+        "w": 1674,
+        "h": 1344
+      }
     },
     {
       "id": "pose-5f",
       "label": "Pose 5F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_5F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_5F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_5F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-5f-base",
           "src": "/assets/Poses/Pose_5F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 1001,
+        "y": 1179,
+        "w": 746,
+        "h": 1470
+      }
     },
     {
       "id": "pose-5m",
       "label": "Pose 5M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_5M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_5M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_5M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-5m-base",
           "src": "/assets/Poses/Pose_5M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 1003,
+        "y": 1161,
+        "w": 719,
+        "h": 1494
+      }
     },
     {
       "id": "pose-6f",
       "label": "Pose 6F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_6F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_6F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_6F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-6f-base",
           "src": "/assets/Poses/Pose_6F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 716,
+        "y": 1164,
+        "w": 952,
+        "h": 1474
+      }
     },
     {
       "id": "pose-6m",
       "label": "Pose 6M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_6M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_6M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_6M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-6m-base",
           "src": "/assets/Poses/Pose_6M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 736,
+        "y": 1158,
+        "w": 961,
+        "h": 1484
+      }
     },
     {
       "id": "pose-7f",
       "label": "Pose 7F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_7F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_7F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_7F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-7f-base",
           "src": "/assets/Poses/Pose_7F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 1086,
+        "y": 1130,
+        "w": 671,
+        "h": 1524
+      }
     },
     {
       "id": "pose-7m",
       "label": "Pose 7M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_7M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_7M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_7M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-7m-base",
           "src": "/assets/Poses/Pose_7M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 1073,
+        "y": 1155,
+        "w": 666,
+        "h": 1482
+      }
     },
     {
       "id": "pose-8f",
       "label": "Pose 8F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_8F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_8F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_8F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-8f-base",
           "src": "/assets/Poses/Pose_8F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 1030,
+        "y": 953,
+        "w": 822,
+        "h": 1692
+      }
     },
     {
       "id": "pose-8m",
       "label": "Pose 8M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_8M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_8M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_8M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-8m-base",
           "src": "/assets/Poses/Pose_8M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 994,
+        "y": 909,
+        "w": 922,
+        "h": 1727
+      }
     },
     {
       "id": "pose-9f",
       "label": "Pose 9F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_9F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_9F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_9F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-9f-base",
           "src": "/assets/Poses/Pose_9F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 746,
+        "y": 856,
+        "w": 1013,
+        "h": 1798
+      }
     },
     {
       "id": "pose-9m",
       "label": "Pose 9M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_9M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_9M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_9M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-9m-base",
           "src": "/assets/Poses/Pose_9M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 695,
+        "y": 838,
+        "w": 1105,
+        "h": 1813
+      }
     },
     {
       "id": "pose-10f",
       "label": "Pose 10F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_10F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_10F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_10F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-10f-base",
           "src": "/assets/Poses/Pose_10F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 1149,
+        "y": 1109,
+        "w": 504,
+        "h": 1546
+      }
     },
     {
       "id": "pose-10m",
       "label": "Pose 10M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_10M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_10M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_10M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-10m-base",
           "src": "/assets/Poses/Pose_10M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 1162,
+        "y": 1102,
+        "w": 524,
+        "h": 1541
+      }
     },
     {
       "id": "pose-11f",
       "label": "Pose 11F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_11F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_11F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_11F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-11f-base",
           "src": "/assets/Poses/Pose_11F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 483,
+        "y": 1159,
+        "w": 1754,
+        "h": 1046
+      }
     },
     {
       "id": "pose-11m",
       "label": "Pose 11M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_11M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_11M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_11M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-11m-base",
           "src": "/assets/Poses/Pose_11M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 540,
+        "y": 1179,
+        "w": 1666,
+        "h": 1022
+      }
     },
     {
       "id": "pose-12f",
       "label": "Pose 12F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_12F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_12F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_12F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-12f-base",
           "src": "/assets/Poses/Pose_12F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 386,
+        "y": 834,
+        "w": 1968,
+        "h": 1806
+      }
     },
     {
       "id": "pose-12m",
       "label": "Pose 12M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_12M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_12M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_12M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-12m-base",
           "src": "/assets/Poses/Pose_12M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 493,
+        "y": 850,
+        "w": 1760,
+        "h": 1790
+      }
     },
     {
       "id": "pose-13f",
       "label": "Pose 13F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_13F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_13F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_13F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-13f-base",
           "src": "/assets/Poses/Pose_13F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 1126,
+        "y": 1183,
+        "w": 971,
+        "h": 1506
+      }
     },
     {
       "id": "pose-13m",
       "label": "Pose 13M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_13M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_13M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_13M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-13m-base",
           "src": "/assets/Poses/Pose_13M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 1125,
+        "y": 1184,
+        "w": 970,
+        "h": 1484
+      }
     },
     {
       "id": "pose-14f",
       "label": "Pose 14F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_14F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_14F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_14F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-14f-base",
           "src": "/assets/Poses/Pose_14F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 951,
+        "y": 1168,
+        "w": 720,
+        "h": 1486
+      }
     },
     {
       "id": "pose-14m",
       "label": "Pose 14M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_14M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_14M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_14M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-14m-base",
           "src": "/assets/Poses/Pose_14M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 953,
+        "y": 1164,
+        "w": 693,
+        "h": 1488
+      }
     },
     {
       "id": "pose-15f",
       "label": "Pose 15F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_15F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_15F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_15F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-15f-base",
           "src": "/assets/Poses/Pose_15F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 622,
+        "y": 621,
+        "w": 1363,
+        "h": 2013
+      }
     },
     {
       "id": "pose-15m",
       "label": "Pose 15M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_15M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_15M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_15M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-15m-base",
           "src": "/assets/Poses/Pose_15M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 657,
+        "y": 697,
+        "w": 1381,
+        "h": 1950
+      }
     },
     {
       "id": "pose-16f",
       "label": "Pose 16F",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_16F_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_16F_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_16F_pants.png"
+      },
       "layers": [
         {
           "id": "pose-16f-base",
           "src": "/assets/Poses/Pose_16F.svg"
         }
       ],
-      "gender": "female"
+      "gender": "female",
+      "thumbnailBox": {
+        "x": 1037,
+        "y": 1163,
+        "w": 664,
+        "h": 1477
+      }
     },
     {
       "id": "pose-16m",
       "label": "Pose 16M",
+      "bodyColorMasks": {
+        "skin": "/assets/ColorMasks/Poses/Pose_16M_skin.png",
+        "shirt": "/assets/ColorMasks/Poses/Pose_16M_shirt.png",
+        "pants": "/assets/ColorMasks/Poses/Pose_16M_pants.png"
+      },
       "layers": [
         {
           "id": "pose-16m-base",
           "src": "/assets/Poses/Pose_16M.svg"
         }
       ],
-      "gender": "male"
+      "gender": "male",
+      "thumbnailBox": {
+        "x": 1019,
+        "y": 1170,
+        "w": 703,
+        "h": 1490
+      }
     }
   ],
   "heads": [
@@ -378,7 +730,13 @@
           "id": "cabeza-1-lineas",
           "src": "/assets/Processed/Cabezas/Cabeza_lines.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1064,
+        "y": 323,
+        "w": 606,
+        "h": 851
+      }
     }
   ],
   "leftEars": [
@@ -397,7 +755,13 @@
           "id": "oreja-izda-1-lineas",
           "src": "/assets/Processed/Orejas/Oreja_Izda_lines.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1038,
+        "y": 704,
+        "w": 76,
+        "h": 202
+      }
     }
   ],
   "rightEars": [
@@ -416,7 +780,13 @@
           "id": "oreja-dcha-1-lineas",
           "src": "/assets/Processed/Orejas/Oreja_Drcha_lines.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1622,
+        "y": 704,
+        "w": 74,
+        "h": 202
+      }
     }
   ],
   "hairs": [
@@ -449,7 +819,13 @@
           "id": "pelo-1-contorno",
           "src": "/assets/Processed/Pelos/Details/Contorno_1.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1052,
+        "y": 291,
+        "w": 628,
+        "h": 435
+      }
     },
     {
       "id": "pelo-2",
@@ -475,7 +851,13 @@
           "id": "pelo-2-contorno",
           "src": "/assets/Processed/Pelos/Details/Contorno_2.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1027,
+        "y": 219,
+        "w": 688,
+        "h": 525
+      }
     },
     {
       "id": "pelo-3",
@@ -501,7 +883,13 @@
           "id": "pelo-3-contorno",
           "src": "/assets/Processed/Pelos/Details/Contorno_3.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 998,
+        "y": 216,
+        "w": 737,
+        "h": 493
+      }
     },
     {
       "id": "pelo-4",
@@ -527,7 +915,13 @@
           "id": "pelo-4-contorno",
           "src": "/assets/Processed/Pelos/Details/Contorno_4.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 960,
+        "y": 257,
+        "w": 807,
+        "h": 512
+      }
     },
     {
       "id": "pelo-5",
@@ -553,7 +947,13 @@
           "id": "pelo-5-contorno",
           "src": "/assets/Processed/Pelos/Details/Contorno_5.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1042,
+        "y": 250,
+        "w": 646,
+        "h": 474
+      }
     },
     {
       "id": "pelo-6",
@@ -579,7 +979,13 @@
           "id": "pelo-6-contorno",
           "src": "/assets/Processed/Pelos/Details/Contorno_6.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 996,
+        "y": 261,
+        "w": 755,
+        "h": 534
+      }
     },
     {
       "id": "pelo-7",
@@ -605,7 +1011,13 @@
           "id": "pelo-7-contorno",
           "src": "/assets/Processed/Pelos/Details/Contorno_7.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 946,
+        "y": 291,
+        "w": 829,
+        "h": 968
+      }
     },
     {
       "id": "pelo-8",
@@ -631,7 +1043,13 @@
           "id": "pelo-8-contorno",
           "src": "/assets/Processed/Pelos/Details/Contorno_8.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 847,
+        "y": 248,
+        "w": 1053,
+        "h": 845
+      }
     },
     {
       "id": "pelo-9",
@@ -657,7 +1075,13 @@
           "id": "pelo-9-contorno",
           "src": "/assets/Processed/Pelos/Details/Contorno_9.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1034,
+        "y": 58,
+        "w": 685,
+        "h": 1206
+      }
     },
     {
       "id": "pelo-10",
@@ -683,7 +1107,13 @@
           "id": "pelo-10-contorno",
           "src": "/assets/Processed/Pelos/Details/Contorno_10.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 818,
+        "y": 226,
+        "w": 1113,
+        "h": 1188
+      }
     }
   ],
   "leftEyes": [
@@ -695,7 +1125,13 @@
           "id": "ojo-izdo-normal-base",
           "src": "/assets/Processed/Ojos/Ojo_Normal_Izdo.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1155,
+        "y": 743,
+        "w": 142,
+        "h": 67
+      }
     },
     {
       "id": "ojo-izdo-sorpresa",
@@ -705,7 +1141,13 @@
           "id": "ojo-izdo-sorpresa-base",
           "src": "/assets/Processed/Ojos/Ojo_Sorpresa_Izdo.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1163,
+        "y": 734,
+        "w": 137,
+        "h": 84
+      }
     },
     {
       "id": "ojo-izdo-enfado",
@@ -715,7 +1157,13 @@
           "id": "ojo-izdo-enfado-base",
           "src": "/assets/Processed/Ojos/Ojo_Enfado_Izdo.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1159,
+        "y": 739,
+        "w": 162,
+        "h": 72
+      }
     },
     {
       "id": "ojo-izdo-cerrado",
@@ -725,7 +1173,13 @@
           "id": "ojo-izdo-cerrado-base",
           "src": "/assets/Processed/Ojos/Ojo_Cerrado_Izdo.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1152,
+        "y": 743,
+        "w": 145,
+        "h": 68
+      }
     }
   ],
   "rightEyes": [
@@ -737,7 +1191,13 @@
           "id": "ojo-dcho-normal-base",
           "src": "/assets/Processed/Ojos/Ojo_Normal_Dcho.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1440,
+        "y": 743,
+        "w": 143,
+        "h": 67
+      }
     },
     {
       "id": "ojo-dcho-sorpresa",
@@ -747,7 +1207,13 @@
           "id": "ojo-dcho-sorpresa-base",
           "src": "/assets/Processed/Ojos/Ojo_Sorpresa_Dcho.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1437,
+        "y": 738,
+        "w": 137,
+        "h": 84
+      }
     },
     {
       "id": "ojo-dcho-enfado",
@@ -757,7 +1223,13 @@
           "id": "ojo-dcho-enfado-base",
           "src": "/assets/Processed/Ojos/Ojo_Enfado_Dcho.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1410,
+        "y": 734,
+        "w": 163,
+        "h": 72
+      }
     },
     {
       "id": "ojo-dcho-cerrado",
@@ -767,7 +1239,13 @@
           "id": "ojo-dcho-cerrado-base",
           "src": "/assets/Processed/Ojos/Ojo_Cerrado_Dcho.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1439,
+        "y": 743,
+        "w": 148,
+        "h": 69
+      }
     }
   ],
   "leftLashes": [
@@ -784,7 +1262,13 @@
           "id": "pestana-izda-normal-base",
           "src": "/assets/Processed/Pestañas/Pestaña_Superior_Normal_Izda_1.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1151,
+        "y": 755,
+        "w": 146,
+        "h": 33
+      }
     },
     {
       "id": "pestana-izda-cerrada",
@@ -794,7 +1278,13 @@
           "id": "pestana-izda-cerrada-base",
           "src": "/assets/Processed/Pestañas/Pestaña_izda_Cerrada.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1150,
+        "y": 784,
+        "w": 139,
+        "h": 35
+      }
     },
     {
       "id": "pestana-izda-sorpresa",
@@ -804,7 +1294,13 @@
           "id": "pestana-izda-sorpresa-base",
           "src": "/assets/Processed/Pestañas/Pestaña_Superior_Ojo_Izdo_Sorpresa.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1151,
+        "y": 741,
+        "w": 148,
+        "h": 44
+      }
     },
     {
       "id": "pestana-izda-enfado",
@@ -814,7 +1310,13 @@
           "id": "pestana-izda-enfado-base",
           "src": "/assets/Processed/Pestañas/Pestaña_Enfado_Izdo.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1447,
+        "y": 737,
+        "w": 153,
+        "h": 78
+      }
     }
   ],
   "rightLashes": [
@@ -831,7 +1333,13 @@
           "id": "pestana-dcha-normal-base",
           "src": "/assets/Processed/Pestañas/Pestaña_Superior_Normal_Drcha_1.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1444,
+        "y": 753,
+        "w": 143,
+        "h": 32
+      }
     },
     {
       "id": "pestana-dcha-cerrada",
@@ -841,7 +1349,13 @@
           "id": "pestana-dcha-cerrada-base",
           "src": "/assets/Processed/Pestañas/Pestaña_dcha_Cerrada.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1444,
+        "y": 784,
+        "w": 141,
+        "h": 35
+      }
     },
     {
       "id": "pestana-dcha-sorpresa",
@@ -851,7 +1365,13 @@
           "id": "pestana-dcha-sorpresa-base",
           "src": "/assets/Processed/Pestañas/Pestaña_Superior_Ojo_Dcho_Sorpresa.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1441,
+        "y": 744,
+        "w": 148,
+        "h": 44
+      }
     },
     {
       "id": "pestana-dcha-enfado",
@@ -861,7 +1381,13 @@
           "id": "pestana-dcha-enfado-base",
           "src": "/assets/Processed/Pestañas/Pestaña_Enfado_Dcho.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1132,
+        "y": 741,
+        "w": 154,
+        "h": 78
+      }
     }
   ],
   "leftBrows": [
@@ -875,7 +1401,13 @@
           "colorable": true,
           "colorMode": "tint"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1119,
+        "y": 674,
+        "w": 190,
+        "h": 53
+      }
     },
     {
       "id": "ceja-izda-sorpresa",
@@ -887,7 +1419,13 @@
           "colorable": true,
           "colorMode": "tint"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1123,
+        "y": 657,
+        "w": 194,
+        "h": 71
+      }
     },
     {
       "id": "ceja-izda-enfado",
@@ -899,7 +1437,13 @@
           "colorable": true,
           "colorMode": "tint"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1132,
+        "y": 693,
+        "w": 216,
+        "h": 90
+      }
     },
     {
       "id": "ceja-izda-duda",
@@ -911,7 +1455,13 @@
           "colorable": true,
           "colorMode": "tint"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1125,
+        "y": 666,
+        "w": 187,
+        "h": 54
+      }
     },
     {
       "id": "ceja-izda-triste",
@@ -923,7 +1473,13 @@
           "colorable": true,
           "colorMode": "tint"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1121,
+        "y": 701,
+        "w": 192,
+        "h": 48
+      }
     }
   ],
   "rightBrows": [
@@ -937,7 +1493,13 @@
           "colorable": true,
           "colorMode": "tint"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1428,
+        "y": 674,
+        "w": 189,
+        "h": 53
+      }
     },
     {
       "id": "ceja-dcha-sorpresa",
@@ -949,7 +1511,13 @@
           "colorable": true,
           "colorMode": "tint"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1427,
+        "y": 652,
+        "w": 194,
+        "h": 71
+      }
     },
     {
       "id": "ceja-dcha-enfado",
@@ -961,7 +1529,13 @@
           "colorable": true,
           "colorMode": "tint"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1379,
+        "y": 693,
+        "w": 215,
+        "h": 90
+      }
     },
     {
       "id": "ceja-dcha-duda",
@@ -973,7 +1547,13 @@
           "colorable": true,
           "colorMode": "tint"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1427,
+        "y": 664,
+        "w": 186,
+        "h": 54
+      }
     },
     {
       "id": "ceja-dcha-triste",
@@ -985,7 +1565,13 @@
           "colorable": true,
           "colorMode": "tint"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1428,
+        "y": 701,
+        "w": 192,
+        "h": 48
+      }
     }
   ],
   "noses": [
@@ -997,7 +1583,13 @@
           "id": "nariz-1-base",
           "src": "/assets/Processed/Nariz/Nariz_1.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1304,
+        "y": 771,
+        "w": 129,
+        "h": 180
+      }
     },
     {
       "id": "nariz-2",
@@ -1007,7 +1599,13 @@
           "id": "nariz-2-base",
           "src": "/assets/Processed/Nariz/Nariz_2.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1302,
+        "y": 771,
+        "w": 128,
+        "h": 178
+      }
     },
     {
       "id": "nariz-3",
@@ -1017,7 +1615,13 @@
           "id": "nariz-3-base",
           "src": "/assets/Processed/Nariz/Nariz_3.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1302,
+        "y": 772,
+        "w": 128,
+        "h": 182
+      }
     },
     {
       "id": "nariz-4",
@@ -1027,7 +1631,13 @@
           "id": "nariz-4-base",
           "src": "/assets/Processed/Nariz/Nariz_4.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1308,
+        "y": 771,
+        "w": 123,
+        "h": 183
+      }
     },
     {
       "id": "nariz-enfado",
@@ -1037,7 +1647,13 @@
           "id": "nariz-enfado-base",
           "src": "/assets/Processed/Nariz/Nariz_Enfado.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1311,
+        "y": 730,
+        "w": 116,
+        "h": 262
+      }
     }
   ],
   "mouths": [
@@ -1049,7 +1665,13 @@
           "id": "boca-1-base",
           "src": "/assets/Processed/Bocas/Boca_1.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1287,
+        "y": 991,
+        "w": 165,
+        "h": 91
+      }
     },
     {
       "id": "boca-2",
@@ -1059,7 +1681,13 @@
           "id": "boca-2-base",
           "src": "/assets/Processed/Bocas/Boca_2.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1293,
+        "y": 997,
+        "w": 149,
+        "h": 60
+      }
     },
     {
       "id": "boca-3",
@@ -1069,7 +1697,13 @@
           "id": "boca-3-base",
           "src": "/assets/Processed/Bocas/Boca_3.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1292,
+        "y": 997,
+        "w": 149,
+        "h": 79
+      }
     },
     {
       "id": "boca-4",
@@ -1079,7 +1713,13 @@
           "id": "boca-4-base",
           "src": "/assets/Processed/Bocas/Boca_4.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1296,
+        "y": 1000,
+        "w": 141,
+        "h": 98
+      }
     },
     {
       "id": "boca-5",
@@ -1089,7 +1729,13 @@
           "id": "boca-5-base",
           "src": "/assets/Processed/Bocas/Boca_5.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1296,
+        "y": 1001,
+        "w": 143,
+        "h": 82
+      }
     },
     {
       "id": "boca-6",
@@ -1099,7 +1745,13 @@
           "id": "boca-6-base",
           "src": "/assets/Processed/Bocas/Boca_6.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1293,
+        "y": 998,
+        "w": 147,
+        "h": 102
+      }
     },
     {
       "id": "boca-7",
@@ -1109,7 +1761,13 @@
           "id": "boca-7-base",
           "src": "/assets/Processed/Bocas/Boca_7.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1291,
+        "y": 997,
+        "w": 149,
+        "h": 77
+      }
     },
     {
       "id": "boca-8",
@@ -1119,7 +1777,13 @@
           "id": "boca-8-base",
           "src": "/assets/Processed/Bocas/Boca_8.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1288,
+        "y": 994,
+        "w": 154,
+        "h": 160
+      }
     },
     {
       "id": "boca-9",
@@ -1129,7 +1793,13 @@
           "id": "boca-9-base",
           "src": "/assets/Processed/Bocas/Boca_9.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1288,
+        "y": 993,
+        "w": 154,
+        "h": 151
+      }
     },
     {
       "id": "boca-10",
@@ -1139,7 +1809,13 @@
           "id": "boca-10-base",
           "src": "/assets/Processed/Bocas/Boca_10.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1285,
+        "y": 999,
+        "w": 160,
+        "h": 75
+      }
     },
     {
       "id": "boca-11",
@@ -1149,7 +1825,13 @@
           "id": "boca-11-base",
           "src": "/assets/Processed/Bocas/Boca_11.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1296,
+        "y": 996,
+        "w": 142,
+        "h": 92
+      }
     },
     {
       "id": "boca-12",
@@ -1159,7 +1841,13 @@
           "id": "boca-12-base",
           "src": "/assets/Processed/Bocas/Boca_12.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1295,
+        "y": 1001,
+        "w": 146,
+        "h": 123
+      }
     },
     {
       "id": "boca-13",
@@ -1169,7 +1857,13 @@
           "id": "boca-13-base",
           "src": "/assets/Processed/Bocas/Boca_13.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1294,
+        "y": 1001,
+        "w": 142,
+        "h": 82
+      }
     },
     {
       "id": "boca-14",
@@ -1179,7 +1873,13 @@
           "id": "boca-14-base",
           "src": "/assets/Processed/Bocas/Boca_14.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1297,
+        "y": 1000,
+        "w": 140,
+        "h": 98
+      }
     },
     {
       "id": "boca-15",
@@ -1189,7 +1889,13 @@
           "id": "boca-15-base",
           "src": "/assets/Processed/Bocas/Boca_15.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1293,
+        "y": 997,
+        "w": 152,
+        "h": 96
+      }
     },
     {
       "id": "boca-16",
@@ -1199,7 +1905,13 @@
           "id": "boca-16-base",
           "src": "/assets/Processed/Bocas/Boca_16.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1295,
+        "y": 994,
+        "w": 145,
+        "h": 95
+      }
     },
     {
       "id": "boca-enfado",
@@ -1209,7 +1921,13 @@
           "id": "boca-enfado-base",
           "src": "/assets/Processed/Bocas/Boca_Enfado.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1289,
+        "y": 996,
+        "w": 159,
+        "h": 81
+      }
     }
   ],
   "speechBubbles": [
@@ -1413,23 +2131,15 @@
       "layers": [
         {
           "id": "gafas-1-base",
-          "src": "/assets/Processed/Complementos/Gafas_1.png"
+          "src": "/assets/Complementos/Gafas_1.svg"
         }
-      ]
-    },
-    {
-      "id": "gafas-1-cristales",
-      "label": "Gafas 1 con cristales",
-      "layers": [
-        {
-          "id": "gafas-1-cristales-lente",
-          "src": "/assets/Processed/Complementos/Cristales_1.png"
-        },
-        {
-          "id": "gafas-1-cristales-montura",
-          "src": "/assets/Processed/Complementos/Gafas_1.png"
-        }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1072,
+        "y": 711,
+        "w": 566,
+        "h": 142
+      }
     },
     {
       "id": "gafas-2",
@@ -1437,23 +2147,54 @@
       "layers": [
         {
           "id": "gafas-2-base",
-          "src": "/assets/Processed/Complementos/Gafas_2.png"
+          "src": "/assets/Complementos/Gafas_2.svg"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1075,
+        "y": 706,
+        "w": 560,
+        "h": 163
+      }
+    }
+  ],
+  "glassesLenses": [
+    {
+      "id": "sin-cristales",
+      "label": "Sin cristales",
+      "layers": []
     },
     {
-      "id": "gafas-2-cristales",
-      "label": "Gafas 2 con cristales",
+      "id": "cristales-rosa",
+      "label": "Cristal rosa",
       "layers": [
         {
-          "id": "gafas-2-cristales-lente",
-          "src": "/assets/Processed/Complementos/Cristales_2.png"
-        },
-        {
-          "id": "gafas-2-cristales-montura",
-          "src": "/assets/Processed/Complementos/Gafas_2.png"
+          "id": "cristales-rosa-base",
+          "src": "/assets/Processed/Complementos/Cristales_1.png"
         }
-      ]
+      ],
+      "thumbnailBox": {
+        "x": 1116,
+        "y": 723,
+        "w": 503,
+        "h": 133
+      }
+    },
+    {
+      "id": "cristales-negro",
+      "label": "Cristal negro",
+      "layers": [
+        {
+          "id": "cristales-negro-base",
+          "src": "/assets/Processed/Complementos/Cristales_2.png"
+        }
+      ],
+      "thumbnailBox": {
+        "x": 1125,
+        "y": 726,
+        "w": 489,
+        "h": 136
+      }
     }
   ]
 }

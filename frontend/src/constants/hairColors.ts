@@ -1,3 +1,5 @@
+import type { ClothingColors } from "../types/avatar";
+
 export type HairColorOption = {
   id: string;
   label: string;
@@ -37,3 +39,17 @@ export const BROW_COLOR_OPTIONS: HairColorOption[] = [
 ];
 
 export const DEFAULT_BROW_COLOR = BROW_COLOR_OPTIONS[0].value;
+
+export const DEFAULT_CLOTHING_COLORS: ClothingColors = {
+  shirt: "#ffffff",
+  pants: "#83d4fa",
+};
+
+export const CLOTHING_COLOR_OPTIONS: HairColorOption[] = [
+  { id: "white", label: "Blanco", value: DEFAULT_CLOTHING_COLORS.shirt },
+  { id: "sky", label: "Azul claro", value: DEFAULT_CLOTHING_COLORS.pants },
+  { id: "navy", label: "Azul marino", value: "#294567" },
+  { id: "green", label: "Verde", value: "#386c58" },
+  { id: "red", label: "Granate", value: "#9b3745" },
+  { id: "black", label: "Negro", value: "#25262b" },
+];
