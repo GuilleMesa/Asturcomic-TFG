@@ -33,8 +33,13 @@ def layer_geometry(path: Path) -> tuple[float, float, Box | None]:
         with Image.open(path) as image:
             return image.width, image.height, visible_bounds(image.convert("RGBA"))
 
-    # The SVGs in the selector contain one raster image scaled to the artboard.
     root = ElementTree.parse(path).getroot()
+    if "data-content-box" in root.attrib:
+        _, _, width, height = map(float, root.attrib["viewBox"].split())
+        bounds = tuple(map(float, root.attrib["data-content-box"].split()))
+        return width, height, bounds
+
+    # Source SVGs contain one raster image scaled to the artboard.
     elements = list(root)
     if len(elements) != 1 or elements[0].tag != SVG_IMAGE_TAG:
         raise ValueError(f"Expected a single embedded image in {path.name}")

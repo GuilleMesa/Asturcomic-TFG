@@ -276,6 +276,7 @@
     {
       "id": "pose-7f",
       "label": "Pose 7F",
+      "foregroundMaskSrc": "/assets/ColorMasks/Poses/Pose_7F_foreground.svg",
       "bodyColorMasks": {
         "skin": "/assets/ColorMasks/Poses/Pose_7F_skin.png",
         "shirt": "/assets/ColorMasks/Poses/Pose_7F_shirt.png",
@@ -298,6 +299,7 @@
     {
       "id": "pose-7m",
       "label": "Pose 7M",
+      "foregroundMaskSrc": "/assets/ColorMasks/Poses/Pose_7M_foreground.svg",
       "bodyColorMasks": {
         "skin": "/assets/ColorMasks/Poses/Pose_7M_skin.png",
         "shirt": "/assets/ColorMasks/Poses/Pose_7M_shirt.png",
@@ -408,6 +410,7 @@
     {
       "id": "pose-10f",
       "label": "Pose 10F",
+      "foregroundMaskSrc": "/assets/ColorMasks/Poses/Pose_10F_foreground.svg",
       "bodyColorMasks": {
         "skin": "/assets/ColorMasks/Poses/Pose_10F_skin.png",
         "shirt": "/assets/ColorMasks/Poses/Pose_10F_shirt.png",
@@ -430,6 +433,7 @@
     {
       "id": "pose-10m",
       "label": "Pose 10M",
+      "foregroundMaskSrc": "/assets/ColorMasks/Poses/Pose_10M_foreground.svg",
       "bodyColorMasks": {
         "skin": "/assets/ColorMasks/Poses/Pose_10M_skin.png",
         "shirt": "/assets/ColorMasks/Poses/Pose_10M_shirt.png",
@@ -540,6 +544,7 @@
     {
       "id": "pose-13f",
       "label": "Pose 13F",
+      "foregroundMaskSrc": "/assets/ColorMasks/Poses/Pose_13F_foreground.svg",
       "bodyColorMasks": {
         "skin": "/assets/ColorMasks/Poses/Pose_13F_skin.png",
         "shirt": "/assets/ColorMasks/Poses/Pose_13F_shirt.png",
@@ -562,6 +567,7 @@
     {
       "id": "pose-13m",
       "label": "Pose 13M",
+      "foregroundMaskSrc": "/assets/ColorMasks/Poses/Pose_13M_foreground.svg",
       "bodyColorMasks": {
         "skin": "/assets/ColorMasks/Poses/Pose_13M_skin.png",
         "shirt": "/assets/ColorMasks/Poses/Pose_13M_shirt.png",
@@ -2128,6 +2134,7 @@
     {
       "id": "gafas-1",
       "label": "Gafas 1",
+      "lensShapeId": "cristales-rosa",
       "layers": [
         {
           "id": "gafas-1-base",
@@ -2144,6 +2151,7 @@
     {
       "id": "gafas-2",
       "label": "Gafas 2",
+      "lensShapeId": "cristales-negro",
       "layers": [
         {
           "id": "gafas-2-base",
@@ -2170,14 +2178,18 @@
       "layers": [
         {
           "id": "cristales-rosa-base",
-          "src": "/assets/Processed/Complementos/Cristales_1.png"
+          "src": "/assets/Complementos/Cristales_1.svg",
+          "maskSrc": "/assets/ColorMasks/Complementos/Cristales_1_fill.svg",
+          "colorable": true,
+          "colorMode": "tint",
+          "color": "#ff7377"
         }
       ],
       "thumbnailBox": {
-        "x": 1116,
-        "y": 723,
-        "w": 503,
-        "h": 133
+        "x": 1100,
+        "y": 713,
+        "w": 509,
+        "h": 140
       }
     },
     {
@@ -2186,14 +2198,18 @@
       "layers": [
         {
           "id": "cristales-negro-base",
-          "src": "/assets/Processed/Complementos/Cristales_2.png"
+          "src": "/assets/Complementos/Cristales_2.svg",
+          "maskSrc": "/assets/ColorMasks/Complementos/Cristales_2_fill.svg",
+          "colorable": true,
+          "colorMode": "tint",
+          "color": "#090c0e"
         }
       ],
       "thumbnailBox": {
-        "x": 1125,
-        "y": 726,
-        "w": 489,
-        "h": 136
+        "x": 1108,
+        "y": 714,
+        "w": 493,
+        "h": 141
       }
     }
   ]

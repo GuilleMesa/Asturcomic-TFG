@@ -154,7 +154,7 @@ function colorPose(
   pose: PoseAsset | undefined,
   skinColor: string,
   clothingColors: ClothingColors
-): CompositeAsset | undefined {
+): PoseAsset | undefined {
   if (!pose?.bodyColorMasks) return pose;
 
   const colors = { skin: skinColor, ...clothingColors };
@@ -410,11 +410,24 @@ export function AvatarEditorPage() {
   );
 
   const glassesLensItem = useMemo(
-    () =>
-      selected.glasses === "sin-gafas"
-        ? undefined
-        : findSelectedAsset(catalog, "glassesLenses", selected.glassesLenses),
-    [catalog, selected.glasses, selected.glassesLenses]
+    () => {
+      if (!glassesItem?.layers.length) return undefined;
+
+      const lens = findSelectedAsset(catalog, "glassesLenses", selected.glassesLenses);
+      if (!lens?.layers.length) return lens;
+
+      const shape = findSelectedAsset(
+        catalog,
+        "glassesLenses",
+        glassesItem.lensShapeId ?? lens.id
+      );
+      const color = lens.layers[0].color;
+      return {
+        ...lens,
+        layers: (shape ?? lens).layers.map((layer) => ({ ...layer, color })),
+      };
+    },
+    [catalog, glassesItem, selected.glassesLenses]
   );
 
   const speechBubbleItem = useMemo(

@@ -289,8 +289,9 @@ function renderThumbnailLayer(
   asset: CompositeAsset,
   layer: CompositeAsset["layers"][number],
   canvas: CanvasSize,
-  color?: string
+  categoryColor?: string
 ) {
+  const color = layer.color ?? categoryColor;
   if (layer.colorable && color) {
     const colorMode = layer.colorMode ?? "fill";
     const maskSrc = layer.maskSrc ?? layer.src;

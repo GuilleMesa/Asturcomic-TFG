@@ -34,6 +34,7 @@ export type CompositeAsset = {
   id: string;
   label: string;
   thumbnailBox?: Box;
+  lensShapeId?: string;
   gender?: PoseGender;
   canvas?: CanvasSize;
   offset?: {
@@ -45,6 +46,7 @@ export type CompositeAsset = {
 
 export type PoseAsset = CompositeAsset & {
   bodyColorMasks?: Record<BodyColorPart, string>;
+  foregroundMaskSrc?: string;
 };
 
 export type Catalog = {

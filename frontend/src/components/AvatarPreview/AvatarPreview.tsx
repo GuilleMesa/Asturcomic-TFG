@@ -1,10 +1,10 @@
 import { useRef, useState, type CSSProperties, type PointerEvent } from "react";
-import type { Box, CanvasSize, CompositeAsset } from "../../types/avatar";
+import type { Box, CanvasSize, CompositeAsset, PoseAsset } from "../../types/avatar";
 import { previewStyles } from "./AvatarPreview.styles";
 
 type Props = {
   canvas: CanvasSize;
-  pose?: CompositeAsset;
+  pose?: PoseAsset;
   leftEar?: CompositeAsset;
   rightEar?: CompositeAsset;
   head?: CompositeAsset;
@@ -424,6 +424,18 @@ export function AvatarPreview({
             HAIR_FRONT_MASK_SRC
           )}
         </div>
+
+        {pose?.foregroundMaskSrc && (
+          <div aria-hidden="true">
+            {renderComposite(
+              pose,
+              "Mano en primer plano",
+              canvas,
+              undefined,
+              pose.foregroundMaskSrc
+            )}
+          </div>
+        )}
 
         {speechBubbleLayer && (
           <div

@@ -1,8 +1,8 @@
-import type { Box, CanvasSize, CompositeAsset } from "../types/avatar";
+import type { Box, CanvasSize, CompositeAsset, PoseAsset } from "../types/avatar";
 
 type AvatarRenderInput = {
   canvas: CanvasSize;
-  pose?: CompositeAsset;
+  pose?: PoseAsset;
   leftEar?: CompositeAsset;
   rightEar?: CompositeAsset;
   head?: CompositeAsset;
@@ -265,6 +265,17 @@ export async function renderAvatarPngBlob(
     input.hairColor,
     HAIR_FRONT_MASK_SRC
   );
+
+  if (input.pose?.foregroundMaskSrc) {
+    await drawMaskedComposite(
+      ctx,
+      input.pose,
+      input.canvas,
+      fullBox,
+      undefined,
+      input.pose.foregroundMaskSrc
+    );
+  }
 
   const speechBubbleLayer = input.speechBubble?.layers[0];
   if (speechBubbleLayer) {
