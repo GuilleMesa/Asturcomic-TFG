@@ -5,6 +5,7 @@ import { previewStyles } from "./AvatarPreview.styles";
 type Props = {
   canvas: CanvasSize;
   pose?: PoseAsset;
+  footwear?: CompositeAsset;
   leftEar?: CompositeAsset;
   rightEar?: CompositeAsset;
   head?: CompositeAsset;
@@ -258,6 +259,7 @@ function renderComposite(
 export function AvatarPreview({
   canvas,
   pose,
+  footwear,
   leftEar,
   rightEar,
   head,
@@ -393,6 +395,7 @@ export function AvatarPreview({
       >
         {renderComposite(hair, "Pelo", canvas, hairColor)}
         {renderComposite(pose, "Pose", canvas)}
+        {renderComposite(footwear, "Calzado", canvas, skinColor)}
 
         <div
           style={{

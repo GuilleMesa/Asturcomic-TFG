@@ -1,5 +1,6 @@
 import { useMemo, useState, type CSSProperties } from "react";
 import { CLOTHING_COLOR_OPTIONS, type HairColorOption } from "../../constants/hairColors";
+import { resolveFootwear } from "../../services/footwearService";
 import type {
   CanvasSize,
   Catalog,
@@ -131,6 +132,12 @@ const SECTION_CONFIG: EditorSection[] = [
     icon: "pi pi-tag",
     parts: [],
     colorControl: "clothing",
+  },
+  {
+    id: "footwear",
+    label: "Calzado",
+    icon: "pi pi-shopping-bag",
+    parts: [{ category: "footwear", label: "Modelo" }],
   },
 ];
 
@@ -359,6 +366,7 @@ function AssetTile({
   canvas,
   color,
   isSelected,
+  unavailable = false,
   onSelectionChange,
 }: {
   asset: CompositeAsset;
@@ -366,6 +374,7 @@ function AssetTile({
   canvas: CanvasSize;
   color?: string;
   isSelected: boolean;
+  unavailable?: boolean;
   onSelectionChange: (category: SelectableCategory, id: string) => void;
 }) {
   const aspectRatio = category === "poses" ? 3 / 4 : 1;
@@ -374,13 +383,16 @@ function AssetTile({
     <button
       type="button"
       aria-pressed={isSelected}
-      title={asset.label}
+      disabled={unavailable}
+      title={unavailable ? `${asset.label} pendientes para esta pose` : asset.label}
       onClick={() => onSelectionChange(category, asset.id)}
       style={{
         ...selectorStyles.tile,
         borderColor: isSelected ? "#0f766e" : "#e5e7eb",
         backgroundColor: isSelected ? "#ecfdf5" : "#ffffff",
         boxShadow: isSelected ? "0 0 0 2px rgba(15, 118, 110, 0.16)" : "none",
+        opacity: unavailable ? 0.5 : 1,
+        cursor: unavailable ? "not-allowed" : "pointer",
       }}
     >
       <span
@@ -446,6 +458,7 @@ export function AssetSelectorPanel({
   function getColorForCategory(category: SelectableCategory) {
     if (
       category === "heads" ||
+      category === "footwear" ||
       category === "leftEars" ||
       category === "rightEars"
     ) {
@@ -458,6 +471,12 @@ export function AssetSelectorPanel({
 
     return undefined;
   }
+
+  const footwearMissing = catalog.footwear.every(
+    (asset) => !resolveFootwear(asset, selected.poses)?.layers.length
+  );
+  const selectedFootwearId = footwearMissing ? "sin-calzado" : selected.footwear;
+  const poseLabel = catalog.poses.find((pose) => pose.id === selected.poses)?.label;
 
   return (
     <section style={selectorStyles.wrapper}>
@@ -507,11 +526,14 @@ export function AssetSelectorPanel({
         )}
 
         {activeSection.parts.map((part) => {
-          const assets = filterAssetsByGender(
-            catalog[part.category],
-            part.category,
-            gender
-          );
+          const assets = part.category === "footwear"
+            ? catalog.footwear.map(
+                (asset) => resolveFootwear(asset, selected.poses) ?? { ...asset, layers: [] }
+              )
+            : filterAssetsByGender(catalog[part.category], part.category, gender);
+          const selectedId = part.category === "footwear"
+            ? selectedFootwearId
+            : selected[part.category];
 
           return (
             <div key={part.category} style={selectorStyles.partBlock}>
@@ -528,11 +550,21 @@ export function AssetSelectorPanel({
                     category={part.category}
                     canvas={catalog.canvas}
                     color={getColorForCategory(part.category)}
-                    isSelected={selected[part.category] === asset.id}
+                    isSelected={selectedId === asset.id}
+                    unavailable={
+                      part.category === "footwear" &&
+                      asset.id !== "sin-calzado" &&
+                      asset.layers.length === 0
+                    }
                     onSelectionChange={onSelectionChange}
                   />
                 ))}
               </div>
+              {part.category === "footwear" && footwearMissing && (
+                <p role="status" style={selectorStyles.availabilityMessage}>
+                  Calzado pendiente para {poseLabel}.
+                </p>
+              )}
             </div>
           );
         })}

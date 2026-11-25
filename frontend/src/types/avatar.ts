@@ -49,6 +49,10 @@ export type PoseAsset = CompositeAsset & {
   foregroundMaskSrc?: string;
 };
 
+export type FootwearAsset = CompositeAsset & {
+  poseVariants?: Record<string, CompositeAsset>;
+};
+
 export type Catalog = {
   canvas: CanvasSize;
   defaultPoseByGender?: Partial<Record<Gender, string>>;
@@ -67,6 +71,7 @@ export type Catalog = {
   mouths: CompositeAsset[];
   glasses: CompositeAsset[];
   glassesLenses: CompositeAsset[];
+  footwear: FootwearAsset[];
   speechBubbles: CompositeAsset[];
 };
 
@@ -86,6 +91,7 @@ export type SelectedAvatar = {
   mouths: string;
   glasses: string;
   glassesLenses: string;
+  footwear: string;
 };
 
 export type SelectableCategory = keyof SelectedAvatar;

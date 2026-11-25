@@ -2212,5 +2212,723 @@
         "h": 141
       }
     }
+  ],
+  "footwear": [
+    {
+      "id": "sin-calzado",
+      "label": "Sin calzado",
+      "layers": []
+    },
+    {
+      "id": "zapatillas",
+      "label": "Zapatillas",
+      "layers": [],
+      "poseVariants": {
+        "pose-1f": {
+          "id": "zapatillas-1f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-1f-base",
+              "src": "/assets/Calzado/Pose_1F.svg"
+            },
+            {
+              "id": "zapatillas-1f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_1F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1541,
+            "y": 2437,
+            "w": 237,
+            "h": 215
+          }
+        },
+        "pose-1m": {
+          "id": "zapatillas-1m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-1m-base",
+              "src": "/assets/Calzado/Pose_1M.svg"
+            },
+            {
+              "id": "zapatillas-1m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_1M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1515,
+            "y": 2461,
+            "w": 237,
+            "h": 215
+          }
+        },
+        "pose-2f": {
+          "id": "zapatillas-2f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-2f-base",
+              "src": "/assets/Calzado/Pose_2F.svg"
+            },
+            {
+              "id": "zapatillas-2f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_2F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 958,
+            "y": 2442,
+            "w": 816,
+            "h": 234
+          }
+        },
+        "pose-2m": {
+          "id": "zapatillas-2m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-2m-base",
+              "src": "/assets/Calzado/Pose_2M.svg"
+            },
+            {
+              "id": "zapatillas-2m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_2M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 932,
+            "y": 2460,
+            "w": 798,
+            "h": 244
+          }
+        },
+        "pose-3f": {
+          "id": "zapatillas-3f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-3f-base",
+              "src": "/assets/Calzado/Pose_3F.svg"
+            },
+            {
+              "id": "zapatillas-3f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_3F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1002,
+            "y": 2478,
+            "w": 804,
+            "h": 261
+          }
+        },
+        "pose-3m": {
+          "id": "zapatillas-3m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-3m-base",
+              "src": "/assets/Calzado/Pose_3M.svg"
+            },
+            {
+              "id": "zapatillas-3m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_3M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 981,
+            "y": 2472,
+            "w": 769,
+            "h": 275
+          }
+        },
+        "pose-4f": {
+          "id": "zapatillas-4f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-4f-base",
+              "src": "/assets/Calzado/Pose_4F.svg"
+            },
+            {
+              "id": "zapatillas-4f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_4F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 999,
+            "y": 1997,
+            "w": 710,
+            "h": 277
+          }
+        },
+        "pose-4m": {
+          "id": "zapatillas-4m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-4m-base",
+              "src": "/assets/Calzado/Pose_4M.svg"
+            },
+            {
+              "id": "zapatillas-4m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_4M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1038,
+            "y": 1998,
+            "w": 689,
+            "h": 265
+          }
+        },
+        "pose-5f": {
+          "id": "zapatillas-5f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-5f-base",
+              "src": "/assets/Calzado/Pose_5F.svg"
+            },
+            {
+              "id": "zapatillas-5f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_5F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 966,
+            "y": 2447,
+            "w": 806,
+            "h": 236
+          }
+        },
+        "pose-5m": {
+          "id": "zapatillas-5m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-5m-base",
+              "src": "/assets/Calzado/Pose_5M.svg"
+            },
+            {
+              "id": "zapatillas-5m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_5M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1055,
+            "y": 2504,
+            "w": 626,
+            "h": 222
+          }
+        },
+        "pose-6f": {
+          "id": "zapatillas-6f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-6f-base",
+              "src": "/assets/Calzado/Pose_6F.svg"
+            },
+            {
+              "id": "zapatillas-6f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_6F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 988,
+            "y": 2460,
+            "w": 763,
+            "h": 243
+          }
+        },
+        "pose-6m": {
+          "id": "zapatillas-6m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-6m-base",
+              "src": "/assets/Calzado/Pose_6M.svg"
+            },
+            {
+              "id": "zapatillas-6m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_6M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 992,
+            "y": 2448,
+            "w": 783,
+            "h": 261
+          }
+        },
+        "pose-7f": {
+          "id": "zapatillas-7f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-7f-base",
+              "src": "/assets/Calzado/Pose_7F.svg"
+            },
+            {
+              "id": "zapatillas-7f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_7F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1046,
+            "y": 2455,
+            "w": 812,
+            "h": 248
+          }
+        },
+        "pose-7m": {
+          "id": "zapatillas-7m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-7m-base",
+              "src": "/assets/Calzado/Pose_7M.svg"
+            },
+            {
+              "id": "zapatillas-7m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_7M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1066,
+            "y": 2450,
+            "w": 782,
+            "h": 254
+          }
+        },
+        "pose-8f": {
+          "id": "zapatillas-8f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-8f-base",
+              "src": "/assets/Calzado/Pose_8F.svg"
+            },
+            {
+              "id": "zapatillas-8f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_8F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1021,
+            "y": 2437,
+            "w": 803,
+            "h": 286
+          }
+        },
+        "pose-8m": {
+          "id": "zapatillas-8m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-8m-base",
+              "src": "/assets/Calzado/Pose_8M.svg"
+            },
+            {
+              "id": "zapatillas-8m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_8M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1048,
+            "y": 2429,
+            "w": 783,
+            "h": 276
+          }
+        },
+        "pose-9f": {
+          "id": "zapatillas-9f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-9f-base",
+              "src": "/assets/Calzado/Pose_9F.svg"
+            },
+            {
+              "id": "zapatillas-9f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_9F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 975,
+            "y": 2477,
+            "w": 729,
+            "h": 238
+          }
+        },
+        "pose-9m": {
+          "id": "zapatillas-9m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-9m-base",
+              "src": "/assets/Calzado/Pose_9M.svg"
+            },
+            {
+              "id": "zapatillas-9m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_9M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 966,
+            "y": 2468,
+            "w": 753,
+            "h": 244
+          }
+        },
+        "pose-10f": {
+          "id": "zapatillas-10f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-10f-base",
+              "src": "/assets/Calzado/Pose_10F.svg"
+            },
+            {
+              "id": "zapatillas-10f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_10F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1240,
+            "y": 2291,
+            "w": 237,
+            "h": 416
+          }
+        },
+        "pose-10m": {
+          "id": "zapatillas-10m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-10m-base",
+              "src": "/assets/Calzado/Pose_10M.svg"
+            },
+            {
+              "id": "zapatillas-10m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_10M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1280,
+            "y": 2262,
+            "w": 264,
+            "h": 448
+          }
+        },
+        "pose-11f": {
+          "id": "zapatillas-11f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-11f-base",
+              "src": "/assets/Calzado/Pose_11F.svg"
+            },
+            {
+              "id": "zapatillas-11f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_11F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 989,
+            "y": 1999,
+            "w": 708,
+            "h": 262
+          }
+        },
+        "pose-11m": {
+          "id": "zapatillas-11m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-11m-base",
+              "src": "/assets/Calzado/Pose_11M.svg"
+            },
+            {
+              "id": "zapatillas-11m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_11M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1049,
+            "y": 1991,
+            "w": 688,
+            "h": 288
+          }
+        },
+        "pose-12f": {
+          "id": "zapatillas-12f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-12f-base",
+              "src": "/assets/Calzado/Pose_12F.svg"
+            },
+            {
+              "id": "zapatillas-12f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_12F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 554,
+            "y": 2419,
+            "w": 1631,
+            "h": 329
+          }
+        },
+        "pose-12m": {
+          "id": "zapatillas-12m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-12m-base",
+              "src": "/assets/Calzado/Pose_12M.svg"
+            },
+            {
+              "id": "zapatillas-12m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_12M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 575,
+            "y": 2392,
+            "w": 1586,
+            "h": 344
+          }
+        },
+        "pose-13f": {
+          "id": "zapatillas-13f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-13f-base",
+              "src": "/assets/Calzado/Pose_13F.svg"
+            },
+            {
+              "id": "zapatillas-13f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_13F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1133,
+            "y": 2179,
+            "w": 834,
+            "h": 527
+          }
+        },
+        "pose-13m": {
+          "id": "zapatillas-13m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-13m-base",
+              "src": "/assets/Calzado/Pose_13M.svg"
+            },
+            {
+              "id": "zapatillas-13m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_13M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1146,
+            "y": 2166,
+            "w": 809,
+            "h": 528
+          }
+        },
+        "pose-14f": {
+          "id": "zapatillas-14f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-14f-base",
+              "src": "/assets/Calzado/Pose_14F.svg"
+            },
+            {
+              "id": "zapatillas-14f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_14F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1059,
+            "y": 2498,
+            "w": 615,
+            "h": 248
+          }
+        },
+        "pose-14m": {
+          "id": "zapatillas-14m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-14m-base",
+              "src": "/assets/Calzado/Pose_14M.svg"
+            },
+            {
+              "id": "zapatillas-14m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_14M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1030,
+            "y": 2486,
+            "w": 604,
+            "h": 247
+          }
+        },
+        "pose-15f": {
+          "id": "zapatillas-15f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-15f-base",
+              "src": "/assets/Calzado/Pose_15F.svg"
+            },
+            {
+              "id": "zapatillas-15f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_15F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 871,
+            "y": 1904,
+            "w": 726,
+            "h": 807
+          }
+        },
+        "pose-15m": {
+          "id": "zapatillas-15m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-15m-base",
+              "src": "/assets/Calzado/Pose_15M.svg"
+            },
+            {
+              "id": "zapatillas-15m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_15M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 871,
+            "y": 2109,
+            "w": 695,
+            "h": 598
+          }
+        },
+        "pose-16f": {
+          "id": "zapatillas-16f",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-16f-base",
+              "src": "/assets/Calzado/Pose_16F.svg"
+            },
+            {
+              "id": "zapatillas-16f-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_16F_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1064,
+            "y": 2440,
+            "w": 609,
+            "h": 339
+          }
+        },
+        "pose-16m": {
+          "id": "zapatillas-16m",
+          "label": "Zapatillas",
+          "layers": [
+            {
+              "id": "zapatillas-16m-base",
+              "src": "/assets/Calzado/Pose_16M.svg"
+            },
+            {
+              "id": "zapatillas-16m-skin",
+              "src": "/assets/ColorMasks/Calzado/Pose_16M_skin.svg",
+              "colorable": true,
+              "colorMode": "tint"
+            }
+          ],
+          "thumbnailBox": {
+            "x": 1005,
+            "y": 2498,
+            "w": 715,
+            "h": 352
+          }
+        }
+      }
+    }
   ]
 }

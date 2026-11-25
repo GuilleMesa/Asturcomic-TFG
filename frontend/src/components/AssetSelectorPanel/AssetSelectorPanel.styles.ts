@@ -101,6 +101,12 @@ export const selectorStyles: Record<string, CSSProperties> = {
     fontSize: "0.75rem",
     fontWeight: 800,
   },
+  availabilityMessage: {
+    margin: 0,
+    color: "#64748b",
+    fontSize: "0.85rem",
+    lineHeight: 1.4,
+  },
   tileGrid: {
     display: "grid",
     gridTemplateColumns: "repeat(3, minmax(0, 1fr))",

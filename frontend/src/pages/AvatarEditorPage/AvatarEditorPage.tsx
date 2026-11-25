@@ -19,6 +19,7 @@ import {
   renderAvatarPngBlob,
 } from "../../services/avatarExportService";
 import { fetchCatalog } from "../../services/catalogService";
+import { resolveFootwear } from "../../services/footwearService";
 import type {
   AvatarConfigFile,
   Box,
@@ -56,6 +57,7 @@ const SELECTABLE_CATEGORIES: SelectableCategory[] = [
   "mouths",
   "glasses",
   "glassesLenses",
+  "footwear",
 ];
 
 const EMPTY_SELECTION: SelectedAvatar = {
@@ -74,6 +76,7 @@ const EMPTY_SELECTION: SelectedAvatar = {
   mouths: "",
   glasses: "",
   glassesLenses: "",
+  footwear: "",
 };
 
 function createFullBox(canvas: CanvasSize): Box {
@@ -409,6 +412,15 @@ export function AvatarEditorPage() {
     [catalog, selected.glasses]
   );
 
+  const footwearItem = useMemo(
+    () =>
+      resolveFootwear(
+        catalog?.footwear.find((asset) => asset.id === selected.footwear),
+        selected.poses
+      ),
+    [catalog, selected.footwear, selected.poses]
+  );
+
   const glassesLensItem = useMemo(
     () => {
       if (!glassesItem?.layers.length) return undefined;
@@ -525,6 +537,7 @@ export function AvatarEditorPage() {
       const blob = await renderAvatarPngBlob({
         canvas: catalog.canvas,
         pose: poseItem,
+        footwear: footwearItem,
         leftEar: leftEarItem,
         rightEar: rightEarItem,
         head: headItem,
@@ -687,6 +700,7 @@ export function AvatarEditorPage() {
         <AvatarPreview
           canvas={catalog?.canvas ?? DEFAULT_CANVAS}
           pose={poseItem}
+          footwear={footwearItem}
           leftEar={leftEarItem}
           rightEar={rightEarItem}
           head={headItem}

@@ -3,6 +3,7 @@ import type { Box, CanvasSize, CompositeAsset, PoseAsset } from "../types/avatar
 type AvatarRenderInput = {
   canvas: CanvasSize;
   pose?: PoseAsset;
+  footwear?: CompositeAsset;
   leftEar?: CompositeAsset;
   rightEar?: CompositeAsset;
   head?: CompositeAsset;
@@ -244,6 +245,7 @@ export async function renderAvatarPngBlob(
 
   await drawComposite(ctx, input.hair, input.canvas, input.faceBox, input.hairColor);
   await drawComposite(ctx, input.pose, input.canvas, fullBox);
+  await drawComposite(ctx, input.footwear, input.canvas, fullBox, input.skinColor);
   await drawComposite(ctx, input.leftEar, input.canvas, input.faceBox, input.skinColor);
   await drawComposite(ctx, input.rightEar, input.canvas, input.faceBox, input.skinColor);
   await drawComposite(ctx, input.head, input.canvas, input.faceBox, input.skinColor);

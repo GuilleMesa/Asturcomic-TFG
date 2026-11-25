@@ -112,6 +112,8 @@ def main() -> None:
         if not isinstance(assets, list) or group == "speechBubbles":
             continue
         for asset in assets:
+            for variant in asset.get("poseVariants", {}).values():
+                variant["thumbnailBox"] = thumbnail_box(variant, catalog["canvas"])
             box = thumbnail_box(asset, catalog["canvas"])
             if box is None:
                 asset.pop("thumbnailBox", None)
